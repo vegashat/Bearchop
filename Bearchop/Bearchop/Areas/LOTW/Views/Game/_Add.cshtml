@@ -1,0 +1,55 @@
+﻿@model Contests.LOTW.Core.Model.Game
+
+@using(Html.BeginForm("save","game", FormMethod.Post, new{@id="saveForm"}))
+{
+     <fieldset>
+        <legend>Game Information</legend>
+
+        @Html.HiddenFor(g => Model.Id)
+
+        <div id="weekContainer">
+            <label>Week</label>
+            @Html.TextBoxFor(g => Model.WeekId, new { @id = "gameWeek", @type="number"})
+        </div>
+        <div id="dateContainer">
+            <label>Date</label>
+            @Html.TextBoxFor(g => Model.Date, new { @id = "gameDate", @class="date" })
+        </div>
+        <div id="homeTeamContainer">
+            <label>Home Team</label>
+            @Html.TextBoxFor(g => Model.HomeTeam, new { @id = "gameHomeTeam" })
+        </div>
+        <div id="awayTeamContainer">
+            <label>Away Team</label>
+            @Html.TextBoxFor(g => Model.AwayTeam, new { @id = "gameAwayTeam" })
+        </div>
+        <div id="homeTeamSpreadContainer">
+            <label>Home Team Spread</label>
+            @Html.TextBoxFor(g => Model.HomeTeamSpread, new { @id = "gameHomeTeamSpread", @type = "number" })
+        </div>
+        <div id="awayTeamSpreadContainer">
+            <label>Away Team Spread</label>
+            @Html.TextBoxFor(g => Model.AwayTeamSpread, new { @id = "gameAwayTeamSpread", @type="number" })
+        </div>
+        <div id="overUnderContainer">
+            <label>Over/Under</label>
+            @Html.TextBoxFor(g => Model.OverUnder, new { @id = "gameOverUnder", @type = "number" })
+        </div>
+        <div id="scoreContainer">
+            <label>Final Score</label>
+            @Html.TextBoxFor(g => Model.FinalScore, new { @id = "gameFinalScore", @type = "number" })
+        </div>
+        <div id="homeScoreContainer">
+            <label>Home Team Score</label>
+            @Html.TextBoxFor(g => Model.HomeTeamScore, new { @id = "gameHomeTeamScore", @type = "number" })
+        </div>
+        <div id="awayScoreContainer">
+            <label>Away Team Score</label>
+            @Html.TextBoxFor(g => Model.AwayTeamScore, new { @id = "gameAwayTeamScore", @type = "number" })
+        </div>
+
+        <button type="button" class="button" onclick="cancel()">Cancel</button>
+        <button type="button" class="button" onclick="save()">Save</button>
+        
+     </fieldset>
+}

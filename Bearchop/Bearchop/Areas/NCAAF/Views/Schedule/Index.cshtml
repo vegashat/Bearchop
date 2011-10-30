@@ -1,0 +1,220 @@
+﻿@{
+    ViewBag.Title = "Current Team Schedule";
+}
+
+<section id="currentTeams">
+    
+    <table id="currentTeamList">
+    </table>
+
+</section>
+
+<section id="availableTeams">    
+    <table id="availableTeamList">
+    </table>
+
+</section>
+
+<script language="javascript">
+
+        var jsonReaderOptions =
+        {
+            root: "Rows",
+            page: "Page",
+            total: "Total",
+            records: "Records",
+            repeatitems: false,
+            userdata: "UserData",
+            id: "userid"
+        };
+
+        var currentGrid    = null;
+        var teamGrid    = null;
+        var otherTeams = Array();
+
+        $(function ()
+        {
+            currentGrid   = $("#currentTeamList");
+            teamGrid   = $("#availableTeamList");
+            
+            var scheduleUrl  = "@Url.Action("UserSchedule", "Schedule")";    
+            var teamUrl      = "@Url.Action("Teams", "Schedule")";  
+            var conferenceUrl = "@Url.Action("Conferences", "Schedule")";
+            
+            currentGrid.jqGrid
+            (
+                {
+                    url       : scheduleUrl,
+                    datatype  : 'json',
+                    mtype     : 'GET',
+                    postData  : {otherTeams : ""},
+                    caption   : 'Selected Teams Schedule',
+                    colModel  :
+                                [
+                                    { name: 'UserId', jsonmap : 'UserId', index: 'UserId', label : 'UserId', align : "left", hidden : true},
+                                    { name: 'TeamId', index: 'TeamId', jsonmap : 'TeamId',  label :   'TeamId', index : 'teamid', align : "left", hidden : true},
+                                    { name: 'Name',  jsonmap : 'Name', label : 'Name', index: 'Name', align : "left"},
+                                    { name: 'Week1_Opponent',  jsonmap : 'Week1_Opponent.Name', label : 'Week 1', index: 'Week1_Opponent', align : "left", cellattr: function (rowId, tv, rawObject, cm, rdata) { 
+                                                                                                                                                   
+                                                                                                                                                    return 'class = '+ rawObject.Week1_Opponent.Class; 
+                                                                                                                                        }},
+                                    { name: 'Week2_Opponent',  jsonmap : 'Week2_Opponent.Name', label : 'Week 2', index: 'Week2_Opponent', align : "left", cellattr: function (rowId, tv, rawObject, cm, rdata) { 
+                                                                                                                                                   
+                                                                                                                                                    return 'class = '+ rawObject.Week2_Opponent.Class; 
+                                                                                                                                        }},
+                                    { name: 'Week3_Opponent',  jsonmap : 'Week3_Opponent.Name', label : 'Week 3', index: 'Week3_Opponent', align : "left", cellattr: function (rowId, tv, rawObject, cm, rdata) { 
+                                                                                                                                                   
+                                                                                                                                                    return 'class = '+ rawObject.Week3_Opponent.Class; 
+                                                                                                                                        }},
+                                    { name: 'Week4_Opponent',  jsonmap : 'Week4_Opponent.Name', label : 'Week 4', index: 'Week4_Opponent', align : "left", cellattr: function (rowId, tv, rawObject, cm, rdata) { 
+                                                                                                                                                   
+                                                                                                                                                    return 'class = '+ rawObject.Week4_Opponent.Class; 
+                                                                                                                                        }},
+                                    { name: 'Week5_Opponent',  jsonmap : 'Week5_Opponent.Name', label : 'Week 5', index: 'Week5_Opponent', align : "left", cellattr: function (rowId, tv, rawObject, cm, rdata) { 
+                                                                                                                                                   
+                                                                                                                                                    return 'class = '+ rawObject.Week5_Opponent.Class; 
+                                                                                                                                        }},
+                                    { name: 'Week6_Opponent',  jsonmap : 'Week6_Opponent.Name', label : 'Week 6', index: 'Week6_Opponent', align : "left", cellattr: function (rowId, tv, rawObject, cm, rdata) { 
+                                                                                                                                                   
+                                                                                                                                                    return 'class = '+ rawObject.Week6_Opponent.Class; 
+                                                                                                                                        }},
+                                    { name: 'Week7_Opponent',  jsonmap : 'Week7_Opponent.Name', label : 'Week 7', index: 'Week7_Opponent', align : "left", cellattr: function (rowId, tv, rawObject, cm, rdata) { 
+                                                                                                                                                   
+                                                                                                                                                    return 'class = '+ rawObject.Week7_Opponent.Class; 
+                                                                                                                                        }},
+                                    { name: 'Week8_Opponent',  jsonmap : 'Week8_Opponent.Name', label : 'Week 8', index: 'Week8_Opponent', align : "left", cellattr: function (rowId, tv, rawObject, cm, rdata) { 
+                                                                                                                                                   
+                                                                                                                                                    return 'class = '+ rawObject.Week8_Opponent.Class; 
+                                                                                                                                        }},
+                                    { name: 'Week9_Opponent',  jsonmap : 'Week9_Opponent.Name', label : 'Week 9', index: 'Week9_Opponent', align : "left", cellattr: function (rowId, tv, rawObject, cm, rdata) { 
+                                                                                                                                                   
+                                                                                                                                                    return 'class = '+ rawObject.Week9_Opponent.Class; 
+                                                                                                                                        }},
+                                    { name: 'Week10_Opponent',  jsonmap : 'Week10_Opponent.Name', label : 'Week 10', index: 'Week10_Opponent', align : "left", cellattr: function (rowId, tv, rawObject, cm, rdata) { 
+                                                                                                                                                   
+                                                                                                                                                    return 'class = '+ rawObject.Week10_Opponent.Class; 
+                                                                                                                                        }},
+                                    { name: 'Week11_Opponent',  jsonmap : 'Week11_Opponent.Name', label : 'Week 11', index: 'Week11_Opponent', align : "left", cellattr: function (rowId, tv, rawObject, cm, rdata) { 
+                                                                                                                                                   
+                                                                                                                                                    return 'class = '+ rawObject.Week11_Opponent.Class; 
+                                                                                                                                        }},
+                                    { name: 'Week12_Opponent',  jsonmap : 'Week12_Opponent.Name', label : 'Week 12', index: 'Week12_Opponent', align : "left", cellattr: function (rowId, tv, rawObject, cm, rdata) { 
+                                                                                                                                                   
+                                                                                                                                                    return 'class = '+ rawObject.Week12_Opponent.Class; 
+                                                                                                                                        }},
+                                    { name: 'Week13_Opponent',  jsonmap : 'Week13_Opponent.Name', label : 'Week 13', index: 'Week13_Opponent', align : "left", cellattr: function (rowId, tv, rawObject, cm, rdata) { 
+                                                                                                                                                   
+                                                                                                                                                    return 'class = '+ rawObject.Week13_Opponent.Class; 
+                                                                                                                                        }},
+                                    { name: 'Week14_Opponent',  jsonmap : 'Week14_Opponent.Name', label : 'Week 14', index: 'Week14_Opponent', align : "left", cellattr: function (rowId, tv, rawObject, cm, rdata) { 
+                                                                                                                                                   
+                                                                                                                                                    return 'class = '+ rawObject.Week14_Opponent.Class; 
+                                                                                                                                        }},
+                                    { name: 'Week15_Opponent',  jsonmap : 'Week15_Opponent.Name', label : 'Week 15', index: 'Week15_Opponent', align : "left", hidden : "true"}
+                                ],
+                    jsonReader   : {
+                                    root: "Rows",
+                                    page: "Page",
+                                    total: "Total",
+                                    records: "Records",
+                                    repeatitems: false,
+                                    userdata: "UserData",
+                                    id: "userid"
+                                },
+                    autowidth    : true,
+                    altRows      : true,
+                    emptyrecords : 'No Teams Have Been Selected',
+                    rowNum       : 20,
+                    shrinkToFit  : true,
+                    forceFit     : true,
+                    viewrecords  : true,
+                    sortname     : 'Name',                    
+                    sortorder    : 'asc',
+                    height       : 300,
+                    loadtext     : 'Loading...'
+                }
+            );
+
+
+            var conferences = loadData(conferenceUrl);
+            teamGrid.jqGrid
+            (
+                {
+                    url       : teamUrl,
+                    datatype  : 'json',
+                    mtype     : 'GET',
+                    caption   : 'Available Teams',
+                    colModel  :
+                                [
+                                    { name: 'TeamID', index: 'TeamID', jsonmap : 'TeamID',  label :   'TeamID', align : "left", hidden : true,  editable: true},
+                                    { name: 'Name',  jsonmap : 'Name', label : 'Name', index: 'Name', align : "left", },
+                                    { name: 'Conference',  jsonmap : 'Conference', label : 'Conference', index: 'Conference', align : "left", edittype : 'select', editoptions: {value : conferences}, stype: 'select'},
+                                    { name: 'OPrice',  jsonmap : 'OPrice', label : 'Original Price', index: 'OPrice', align : "right", searchoptions:{sopt: ['eq']}},
+                                    { name: 'Price',  jsonmap : 'Price', label : 'Current Price', index: 'Price', align : "right", searchoptions:{sopt: ['eq']}},
+                                    { name: 'Wins',  jsonmap : 'Wins', label : 'Wins', index: 'Wins', align : "right", searchoptions:{sopt: ['eq']}},
+                                    { name: 'Losses',  jsonmap : 'Losses', label : 'Losses', index: 'Losses', align : "right", searchoptions:{sopt: ['eq']}},
+                                    { name: 'Points',  jsonmap : 'Points', label : 'Points', index: 'Points', align : "right", searchoptions:{sopt: ['eq']}},
+                                    { name: 'OwnedBy',  jsonmap : 'OwnedBy', label : 'Owned By', index: 'OwnedBy', align : "right", searchoptions:{sopt: ['eq']}},
+                                    { name: 'RealValue',  jsonmap : 'RealValue', label : 'Real Value', index: 'RealValue', align : "right", searchoptions:{sopt: ['eq']}},
+                                    { name: 'IsSelected',  jsonmap : 'IsSelected', label : 'Own Team', index: 'IsSelected', align : "center", searchoptions:{sopt: ['eq']}},
+                                ],
+                    jsonReader   : {
+                                    root: "Rows",
+                                    page: "Page",
+                                    total: "Total",
+                                    records: "Records",
+                                    repeatitems: false,
+                                    userdata: "UserData",
+                                    id: "TeamId"
+                                },
+                    autowidth    : true,
+                    altRows      : true,
+                    emptyrecords : 'Where Are the Teams?',
+                    rowNum       : 90,
+                    shrinkToFit  : true,
+                    forceFit     : true,
+                    viewrecords  : true,
+                    sortname     : 'Name',                    
+                    sortorder    : 'asc',
+                    loadtext     : 'Loading...',
+                    height       : 300,
+                    ondblClickRow: function(rowid) { addTeamSchedule(rowid); }
+                }
+            );
+
+            teamGrid.jqGrid('filterToolbar', {stringResult: true, searchOnEnter: false, defaultSearch : "cn"});
+        });
+
+        function addTeamSchedule(rowid)
+        {
+            var rowData = teamGrid.getRowData(rowid);                        
+            otherTeams[otherTeams.length] = rowData.TeamID;
+
+            currentGrid.jqGrid('setGridParam',{postData:{otherTeams : otherTeams.toString()}});
+            currentGrid.trigger("reloadGrid");
+        }
+
+        function loadData(url)
+        {
+            //Retrieve json content via ajax
+            $.ajax(
+                        {
+                            url: url,
+                            async: false,
+                            dataType: "json",
+                            type: "GET",
+                            error: function (xhr, ajaxOptions, thrownError)
+                            {
+                                alert("An error occured processing your request\n" + xhr.status + " " + xhr.statusText);
+                                $(obj).parent().text(oldValue);
+                                returnVal = null;
+                            },
+                            success: function (data, result)
+                            {
+                                returnVal = data;
+                            }
+                        }
+                    );
+            return returnVal;
+        }
+</script>

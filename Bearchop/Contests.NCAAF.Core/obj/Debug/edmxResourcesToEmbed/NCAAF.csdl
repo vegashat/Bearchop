@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NCAAFModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="NCAAFEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Schedules" EntityType="NCAAFModel.Schedule" />
+    <EntitySet Name="Teams" EntityType="NCAAFModel.Team" />
+    <EntitySet Name="Weeks" EntityType="NCAAFModel.Week" />
+    <EntitySet Name="vw_schedule" EntityType="NCAAFModel.vw_schedule" />
+    <EntitySet Name="TEAM_SCHEDULE" EntityType="NCAAFModel.TEAM_SCHEDULE" />
+    <EntitySet Name="USER_SCHEDULE" EntityType="NCAAFModel.USER_SCHEDULE" />
+    <EntitySet Name="USER_WEEKLY_SCHEDULE" EntityType="NCAAFModel.USER_WEEKLY_SCHEDULE" />
+    <AssociationSet Name="AwayTeam" Association="NCAAFModel.AwayTeam">
+      <End Role="Team" EntitySet="Teams" />
+      <End Role="Schedule" EntitySet="Schedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_Week" Association="NCAAFModel.FK_Schedule_Week">
+      <End Role="Week" EntitySet="Weeks" />
+      <End Role="Schedule" EntitySet="Schedules" />
+    </AssociationSet>
+    <AssociationSet Name="HomeTeam" Association="NCAAFModel.HomeTeam">
+      <End Role="Team" EntitySet="Teams" />
+      <End Role="Schedule" EntitySet="Schedules" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="HomeTeamId" />
+      <PropertyRef Name="AwayTeamId" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="HomeTeamId" Type="Int32" Nullable="false" />
+    <Property Name="AwayTeamId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="Week" Type="Int32" />
+    <NavigationProperty Name="AwayTeam" Relationship="NCAAFModel.AwayTeam" FromRole="Schedule" ToRole="Team" />
+    <NavigationProperty Name="ScheduleWeek" Relationship="NCAAFModel.FK_Schedule_Week" FromRole="Schedule" ToRole="Week" />
+    <NavigationProperty Name="HomeTeam" Relationship="NCAAFModel.HomeTeam" FromRole="Schedule" ToRole="Team" />
+  </EntityType>
+  <EntityType Name="Team">
+    <Key>
+      <PropertyRef Name="TeamId" />
+    </Key>
+    <Property Name="TeamId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IsSelectable" Type="Boolean" />
+    <NavigationProperty Name="AwaySchedule" Relationship="NCAAFModel.AwayTeam" FromRole="Team" ToRole="Schedule" />
+    <NavigationProperty Name="HomeSchedule" Relationship="NCAAFModel.HomeTeam" FromRole="Team" ToRole="Schedule" />
+  </EntityType>
+  <EntityType Name="Week">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="BeginDate" Type="DateTime" Nullable="false" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Schedules" Relationship="NCAAFModel.FK_Schedule_Week" FromRole="Week" ToRole="Schedule" />
+  </EntityType>
+  <EntityType Name="vw_schedule">
+    <Key>
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="HomeTeamId" />
+      <PropertyRef Name="HomeName" />
+      <PropertyRef Name="AwayTeamId" />
+      <PropertyRef Name="AwayName" />
+    </Key>
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="HomeTeamId" Type="Int32" Nullable="false" />
+    <Property Name="HomeName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="AwayTeamId" Type="Int32" Nullable="false" />
+    <Property Name="AwayName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Week" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TEAM_SCHEDULE">
+    <Key>
+      <PropertyRef Name="TeamID" />
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="TeamID" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week1_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week2_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week3_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week4_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week5_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week6_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week7_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week8_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week9_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week10_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week11_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week12_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week13_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week14_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week15_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="USER_SCHEDULE">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="TeamID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="opponent" />
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="pick_week" />
+      <PropertyRef Name="CurrentWeek" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="TeamID" Type="Int16" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="opponent" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="schedule_week" Type="Int32" />
+    <Property Name="pick_week" Type="Byte" Nullable="false" />
+    <Property Name="CurrentWeek" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USER_WEEKLY_SCHEDULE">
+    <Key>
+      <PropertyRef Name="userid" />
+      <PropertyRef Name="teamid" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="pick_week" />
+    </Key>
+    <Property Name="userid" Type="Int32" Nullable="false" />
+    <Property Name="teamid" Type="Int16" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="pick_week" Type="Byte" Nullable="false" />
+    <Property Name="week1_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week2_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week3_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week4_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week5_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week6_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week7_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week8_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week9_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week10_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week11_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week12_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week13_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week14_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="week15_opponent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <Association Name="AwayTeam">
+    <End Role="Team" Type="NCAAFModel.Team" Multiplicity="1" />
+    <End Role="Schedule" Type="NCAAFModel.Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="TeamId" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="AwayTeamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_Week">
+    <End Role="Week" Type="NCAAFModel.Week" Multiplicity="0..1" />
+    <End Role="Schedule" Type="NCAAFModel.Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Week">
+        <PropertyRef Name="Number" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="Week" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HomeTeam">
+    <End Role="Team" Type="NCAAFModel.Team" Multiplicity="1" />
+    <End Role="Schedule" Type="NCAAFModel.Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="TeamId" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="HomeTeamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+@RenderSection("header", false)
+
+@section Pills
+        {
+    <ul class="pills">
+        <li class='pill standings'>@Html.ActionLink("Standings", "Index", "Home")</li>
+        <li class='pill picks'>@Html.ActionLink("Current Picks", "List", "Pick")</li>
+        <li class='pill games'>@Html.ActionLink("Current Games", "List", "Game")</li>
+    </ul>
+}
+
+@RenderBody()
+
+<script language="javascript" type="text/javascript">
+
+    $(function () {
+
+        function removeActivePill() {
+
+            $('.pill').removeClass('.active');
+        }
+    });
+
+</script>

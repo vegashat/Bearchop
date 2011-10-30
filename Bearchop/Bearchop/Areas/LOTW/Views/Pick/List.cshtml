@@ -1,0 +1,17 @@
+﻿@model LOTW.Web.ViewModels.PicksViewModel
+
+@{
+    ViewBag.Title = "Picks for Week " + Model.PickWeek.Number.ToString();
+}
+
+@Html.Partial("_UserPicks", Model)
+
+<script language="javascript" type="text/javascript">
+
+    $(function () {
+
+        removeActivePill();
+        $('.picks').addClass('active');
+    });
+
+</script>

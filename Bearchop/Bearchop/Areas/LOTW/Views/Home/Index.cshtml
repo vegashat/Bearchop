@@ -1,0 +1,67 @@
+﻿@model LOTW.Web.ViewModels.SummaryViewModel
+@{
+    ViewBag.Title = "Summary";
+
+    int position = 0;
+    decimal previousPoints = 0;    
+}
+
+
+<div id="rankings" class="rankings">
+@if (Model.Users.Any())
+{
+    <div class="userRankHead">
+        <label class='rank'>Rank</label>
+        <label class='player'>Player</label>
+        <label class='points'>Points</label>
+    </div>
+    
+    foreach (var user in Model.Users.OrderBy(u => u.Points).Reverse())
+    {
+        if ((user.Points > 0 && user.Points < previousPoints) || previousPoints == 0 || user.Points == 0 && previousPoints > 0)
+        {
+            position++;
+            previousPoints = user.Points;
+        }
+                
+        <div class="userRank" >
+            <label class='points'>@position</label>
+            <label class='player'><a href="javascript:loadUserHistory(@user.Id)">@user.Name</a></label>
+            <label class='points' style="text-align:right">@user.Points</label>
+        </div>
+    }
+}
+</div>
+
+<div id="weeks" class="weeks">
+    @Html.Action("History", "Pick", new { userId = Model.CurrentUser.Id })
+</div>
+
+<script language="javascript" type="text/javascript">
+
+    $(function () {
+
+        removeActivePill();
+        $('.standings').addClass('active');
+    });
+
+    var historyUrl = "@Url.Action("History", "Pick")";
+
+    function loadUserHistory(userId) {
+
+        var data = {userId : userId};
+
+        $.ajax({
+              type: 'GET',
+              url: historyUrl,
+              data: data,
+              dataType: "html",
+              success: function(result)
+              {
+                $("#weeks").empty();
+                $("#weeks").append(result);                
+              }
+            });
+    }
+
+</script>

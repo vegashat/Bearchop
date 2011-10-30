@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Contests.LOTW.Core.Model;
+
+namespace LOTW.Web.ViewModels
+{
+    public class PickHistoryViewModel : WeeksViewModel
+    {
+        public PickHistoryViewModel(int userId, IEnumerable<Week> weeks, Week currentWeek) : base(weeks, currentWeek)
+        {
+            UserId = userId;
+        }
+
+        public int UserId { get; set; }
+    }
+}

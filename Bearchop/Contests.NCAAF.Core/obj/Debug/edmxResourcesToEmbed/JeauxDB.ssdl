@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JeauxDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="JeauxDBModelStoreContainer">
+    <EntitySet Name="COLFOOT" EntityType="JeauxDBModel.Store.COLFOOT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="COLFOOT_TEAM" EntityType="JeauxDBModel.Store.COLFOOT_TEAM" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="COLFOOT_WEEK" EntityType="JeauxDBModel.Store.COLFOOT_WEEK" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_COLFOOT_TEAM" Association="JeauxDBModel.Store.FK_COLFOOT_TEAM">
+      <End Role="COLFOOT_TEAM" EntitySet="COLFOOT_TEAM" />
+      <End Role="COLFOOT" EntitySet="COLFOOT" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="COLFOOT">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="TeamID" />
+      <PropertyRef Name="Week" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="TeamID" Type="smallint" Nullable="false" />
+    <Property Name="Week" Type="tinyint" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="20" />
+    <Property Name="Points" Type="smallint" />
+  </EntityType>
+  <EntityType Name="COLFOOT_TEAM">
+    <Key>
+      <PropertyRef Name="TeamID" />
+    </Key>
+    <Property Name="TeamID" Type="smallint" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Conference" Type="varchar" MaxLength="50" />
+    <Property Name="OPrice" Type="money" />
+    <Property Name="Price" Type="money" />
+    <Property Name="Wins" Type="smallint" />
+    <Property Name="Losses" Type="smallint" />
+    <Property Name="Points" Type="smallint" />
+    <Property Name="OwnedBy" Type="smallint" />
+    <Property Name="RealValue" Type="numeric" Precision="19" Scale="4" StoreGeneratedPattern="Computed" />
+    <Property Name="IsSelectable" Type="bit" />
+  </EntityType>
+  <EntityType Name="COLFOOT_WEEK">
+    <Key>
+      <PropertyRef Name="CurrentWeek" />
+    </Key>
+    <Property Name="CurrentWeek" Type="tinyint" Nullable="false" />
+    <Property Name="TueGames" Type="varchar" MaxLength="500" />
+    <Property Name="WedGames" Type="varchar" MaxLength="500" />
+    <Property Name="ThurGames" Type="varchar" MaxLength="500" />
+    <Property Name="FriGames" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <Association Name="FK_COLFOOT_TEAM">
+    <End Role="COLFOOT_TEAM" Type="JeauxDBModel.Store.COLFOOT_TEAM" Multiplicity="1" />
+    <End Role="COLFOOT" Type="JeauxDBModel.Store.COLFOOT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COLFOOT_TEAM">
+        <PropertyRef Name="TeamID" />
+      </Principal>
+      <Dependent Role="COLFOOT">
+        <PropertyRef Name="TeamID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

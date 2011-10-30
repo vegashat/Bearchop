@@ -1,0 +1,18 @@
+﻿@model Bearchop.ViewModels.MessageViewModel
+
+@{
+    ViewBag.Title = "_Message";
+}
+
+<div>
+    @Html.LabelFor(m => Model.ToList);
+    @Html.TextAreaFor(m => Model.ToList);
+
+    @Html.LabelFor(m => Model.Subject)
+    @Html.TextBoxFor(m => Model.Subject, new {@class="subject"})
+   
+    @Html.LabelFor(m => Model.Body);
+    @Html.TextAreaFor(m => Model.Body);
+
+    
+</div>

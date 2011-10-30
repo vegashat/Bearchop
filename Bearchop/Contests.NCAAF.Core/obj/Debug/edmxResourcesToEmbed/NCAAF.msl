@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NCAAFModelStoreContainer" CdmEntityContainer="NCAAFEntities">
+    <EntitySetMapping Name="Schedules">
+      <EntityTypeMapping TypeName="NCAAFModel.Schedule">
+        <MappingFragment StoreEntitySet="Schedule">
+          <ScalarProperty Name="HomeTeamId" ColumnName="HomeTeamId" />
+          <ScalarProperty Name="AwayTeamId" ColumnName="AwayTeamId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Week" ColumnName="Week" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teams">
+      <EntityTypeMapping TypeName="NCAAFModel.Team">
+        <MappingFragment StoreEntitySet="Team">
+          <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IsSelectable" ColumnName="IsSelectable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Weeks">
+      <EntityTypeMapping TypeName="NCAAFModel.Week">
+        <MappingFragment StoreEntitySet="Week">
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_schedule">
+      <EntityTypeMapping TypeName="NCAAFModel.vw_schedule">
+        <MappingFragment StoreEntitySet="vw_schedule">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="HomeTeamId" ColumnName="HomeTeamId" />
+          <ScalarProperty Name="HomeName" ColumnName="HomeName" />
+          <ScalarProperty Name="AwayTeamId" ColumnName="AwayTeamId" />
+          <ScalarProperty Name="AwayName" ColumnName="AwayName" />
+          <ScalarProperty Name="Week" ColumnName="Week" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEAM_SCHEDULE">
+      <EntityTypeMapping TypeName="NCAAFModel.TEAM_SCHEDULE">
+        <MappingFragment StoreEntitySet="vw_team_weekly_schedule">
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="week1_opponent" ColumnName="week1_opponent" />
+          <ScalarProperty Name="week2_opponent" ColumnName="week2_opponent" />
+          <ScalarProperty Name="week3_opponent" ColumnName="week3_opponent" />
+          <ScalarProperty Name="week4_opponent" ColumnName="week4_opponent" />
+          <ScalarProperty Name="week5_opponent" ColumnName="week5_opponent" />
+          <ScalarProperty Name="week6_opponent" ColumnName="week6_opponent" />
+          <ScalarProperty Name="week7_opponent" ColumnName="week7_opponent" />
+          <ScalarProperty Name="week8_opponent" ColumnName="week8_opponent" />
+          <ScalarProperty Name="week9_opponent" ColumnName="week9_opponent" />
+          <ScalarProperty Name="week10_opponent" ColumnName="week10_opponent" />
+          <ScalarProperty Name="week11_opponent" ColumnName="week11_opponent" />
+          <ScalarProperty Name="week12_opponent" ColumnName="week12_opponent" />
+          <ScalarProperty Name="week13_opponent" ColumnName="week13_opponent" />
+          <ScalarProperty Name="week14_opponent" ColumnName="week14_opponent" />
+          <ScalarProperty Name="week15_opponent" ColumnName="week15_opponent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_SCHEDULE">
+      <EntityTypeMapping TypeName="NCAAFModel.USER_SCHEDULE">
+        <MappingFragment StoreEntitySet="vw_user_schedule">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="opponent" ColumnName="opponent" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="schedule_week" ColumnName="schedule_week" />
+          <ScalarProperty Name="pick_week" ColumnName="pick_week" />
+          <ScalarProperty Name="CurrentWeek" ColumnName="CurrentWeek" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_WEEKLY_SCHEDULE">
+      <EntityTypeMapping TypeName="NCAAFModel.USER_WEEKLY_SCHEDULE">
+        <MappingFragment StoreEntitySet="vw_user_weekly_schedule">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="teamid" ColumnName="teamid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="pick_week" ColumnName="pick_week" />
+          <ScalarProperty Name="week1_opponent" ColumnName="week1_opponent" />
+          <ScalarProperty Name="week2_opponent" ColumnName="week2_opponent" />
+          <ScalarProperty Name="week3_opponent" ColumnName="week3_opponent" />
+          <ScalarProperty Name="week4_opponent" ColumnName="week4_opponent" />
+          <ScalarProperty Name="week5_opponent" ColumnName="week5_opponent" />
+          <ScalarProperty Name="week6_opponent" ColumnName="week6_opponent" />
+          <ScalarProperty Name="week7_opponent" ColumnName="week7_opponent" />
+          <ScalarProperty Name="week8_opponent" ColumnName="week8_opponent" />
+          <ScalarProperty Name="week9_opponent" ColumnName="week9_opponent" />
+          <ScalarProperty Name="week10_opponent" ColumnName="week10_opponent" />
+          <ScalarProperty Name="week11_opponent" ColumnName="week11_opponent" />
+          <ScalarProperty Name="week12_opponent" ColumnName="week12_opponent" />
+          <ScalarProperty Name="week13_opponent" ColumnName="week13_opponent" />
+          <ScalarProperty Name="week14_opponent" ColumnName="week14_opponent" />
+          <ScalarProperty Name="week15_opponent" ColumnName="week15_opponent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
