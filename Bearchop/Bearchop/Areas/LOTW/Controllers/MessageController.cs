@@ -45,12 +45,21 @@ namespace Bearchop.Areas.LOTW.Controllers
 
             sb.AppendLine("<p>Just a friendly reminder about the Locks of the Week Contest.  Just click <a href='http://bearchop.com/lotw'>here</a> and select your picks.  The games are below.</p>");
 
+            GetGamesTable(games, sb);
+
+            var model = new MessageViewModel(string.Join(",", emailAddresses), "Make your LOTW Picks", sb.ToString());
+
+            return PartialView("_Message", model);
+        }
+
+        private static void GetGamesTable(IQueryable<Contests.LOTW.Core.Model.Game> games, StringBuilder sb)
+        {
             sb.AppendLine("<table><tr><th>Home Team</th><th>Away Team</th><th>Spread</th><th>Over/Under</th></tr>");
 
-            foreach(var game in games)
+            foreach (var game in games)
             {
                 string formatString = HOME_TEAM_FAVORED;
-                if(game.Favorite == game.AwayTeam)
+                if (game.Favorite == game.AwayTeam)
                 {
                     formatString = AWAY_TEAM_FAVORED;
                 }
@@ -59,14 +68,22 @@ namespace Bearchop.Areas.LOTW.Controllers
             }
 
             sb.AppendLine("</table>");
-
-            var model = new MessageViewModel(string.Join(",", emailAddresses), "Make your LOTW Picks!", sb.ToString());
-
-            return PartialView("_Message", model);
         }
 
-        public ActionResult GamesCreated
+        public ActionResult GamesCreated(int week)
         {
+            var games = _gameService.GetGames(week);
+            IEnumerable<string> emailAddresses = GetEmailAddresses();
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(string.Format("<p>The games for week {0} have been randomly generated.  Just click <a href='http://bearchop.com/lotw'>here</a> and select your picks.</p>", week));
+
+            GetGamesTable(games, sb);
+
+            var model = new MessageViewModel(string.Join(",", emailAddresses), "New LOTW Games", sb.ToString());
+
+            return PartialView("_Message", model);
         }
 
         void SendEmail(string toList, string subject, string body)

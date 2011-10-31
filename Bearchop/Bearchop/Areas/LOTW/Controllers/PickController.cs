@@ -130,12 +130,24 @@ namespace LOTW.Web.Controllers
 
             sb.AppendLine("<table><tr><th>Pick</th><Against<th><th>Favorite</th><th>Spread</th><th>Picked Over/Under</th><th>Over/Under Pick</th></tr>");
 
-            message.Body = string.Format("<p>Below are your current picks for week {0}</p>", picks.FirstOrDefault().WeekId);
+            sb.AppendLine(string.Format("<p>Below are your current picks for week {0}</p>", picks.FirstOrDefault().WeekId));
 
             foreach (var pick in picks)
             {
-                message.Body += string.Format("{0} \t{1} \t{2}\r\n", pick.Team, pick.Type.ToString(), pick.OverUnder.ToString());
+                var game = _gameService.GetGame(pick.GameId);
+                string pickName = pick.Team;
+                string againstName = (pick.Team == game.HomeTeam ? game.AwayTeam : game.HomeTeam);
+                bool pickedOU = pick.Type == PickType.ATSOverUnder;
+                string ouDesc = string.Empty;
+
+                if(pickedOU)
+                {
+                    ouDesc = pick.OverUnder.ToString();
+                }
+
+                sb.AppendLine(string.Format(PICK_FORMAT, pickName, againstName, game.Favorite, game.Spread, pickedOU.ToString(), ouDesc));
             }
+            sb.AppendLine("</table>");
 
             var client = new SmtpClient();
             client.Send(message);
