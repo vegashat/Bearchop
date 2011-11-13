@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Contests.NCAAF.Web.jqGrid
+namespace Bearchop.Areas.NCAAF.Web.jqGrid
 {
     public class Rule
     {

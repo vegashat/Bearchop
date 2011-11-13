@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Contests.NCAAF.Web.jqGrid
+namespace Bearchop.Areas.NCAAF.Web.jqGrid
 {
 	public interface IPagedList<T> : IList<T>
 	{

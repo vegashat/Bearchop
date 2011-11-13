@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Contests.LOTW.Core.Model;
 
-namespace LOTW.Web.ViewModels
+namespace Bearchop.Areas.LOTW.Web.ViewModels
 {
     public class WeeksViewModel
     {

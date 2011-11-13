@@ -5,7 +5,7 @@ using System.Web;
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Contests.NCAAF.Web.jqGrid
+namespace Bearchop.Areas.NCAAF.Web.jqGrid
 {
     /// <summary>
     /// This type is designed to conform to the structure required by the JqGrid JavaScript component. 

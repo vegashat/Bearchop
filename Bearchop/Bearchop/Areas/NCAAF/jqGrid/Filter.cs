@@ -5,7 +5,7 @@ using System.Web;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
-namespace Contests.NCAAF.Web.jqGrid
+namespace Bearchop.Areas.NCAAF.Web.jqGrid
 {
     public class Filter
     {

@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Contests.LOTW.Core.Service;
-using LOTW.Web.ViewModels;
+using Bearchop.Areas.LOTW.Web.ViewModels;
 using Contests.LOTW.Core.Model;
 using System.Net.Mail;
 using Bearchop.ActionFilter;
 using Bearchop.Session;
 using System.Text;
 
-namespace LOTW.Web.Controllers
+namespace Bearchop.Areas.LOTW.Web.Controllers
 {
     [ValidateUser]
     public class PickController : Controller

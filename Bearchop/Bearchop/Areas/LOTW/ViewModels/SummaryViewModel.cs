@@ -5,7 +5,7 @@ using System.Web;
 using Contests.LOTW.Core.Model;
 using Bearchop.Session;
 
-namespace LOTW.Web.ViewModels
+namespace Bearchop.Areas.LOTW.Web.ViewModels
 {
     public class SummaryViewModel
     {

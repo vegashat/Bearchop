@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Contests.NCAAF.Web.jqGrid
+namespace Bearchop.Areas.NCAAF.Web.jqGrid
 {
     public static class JqGridExtensions
     {

@@ -17,7 +17,7 @@ namespace Bearchop.Areas.LOTW
             context.MapRoute(
                 "LOTW_default",
                 "LOTW/{controller}/{action}",
-                new { controller="home", action = "Index"}
+                new { controller = "home", action = "Index" }, new[] { "Bearchop.Areas.LOTW.Web.Controllers" }
             );
         }
     }
