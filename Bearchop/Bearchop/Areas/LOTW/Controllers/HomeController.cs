@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using LOTW.Web.ViewModels;
+using Bearchop.LOTW.ViewModels;
 using Contests.Core.Repository;
 using Contests.LOTW.Core.Service;
 using Bearchop.ActionFilter;
 using Bearchop.Session;
 
-namespace LOTW.Web.Controllers
+namespace Bearchop.LOTW.Controllers
 {
     
     public class HomeController : Controller

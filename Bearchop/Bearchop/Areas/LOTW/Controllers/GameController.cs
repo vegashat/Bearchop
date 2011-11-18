@@ -5,10 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using Contests.LOTW.Core.Service;
 using Contests.LOTW.Core.Model;
-using LOTW.Web.ViewModels;
+using Bearchop.LOTW.ViewModels;
 using Bearchop.ActionFilter;
 
-namespace LOTW.Web.Controllers
+namespace Bearchop.LOTW.Controllers
 {
     [ValidateUser]
     public class GameController : Controller

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Contests.Core.Repository;
 using Bearchop.Session;
 
-namespace Contests.NCAAF.Web.Controllers
+namespace Bearchop.NCAAF.Controllers
 {
     public class HomeController : Controller
     {

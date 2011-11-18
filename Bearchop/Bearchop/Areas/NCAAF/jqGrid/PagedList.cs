@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contests.NCAAF.Web.jqGrid
+namespace Bearchop.NCAAF.jqGrid
 {
 	public class PagedList<T> : List<T>, IPagedList<T>
 	{

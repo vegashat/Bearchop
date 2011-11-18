@@ -17,7 +17,8 @@ namespace Bearchop.Areas.NCAAF
             context.MapRoute(
                 "NCAAF_default",
                 "NCAAF/{controller}/{action}",
-                new { controller="schedule", action = "Index"}
+                new { controller = "schedule", action = "Index" },
+                new string[] { "Bearchop.NCAAF.Controllers" }
             );
         }
     }

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Bearchop.ActionFilter;
 using Contests.LOTW.Core.Service;
 
-namespace LOTW.Web.Controllers
+namespace Bearchop.LOTW.Controllers
 {
     [ValidateUser]
     public class WeekController : Controller
