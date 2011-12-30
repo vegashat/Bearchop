@@ -7,33 +7,38 @@
 }
 
 
-<div id="rankings" class="rankings">
+<div id="rankings" class="span4 well">
 @if (Model.Users.Any())
-{
-    <div class="userRankHead">
-        <label class='rank'>Rank</label>
-        <label class='player'>Player</label>
-        <label class='points'>Points</label>
-    </div>
-    
-    foreach (var user in Model.Users.OrderBy(u => u.Points).Reverse())
-    {
-        if ((user.Points > 0 && user.Points < previousPoints) || previousPoints == 0 || user.Points == 0 && previousPoints > 0)
-        {
-            position++;
-            previousPoints = user.Points;
-        }
-                
-        <div class="userRank" >
-            <label class='points'>@position</label>
-            <label class='player'><a href="javascript:loadUserHistory(@user.Id)">@user.Name</a></label>
-            <label class='points' style="text-align:right">@user.Points</label>
-        </div>
-    }
+{   
+    <h4>Standings</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Player</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users.OrderBy(u => u.Points).Reverse())
+            {
+                if ((user.Points > 0 && user.Points < previousPoints) || previousPoints == 0 || user.Points == 0 && previousPoints > 0)
+                {
+                    position++;
+                    previousPoints = user.Points;
+                }
+                <tr>
+                    <td class="position">@position</td>
+                    <td class="player"><a href="javascript:loadUserHistory(@user.Id)">@user.Name</a></td>
+                    <td class="points">@user.Points</td>
+                </tr>
+            }        
+        </tbody>
+    </table>
 }
 </div>
 
-<div id="weeks" class="weeks">
+<div id="weeks" class="span10">
     @Html.Action("History", "Pick", new { userId = Model.CurrentUser.Id })
 </div>
 

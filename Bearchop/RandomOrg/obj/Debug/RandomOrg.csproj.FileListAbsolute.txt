@@ -23,11 +23,6 @@ C:\Git\Contests\Contests\RandomOrg\bin\Debug\RandomOrg.pdb
 C:\Git\Contests\Contests\RandomOrg\obj\Debug\ResolveAssemblyReference.cache
 C:\Git\Contests\Contests\RandomOrg\obj\Debug\RandomOrg.dll
 C:\Git\Contests\Contests\RandomOrg\obj\Debug\RandomOrg.pdb
-C:\Git\Bearchop\Bearchop\RandomOrg\bin\Debug\RandomOrg.dll
-C:\Git\Bearchop\Bearchop\RandomOrg\bin\Debug\RandomOrg.pdb
-C:\Git\Bearchop\Bearchop\RandomOrg\obj\Debug\ResolveAssemblyReference.cache
-C:\Git\Bearchop\Bearchop\RandomOrg\obj\Debug\RandomOrg.dll
-C:\Git\Bearchop\Bearchop\RandomOrg\obj\Debug\RandomOrg.pdb
 E:\Bearchop\Bearchop\RandomOrg\bin\Debug\RandomOrg.dll
 E:\Bearchop\Bearchop\RandomOrg\bin\Debug\RandomOrg.pdb
 E:\Bearchop\Bearchop\RandomOrg\obj\Debug\ResolveAssemblyReference.cache

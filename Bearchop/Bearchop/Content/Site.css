@@ -13,6 +13,11 @@ section {
     display: block;
 }
 
+.content
+{
+    margin-top : 40px;
+}
+
 /* Styles for basic forms
 -----------------------------------------------------------*/
 
@@ -73,3 +78,5 @@ textarea
 {
     display: none;
 }
+
+

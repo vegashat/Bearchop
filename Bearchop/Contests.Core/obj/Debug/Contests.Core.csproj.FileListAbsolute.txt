@@ -46,12 +46,6 @@ C:\Git\Contests\Contests\Contests.Core\bin\Debug\Contests.Core.pdb
 C:\Git\Contests\Contests\Contests.Core\obj\Debug\ResolveAssemblyReference.cache
 C:\Git\Contests\Contests\Contests.Core\obj\Debug\Contests.Core.dll
 C:\Git\Contests\Contests\Contests.Core\obj\Debug\Contests.Core.pdb
-C:\Git\Bearchop\Bearchop\Contests.Core\bin\Debug\Contests.Core.dll.config
-C:\Git\Bearchop\Bearchop\Contests.Core\bin\Debug\Contests.Core.dll
-C:\Git\Bearchop\Bearchop\Contests.Core\bin\Debug\Contests.Core.pdb
-C:\Git\Bearchop\Bearchop\Contests.Core\obj\Debug\ResolveAssemblyReference.cache
-C:\Git\Bearchop\Bearchop\Contests.Core\obj\Debug\Contests.Core.dll
-C:\Git\Bearchop\Bearchop\Contests.Core\obj\Debug\Contests.Core.pdb
 E:\Bearchop\Bearchop\Contests.Core\bin\Debug\Contests.Core.dll.config
 E:\Bearchop\Bearchop\Contests.Core\bin\Debug\Contests.Core.dll
 E:\Bearchop\Bearchop\Contests.Core\bin\Debug\Contests.Core.pdb

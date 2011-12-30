@@ -6,9 +6,10 @@
     <link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/ui.jqgrid.css")" rel="stylesheet" type="text/css" />
      <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
 
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"    type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/grid.locale-en.js")"    type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.jqGrid.min.js")"    type="text/javascript"></script>
 </head>
@@ -21,8 +22,15 @@
                 <div>
                     @Html.ActionLink("Bearchop","index","menu", new { Area="" }, new { @class="brand" })
                     <ul class='nav'>
-                        <li>
-                            @Html.ActionLink("LOTW", "index", "home", new { Area = "lotw" }, null)
+                        <li class="dropdown" data-dropdown="dropdown">
+                            <a href="#" class="dropdown-toggle">LOTW</a>
+                            <ul class="dropdown-menu">
+                                <li class='standings'>
+                                    @Html.ActionLink("Standings", "Index", "Home", new { area = "LOTW" }, null)
+                                </li>
+                                <li class='picks'>@Html.ActionLink("Current Picks", "List", "Pick", new { area = "LOTW" }, null)</li>
+                                <li class='games'>@Html.ActionLink("Current Games", "List", "Game", new { area = "LOTW" }, null)</li>
+                            </ul>
                         </li>
                         <li>
                             @Html.ActionLink("NCAAF", "index", "schedule", new { Area = "ncaaf" }, null)
@@ -32,14 +40,20 @@
                         </li>
                     </ul>
                 </div>
-                <div>
-                    @RenderSection("pills", false)            
-                </div>
             </div>
             </div>
         </div>
     </div>
 
-    @RenderBody()
+    <div class="container">
+        <div class="content">
+            @RenderBody()
+        </div>        
+        <footer>
+          <p class="pull-right">
+            <a href="#">Back to top</a></p>
+          <p>Alternative contests to <a href="http:jeaux.com">Jeaux.com</a> where the rules make sense.</p>
+        </footer>
+    </div>
 </body>
 </html>

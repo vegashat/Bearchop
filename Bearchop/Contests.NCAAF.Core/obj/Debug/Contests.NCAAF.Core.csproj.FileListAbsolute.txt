@@ -40,12 +40,6 @@ C:\Git\Contests\Contests\Contests.NCAAF.Core\bin\Debug\Contests.NCAAF.Core.pdb
 C:\Git\Contests\Contests\Contests.NCAAF.Core\obj\Debug\ResolveAssemblyReference.cache
 C:\Git\Contests\Contests\Contests.NCAAF.Core\obj\Debug\Contests.NCAAF.Core.dll
 C:\Git\Contests\Contests\Contests.NCAAF.Core\obj\Debug\Contests.NCAAF.Core.pdb
-C:\Git\Bearchop\Bearchop\Contests.NCAAF.Core\bin\Debug\Contests.NCAAF.Core.dll.config
-C:\Git\Bearchop\Bearchop\Contests.NCAAF.Core\bin\Debug\Contests.NCAAF.Core.dll
-C:\Git\Bearchop\Bearchop\Contests.NCAAF.Core\bin\Debug\Contests.NCAAF.Core.pdb
-C:\Git\Bearchop\Bearchop\Contests.NCAAF.Core\obj\Debug\ResolveAssemblyReference.cache
-C:\Git\Bearchop\Bearchop\Contests.NCAAF.Core\obj\Debug\Contests.NCAAF.Core.dll
-C:\Git\Bearchop\Bearchop\Contests.NCAAF.Core\obj\Debug\Contests.NCAAF.Core.pdb
 E:\Bearchop\Bearchop\Contests.NCAAF.Core\bin\Debug\Contests.NCAAF.Core.dll.config
 E:\Bearchop\Bearchop\Contests.NCAAF.Core\bin\Debug\Contests.NCAAF.Core.dll
 E:\Bearchop\Bearchop\Contests.NCAAF.Core\bin\Debug\Contests.NCAAF.Core.pdb
