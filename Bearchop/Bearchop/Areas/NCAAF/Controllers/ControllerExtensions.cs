@@ -5,7 +5,11 @@ using System.Web;
 using System.Linq.Expressions;
 using System.Reflection;
 
+<<<<<<< HEAD
 namespace Bearchop.NCAAF.Controllers
+=======
+namespace Bearchop.Areas.NCAAF.Web.Controllers
+>>>>>>> 0297af5bd1bc700c06e6327a3527d72f11f3b1fc
 {
     public static class ControllerExtensions
     {
@@ -14,7 +18,11 @@ namespace Bearchop.NCAAF.Controllers
 
         public static IEnumerable<T> ApplyFilter<T>(this IEnumerable<T> collection, string jsonFilter)
         {
+<<<<<<< HEAD
             var filter = Bearchop.NCAAF.jqGrid.Filter.Create(jsonFilter);
+=======
+            var filter = Bearchop.Areas.NCAAF.Web.jqGrid.Filter.Create(jsonFilter);
+>>>>>>> 0297af5bd1bc700c06e6327a3527d72f11f3b1fc
             IQueryable<T> query = Enumerable.Empty<T>().AsQueryable();
             IQueryable<T> tmpQuery = null;
 

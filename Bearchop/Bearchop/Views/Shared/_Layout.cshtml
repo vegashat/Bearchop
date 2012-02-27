@@ -19,6 +19,7 @@
         <div class='topbar'>
             <div class='topbar-inner'>
             <div class='container'>
+<<<<<<< HEAD
                 <div>
                     @Html.ActionLink("Bearchop","index","menu", new { Area="" }, new { @class="brand" })
                     <ul class='nav'>
@@ -40,6 +41,21 @@
                         </li>
                     </ul>
                 </div>
+=======
+                @Html.ActionLink("Bearchop","index","menu", new{area=""}, new{@class="brand"})
+                <ul class='nav'>
+                    <li>
+                        @Html.ActionLink("LOTW", "index", "home", new { area = "LOTW" }, new { })
+                    </li>
+                    <li>
+                        @Html.ActionLink("NCAAF", "index", "schedule", new { area = "ncaaf" }, new { })
+                    </li>
+                    <li>
+                        <a href='http://www.jeaux.com/contests/contests.aspx'>Jeaux's Contests</a>
+                    </li>
+                </ul>
+                @RenderSection("pills", false)            
+>>>>>>> 0297af5bd1bc700c06e6327a3527d72f11f3b1fc
             </div>
             </div>
         </div>

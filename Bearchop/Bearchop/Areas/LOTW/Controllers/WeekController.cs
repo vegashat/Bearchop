@@ -6,7 +6,11 @@ using System.Web.Mvc;
 using Bearchop.ActionFilter;
 using Contests.LOTW.Core.Service;
 
+<<<<<<< HEAD
 namespace Bearchop.LOTW.Controllers
+=======
+namespace Bearchop.Areas.LOTW.Web.Controllers
+>>>>>>> 0297af5bd1bc700c06e6327a3527d72f11f3b1fc
 {
     [ValidateUser]
     public class WeekController : Controller
