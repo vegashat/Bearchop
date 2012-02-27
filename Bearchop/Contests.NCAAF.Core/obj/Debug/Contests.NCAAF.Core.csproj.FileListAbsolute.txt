@@ -46,3 +46,9 @@ E:\Bearchop\Bearchop\Contests.NCAAF.Core\bin\Debug\Contests.NCAAF.Core.pdb
 E:\Bearchop\Bearchop\Contests.NCAAF.Core\obj\Debug\ResolveAssemblyReference.cache
 E:\Bearchop\Bearchop\Contests.NCAAF.Core\obj\Debug\Contests.NCAAF.Core.dll
 E:\Bearchop\Bearchop\Contests.NCAAF.Core\obj\Debug\Contests.NCAAF.Core.pdb
+C:\git\Bearchop\Bearchop\Contests.NCAAF.Core\bin\Debug\Contests.NCAAF.Core.dll.config
+C:\git\Bearchop\Bearchop\Contests.NCAAF.Core\bin\Debug\Contests.NCAAF.Core.dll
+C:\git\Bearchop\Bearchop\Contests.NCAAF.Core\bin\Debug\Contests.NCAAF.Core.pdb
+C:\git\Bearchop\Bearchop\Contests.NCAAF.Core\obj\Debug\ResolveAssemblyReference.cache
+C:\git\Bearchop\Bearchop\Contests.NCAAF.Core\obj\Debug\Contests.NCAAF.Core.dll
+C:\git\Bearchop\Bearchop\Contests.NCAAF.Core\obj\Debug\Contests.NCAAF.Core.pdb
