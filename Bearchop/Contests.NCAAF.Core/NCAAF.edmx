@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="NCAAFModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="NCAAFModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="NCAAFModelStoreContainer">
-          <EntitySet Name="Schedule" EntityType="NCAAFModel.Store.Schedule" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Team" EntityType="NCAAFModel.Store.Team" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Week" EntityType="NCAAFModel.Store.Week" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="vw_schedule" EntityType="NCAAFModel.Store.vw_schedule" store:Type="Views" store:Schema="dbo" store:Name="vw_schedule">
+          <EntitySet Name="Schedule" EntityType="NCAAFModel.Store.Schedule" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Team" EntityType="NCAAFModel.Store.Team" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Week" EntityType="NCAAFModel.Store.Week" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="vw_schedule" EntityType="NCAAFModel.Store.vw_schedule" store:Type="Views" store:Schema="dbo" store:Name="vw_schedule" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [vw_schedule].[Date] AS [Date], 
       [vw_schedule].[HomeTeamId] AS [HomeTeamId], 
@@ -19,7 +19,7 @@
       [vw_schedule].[Week] AS [Week]
       FROM [dbo].[vw_schedule] AS [vw_schedule]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="vw_team_weekly_schedule" EntityType="NCAAFModel.Store.vw_team_weekly_schedule" store:Type="Views" store:Schema="dbo" store:Name="vw_team_weekly_schedule">
+          <EntitySet Name="vw_team_weekly_schedule" EntityType="NCAAFModel.Store.vw_team_weekly_schedule" store:Type="Views" store:Schema="dbo" store:Name="vw_team_weekly_schedule" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [vw_team_weekly_schedule].[TeamID] AS [TeamID], 
       [vw_team_weekly_schedule].[name] AS [name], 
@@ -40,7 +40,7 @@
       [vw_team_weekly_schedule].[week15_opponent] AS [week15_opponent]
       FROM [dbo].[vw_team_weekly_schedule] AS [vw_team_weekly_schedule]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="vw_user_schedule" EntityType="NCAAFModel.Store.vw_user_schedule" store:Type="Views" store:Schema="dbo" store:Name="vw_user_schedule">
+          <EntitySet Name="vw_user_schedule" EntityType="NCAAFModel.Store.vw_user_schedule" store:Type="Views" store:Schema="dbo" store:Name="vw_user_schedule" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [vw_user_schedule].[UserID] AS [UserID], 
       [vw_user_schedule].[TeamID] AS [TeamID], 
@@ -52,7 +52,7 @@
       [vw_user_schedule].[CurrentWeek] AS [CurrentWeek]
       FROM [dbo].[vw_user_schedule] AS [vw_user_schedule]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="vw_user_weekly_schedule" EntityType="NCAAFModel.Store.vw_user_weekly_schedule" store:Type="Views" store:Schema="dbo" store:Name="vw_user_weekly_schedule">
+          <EntitySet Name="vw_user_weekly_schedule" EntityType="NCAAFModel.Store.vw_user_weekly_schedule" store:Type="Views" store:Schema="dbo" store:Name="vw_user_weekly_schedule" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [vw_user_weekly_schedule].[userid] AS [userid], 
       [vw_user_weekly_schedule].[teamid] AS [teamid], 
@@ -250,8 +250,8 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="NCAAFModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="NCAAFEntities" annotation:LazyLoadingEnabled="true">
+      <Schema Namespace="NCAAFModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="NCAAFEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="Schedules" EntityType="NCAAFModel.Schedule" />
           <EntitySet Name="Teams" EntityType="NCAAFModel.Team" />
           <EntitySet Name="Weeks" EntityType="NCAAFModel.Week" />
@@ -429,7 +429,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="NCAAFModelStoreContainer" CdmEntityContainer="NCAAFEntities">
           <EntitySetMapping Name="Schedules"><EntityTypeMapping TypeName="NCAAFModel.Schedule"><MappingFragment StoreEntitySet="Schedule">
             <ScalarProperty Name="HomeTeamId" ColumnName="HomeTeamId" />
@@ -510,7 +510,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />

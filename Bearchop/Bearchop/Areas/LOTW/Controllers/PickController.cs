@@ -1,25 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using Contests.LOTW.Core.Service;
-<<<<<<< HEAD
-using Bearchop.LOTW.ViewModels;
-=======
-using Bearchop.Areas.LOTW.Web.ViewModels;
->>>>>>> 0297af5bd1bc700c06e6327a3527d72f11f3b1fc
-using Contests.LOTW.Core.Model;
-using System.Net.Mail;
 using Bearchop.ActionFilter;
+using Bearchop.Areas.LOTW.Web.ViewModels;
 using Bearchop.Session;
-using System.Text;
+using Contests.LOTW.Core.Model;
+using Contests.LOTW.Core.Service;
+using Contests.NCAAF.Core;
 
-<<<<<<< HEAD
-namespace Bearchop.LOTW.Controllers
-=======
+
 namespace Bearchop.Areas.LOTW.Web.Controllers
->>>>>>> 0297af5bd1bc700c06e6327a3527d72f11f3b1fc
 {
     [ValidateUser]
     public class PickController : Controller
@@ -52,7 +46,7 @@ namespace Bearchop.Areas.LOTW.Web.Controllers
         
         private PicksViewModel GetPickViewModel(int? week, int? userId)
         {
-            Week currentWeek = null;
+            Contests.LOTW.Core.Model.Week currentWeek = null;
             int currentUserId = 0;
 
             currentWeek = _weekService.GetWeek(week);

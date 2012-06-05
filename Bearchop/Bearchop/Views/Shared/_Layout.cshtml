@@ -6,12 +6,7 @@
     <link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/ui.jqgrid.css")" rel="stylesheet" type="text/css" />
      <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
 
-    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"    type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/grid.locale-en.js")"    type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/jquery.jqGrid.min.js")"    type="text/javascript"></script>
 </head>
 
 <body>
@@ -19,29 +14,7 @@
         <div class='topbar'>
             <div class='topbar-inner'>
             <div class='container'>
-<<<<<<< HEAD
-                <div>
-                    @Html.ActionLink("Bearchop","index","menu", new { Area="" }, new { @class="brand" })
-                    <ul class='nav'>
-                        <li class="dropdown" data-dropdown="dropdown">
-                            <a href="#" class="dropdown-toggle">LOTW</a>
-                            <ul class="dropdown-menu">
-                                <li class='standings'>
-                                    @Html.ActionLink("Standings", "Index", "Home", new { area = "LOTW" }, null)
-                                </li>
-                                <li class='picks'>@Html.ActionLink("Current Picks", "List", "Pick", new { area = "LOTW" }, null)</li>
-                                <li class='games'>@Html.ActionLink("Current Games", "List", "Game", new { area = "LOTW" }, null)</li>
-                            </ul>
-                        </li>
-                        <li>
-                            @Html.ActionLink("NCAAF", "index", "schedule", new { Area = "ncaaf" }, null)
-                        </li>
-                        <li>
-                            <a href='http://www.jeaux.com/contests/contests.aspx'>Jeaux's Contests</a>
-                        </li>
-                    </ul>
-                </div>
-=======
+
                 @Html.ActionLink("Bearchop","index","menu", new{area=""}, new{@class="brand"})
                 <ul class='nav'>
                     <li>
@@ -54,8 +27,7 @@
                         <a href='http://www.jeaux.com/contests/contests.aspx'>Jeaux's Contests</a>
                     </li>
                 </ul>
-                @RenderSection("pills", false)            
->>>>>>> 0297af5bd1bc700c06e6327a3527d72f11f3b1fc
+                @RenderSection("pills", false)  
             </div>
             </div>
         </div>
@@ -72,4 +44,11 @@
         </footer>
     </div>
 </body>
+
+
+    <script src="~/Scripts/bootstrap.min.js"    type="text/javascript"></script>
+    <script src="~/Scripts/grid.locale-en.js"    type="text/javascript"></script>
+    <script src="~/Scripts/jquery.jqGrid.min.js"    type="text/javascript"></script>
+    
+    @RenderSection("javascript", false);
 </html>

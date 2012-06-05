@@ -33,3 +33,8 @@ C:\git\Bearchop\Bearchop\RandomOrg\bin\Debug\RandomOrg.pdb
 C:\git\Bearchop\Bearchop\RandomOrg\obj\Debug\ResolveAssemblyReference.cache
 C:\git\Bearchop\Bearchop\RandomOrg\obj\Debug\RandomOrg.dll
 C:\git\Bearchop\Bearchop\RandomOrg\obj\Debug\RandomOrg.pdb
+c:\_git\bearchop\bearchop\RandomOrg\bin\Debug\RandomOrg.dll
+c:\_git\bearchop\bearchop\RandomOrg\bin\Debug\RandomOrg.pdb
+c:\_git\bearchop\bearchop\RandomOrg\obj\Debug\RandomOrg.csprojResolveAssemblyReference.cache
+c:\_git\bearchop\bearchop\RandomOrg\obj\Debug\RandomOrg.dll
+c:\_git\bearchop\bearchop\RandomOrg\obj\Debug\RandomOrg.pdb

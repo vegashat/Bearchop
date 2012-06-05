@@ -5,11 +5,7 @@ using System.Web;
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-<<<<<<< HEAD
-namespace Bearchop.NCAAF.jqGrid
-=======
 namespace Bearchop.Areas.NCAAF.Web.jqGrid
->>>>>>> 0297af5bd1bc700c06e6327a3527d72f11f3b1fc
 {
     /// <summary>
     /// This type is designed to conform to the structure required by the JqGrid JavaScript component. 

@@ -3,20 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-<<<<<<< HEAD
-using Bearchop.NCAAF.jqGrid;
-=======
 using Bearchop.Areas.NCAAF.Web.jqGrid;
->>>>>>> 0297af5bd1bc700c06e6327a3527d72f11f3b1fc
 using Contests.NCAAF.Core;
 using Bearchop.ActionFilter;
 using Bearchop.Session;
 
-<<<<<<< HEAD
-namespace Bearchop.NCAAF.Controllers
-=======
 namespace Bearchop.Areas.NCAAF.Web.Controllers
->>>>>>> 0297af5bd1bc700c06e6327a3527d72f11f3b1fc
 {
     [ValidateUser]
     public class ScheduleController : Controller

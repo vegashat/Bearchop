@@ -8,15 +8,15 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
-
 namespace Contests.Core.Repository
 {
     #region Contexts
@@ -82,6 +82,7 @@ namespace Contests.Core.Repository
         private ObjectSet<JUSER> _JUSERs;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -93,11 +94,11 @@ namespace Contests.Core.Repository
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -126,7 +127,8 @@ namespace Contests.Core.Repository
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -145,7 +147,7 @@ namespace Contests.Core.Repository
                 {
                     OnUserIDChanging(value);
                     ReportPropertyChanging("UserID");
-                    _UserID = StructuralObject.SetValidValue(value);
+                    _UserID = StructuralObject.SetValidValue(value, "UserID");
                     ReportPropertyChanged("UserID");
                     OnUserIDChanged();
                 }
@@ -170,7 +172,7 @@ namespace Contests.Core.Repository
             {
                 OnUserNameChanging(value);
                 ReportPropertyChanging("UserName");
-                _UserName = StructuralObject.SetValidValue(value, false);
+                _UserName = StructuralObject.SetValidValue(value, false, "UserName");
                 ReportPropertyChanged("UserName");
                 OnUserNameChanged();
             }
@@ -194,7 +196,7 @@ namespace Contests.Core.Repository
             {
                 OnPasswordChanging(value);
                 ReportPropertyChanging("Password");
-                _Password = StructuralObject.SetValidValue(value, true);
+                _Password = StructuralObject.SetValidValue(value, true, "Password");
                 ReportPropertyChanged("Password");
                 OnPasswordChanged();
             }
@@ -218,7 +220,7 @@ namespace Contests.Core.Repository
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, true);
+                _Name = StructuralObject.SetValidValue(value, true, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -242,7 +244,7 @@ namespace Contests.Core.Repository
             {
                 OnActiveFlagChanging(value);
                 ReportPropertyChanging("ActiveFlag");
-                _ActiveFlag = StructuralObject.SetValidValue(value);
+                _ActiveFlag = StructuralObject.SetValidValue(value, "ActiveFlag");
                 ReportPropertyChanged("ActiveFlag");
                 OnActiveFlagChanged();
             }
@@ -266,7 +268,7 @@ namespace Contests.Core.Repository
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, true);
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -290,7 +292,7 @@ namespace Contests.Core.Repository
             {
                 OnPodChanging(value);
                 ReportPropertyChanging("Pod");
-                _Pod = StructuralObject.SetValidValue(value, true);
+                _Pod = StructuralObject.SetValidValue(value, true, "Pod");
                 ReportPropertyChanged("Pod");
                 OnPodChanged();
             }
@@ -314,7 +316,7 @@ namespace Contests.Core.Repository
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, true);
+                _Address = StructuralObject.SetValidValue(value, true, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -338,7 +340,7 @@ namespace Contests.Core.Repository
             {
                 OnCityChanging(value);
                 ReportPropertyChanging("City");
-                _City = StructuralObject.SetValidValue(value, true);
+                _City = StructuralObject.SetValidValue(value, true, "City");
                 ReportPropertyChanged("City");
                 OnCityChanged();
             }
@@ -362,7 +364,7 @@ namespace Contests.Core.Repository
             {
                 OnStateChanging(value);
                 ReportPropertyChanging("State");
-                _State = StructuralObject.SetValidValue(value, true);
+                _State = StructuralObject.SetValidValue(value, true, "State");
                 ReportPropertyChanged("State");
                 OnStateChanged();
             }
@@ -386,7 +388,7 @@ namespace Contests.Core.Repository
             {
                 OnCellPhoneChanging(value);
                 ReportPropertyChanging("CellPhone");
-                _CellPhone = StructuralObject.SetValidValue(value);
+                _CellPhone = StructuralObject.SetValidValue(value, "CellPhone");
                 ReportPropertyChanged("CellPhone");
                 OnCellPhoneChanged();
             }
@@ -410,7 +412,7 @@ namespace Contests.Core.Repository
             {
                 OnHomePhoneChanging(value);
                 ReportPropertyChanging("HomePhone");
-                _HomePhone = StructuralObject.SetValidValue(value);
+                _HomePhone = StructuralObject.SetValidValue(value, "HomePhone");
                 ReportPropertyChanged("HomePhone");
                 OnHomePhoneChanged();
             }
@@ -434,7 +436,7 @@ namespace Contests.Core.Repository
             {
                 OnBBSBanFlagChanging(value);
                 ReportPropertyChanging("BBSBanFlag");
-                _BBSBanFlag = StructuralObject.SetValidValue(value);
+                _BBSBanFlag = StructuralObject.SetValidValue(value, "BBSBanFlag");
                 ReportPropertyChanged("BBSBanFlag");
                 OnBBSBanFlagChanged();
             }
@@ -458,7 +460,7 @@ namespace Contests.Core.Repository
             {
                 OnBdayMonthChanging(value);
                 ReportPropertyChanging("BdayMonth");
-                _BdayMonth = StructuralObject.SetValidValue(value);
+                _BdayMonth = StructuralObject.SetValidValue(value, "BdayMonth");
                 ReportPropertyChanged("BdayMonth");
                 OnBdayMonthChanged();
             }
@@ -482,7 +484,7 @@ namespace Contests.Core.Repository
             {
                 OnBdayDayChanging(value);
                 ReportPropertyChanging("BdayDay");
-                _BdayDay = StructuralObject.SetValidValue(value);
+                _BdayDay = StructuralObject.SetValidValue(value, "BdayDay");
                 ReportPropertyChanged("BdayDay");
                 OnBdayDayChanged();
             }
@@ -506,7 +508,7 @@ namespace Contests.Core.Repository
             {
                 OnAnnvMonthChanging(value);
                 ReportPropertyChanging("AnnvMonth");
-                _AnnvMonth = StructuralObject.SetValidValue(value);
+                _AnnvMonth = StructuralObject.SetValidValue(value, "AnnvMonth");
                 ReportPropertyChanged("AnnvMonth");
                 OnAnnvMonthChanged();
             }
@@ -530,7 +532,7 @@ namespace Contests.Core.Repository
             {
                 OnAnnvDayChanging(value);
                 ReportPropertyChanging("AnnvDay");
-                _AnnvDay = StructuralObject.SetValidValue(value);
+                _AnnvDay = StructuralObject.SetValidValue(value, "AnnvDay");
                 ReportPropertyChanged("AnnvDay");
                 OnAnnvDayChanged();
             }
@@ -554,7 +556,7 @@ namespace Contests.Core.Repository
             {
                 OnSpouseChanging(value);
                 ReportPropertyChanging("Spouse");
-                _Spouse = StructuralObject.SetValidValue(value, true);
+                _Spouse = StructuralObject.SetValidValue(value, true, "Spouse");
                 ReportPropertyChanged("Spouse");
                 OnSpouseChanged();
             }
@@ -578,7 +580,7 @@ namespace Contests.Core.Repository
             {
                 OnLoyaltyUpdatedChanging(value);
                 ReportPropertyChanging("LoyaltyUpdated");
-                _LoyaltyUpdated = StructuralObject.SetValidValue(value);
+                _LoyaltyUpdated = StructuralObject.SetValidValue(value, "LoyaltyUpdated");
                 ReportPropertyChanged("LoyaltyUpdated");
                 OnLoyaltyUpdatedChanged();
             }
@@ -602,7 +604,7 @@ namespace Contests.Core.Repository
             {
                 OnMLBChanging(value);
                 ReportPropertyChanging("MLB");
-                _MLB = StructuralObject.SetValidValue(value, true);
+                _MLB = StructuralObject.SetValidValue(value, true, "MLB");
                 ReportPropertyChanged("MLB");
                 OnMLBChanged();
             }
@@ -626,7 +628,7 @@ namespace Contests.Core.Repository
             {
                 OnNFLChanging(value);
                 ReportPropertyChanging("NFL");
-                _NFL = StructuralObject.SetValidValue(value, true);
+                _NFL = StructuralObject.SetValidValue(value, true, "NFL");
                 ReportPropertyChanged("NFL");
                 OnNFLChanged();
             }
@@ -650,7 +652,7 @@ namespace Contests.Core.Repository
             {
                 OnNCFChanging(value);
                 ReportPropertyChanging("NCF");
-                _NCF = StructuralObject.SetValidValue(value, true);
+                _NCF = StructuralObject.SetValidValue(value, true, "NCF");
                 ReportPropertyChanged("NCF");
                 OnNCFChanged();
             }
@@ -674,7 +676,7 @@ namespace Contests.Core.Repository
             {
                 OnNCBChanging(value);
                 ReportPropertyChanging("NCB");
-                _NCB = StructuralObject.SetValidValue(value, true);
+                _NCB = StructuralObject.SetValidValue(value, true, "NCB");
                 ReportPropertyChanged("NCB");
                 OnNCBChanged();
             }
@@ -698,7 +700,7 @@ namespace Contests.Core.Repository
             {
                 OnNBAChanging(value);
                 ReportPropertyChanging("NBA");
-                _NBA = StructuralObject.SetValidValue(value, true);
+                _NBA = StructuralObject.SetValidValue(value, true, "NBA");
                 ReportPropertyChanged("NBA");
                 OnNBAChanged();
             }
@@ -722,7 +724,7 @@ namespace Contests.Core.Repository
             {
                 OnNHLChanging(value);
                 ReportPropertyChanging("NHL");
-                _NHL = StructuralObject.SetValidValue(value, true);
+                _NHL = StructuralObject.SetValidValue(value, true, "NHL");
                 ReportPropertyChanged("NHL");
                 OnNHLChanged();
             }
@@ -746,7 +748,7 @@ namespace Contests.Core.Repository
             {
                 OnWebsiteChanging(value);
                 ReportPropertyChanging("Website");
-                _Website = StructuralObject.SetValidValue(value, true);
+                _Website = StructuralObject.SetValidValue(value, true, "Website");
                 ReportPropertyChanged("Website");
                 OnWebsiteChanged();
             }
@@ -770,7 +772,7 @@ namespace Contests.Core.Repository
             {
                 OnLocationChanging(value);
                 ReportPropertyChanging("Location");
-                _Location = StructuralObject.SetValidValue(value, true);
+                _Location = StructuralObject.SetValidValue(value, true, "Location");
                 ReportPropertyChanged("Location");
                 OnLocationChanged();
             }
@@ -794,7 +796,7 @@ namespace Contests.Core.Repository
             {
                 OnLocationSortChanging(value);
                 ReportPropertyChanging("LocationSort");
-                _LocationSort = StructuralObject.SetValidValue(value, true);
+                _LocationSort = StructuralObject.SetValidValue(value, true, "LocationSort");
                 ReportPropertyChanged("LocationSort");
                 OnLocationSortChanged();
             }
@@ -818,7 +820,7 @@ namespace Contests.Core.Repository
             {
                 OnReminderChanging(value);
                 ReportPropertyChanging("Reminder");
-                _Reminder = StructuralObject.SetValidValue(value);
+                _Reminder = StructuralObject.SetValidValue(value, "Reminder");
                 ReportPropertyChanged("Reminder");
                 OnReminderChanged();
             }
@@ -842,7 +844,7 @@ namespace Contests.Core.Repository
             {
                 OnCommentsChanging(value);
                 ReportPropertyChanging("Comments");
-                _Comments = StructuralObject.SetValidValue(value, true);
+                _Comments = StructuralObject.SetValidValue(value, true, "Comments");
                 ReportPropertyChanged("Comments");
                 OnCommentsChanged();
             }
@@ -866,7 +868,7 @@ namespace Contests.Core.Repository
             {
                 OnCreatedChanging(value);
                 ReportPropertyChanging("Created");
-                _Created = StructuralObject.SetValidValue(value);
+                _Created = StructuralObject.SetValidValue(value, "Created");
                 ReportPropertyChanged("Created");
                 OnCreatedChanged();
             }
@@ -890,7 +892,7 @@ namespace Contests.Core.Repository
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -914,7 +916,7 @@ namespace Contests.Core.Repository
             {
                 OnFamilyIDChanging(value);
                 ReportPropertyChanging("FamilyID");
-                _FamilyID = StructuralObject.SetValidValue(value);
+                _FamilyID = StructuralObject.SetValidValue(value, "FamilyID");
                 ReportPropertyChanged("FamilyID");
                 OnFamilyIDChanged();
             }
@@ -924,9 +926,9 @@ namespace Contests.Core.Repository
         partial void OnFamilyIDChanged();
 
         #endregion
-    
+
     }
 
     #endregion
-    
+
 }

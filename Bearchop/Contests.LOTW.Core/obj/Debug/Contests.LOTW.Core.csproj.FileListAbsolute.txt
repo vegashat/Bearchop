@@ -71,3 +71,12 @@ C:\git\Bearchop\Bearchop\Contests.LOTW.Core\bin\Debug\RandomOrg.pdb
 C:\git\Bearchop\Bearchop\Contests.LOTW.Core\obj\Debug\ResolveAssemblyReference.cache
 C:\git\Bearchop\Bearchop\Contests.LOTW.Core\obj\Debug\Contests.LOTW.Core.dll
 C:\git\Bearchop\Bearchop\Contests.LOTW.Core\obj\Debug\Contests.LOTW.Core.pdb
+c:\_git\bearchop\bearchop\Contests.LOTW.Core\bin\Debug\Contests.LOTW.Core.dll
+c:\_git\bearchop\bearchop\Contests.LOTW.Core\bin\Debug\Contests.LOTW.Core.pdb
+c:\_git\bearchop\bearchop\Contests.LOTW.Core\bin\Debug\Contests.NCAAF.Core.dll
+c:\_git\bearchop\bearchop\Contests.LOTW.Core\bin\Debug\RandomOrg.dll
+c:\_git\bearchop\bearchop\Contests.LOTW.Core\bin\Debug\Contests.NCAAF.Core.pdb
+c:\_git\bearchop\bearchop\Contests.LOTW.Core\bin\Debug\RandomOrg.pdb
+c:\_git\bearchop\bearchop\Contests.LOTW.Core\obj\Debug\Contests.LOTW.Core.csprojResolveAssemblyReference.cache
+c:\_git\bearchop\bearchop\Contests.LOTW.Core\obj\Debug\Contests.LOTW.Core.dll
+c:\_git\bearchop\bearchop\Contests.LOTW.Core\obj\Debug\Contests.LOTW.Core.pdb

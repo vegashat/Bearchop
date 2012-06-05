@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -185,6 +186,7 @@ namespace Contests.NCAAF.Core
         private ObjectSet<USER_WEEKLY_SCHEDULE> _USER_WEEKLY_SCHEDULE;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -244,11 +246,11 @@ namespace Contests.NCAAF.Core
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -277,7 +279,8 @@ namespace Contests.NCAAF.Core
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -296,7 +299,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnHomeTeamIdChanging(value);
                     ReportPropertyChanging("HomeTeamId");
-                    _HomeTeamId = StructuralObject.SetValidValue(value);
+                    _HomeTeamId = StructuralObject.SetValidValue(value, "HomeTeamId");
                     ReportPropertyChanged("HomeTeamId");
                     OnHomeTeamIdChanged();
                 }
@@ -323,7 +326,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnAwayTeamIdChanging(value);
                     ReportPropertyChanging("AwayTeamId");
-                    _AwayTeamId = StructuralObject.SetValidValue(value);
+                    _AwayTeamId = StructuralObject.SetValidValue(value, "AwayTeamId");
                     ReportPropertyChanged("AwayTeamId");
                     OnAwayTeamIdChanged();
                 }
@@ -350,7 +353,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnDateChanging(value);
                     ReportPropertyChanging("Date");
-                    _Date = StructuralObject.SetValidValue(value);
+                    _Date = StructuralObject.SetValidValue(value, "Date");
                     ReportPropertyChanged("Date");
                     OnDateChanged();
                 }
@@ -375,7 +378,7 @@ namespace Contests.NCAAF.Core
             {
                 OnWeekChanging(value);
                 ReportPropertyChanging("Week");
-                _Week = StructuralObject.SetValidValue(value);
+                _Week = StructuralObject.SetValidValue(value, "Week");
                 ReportPropertyChanged("Week");
                 OnWeekChanged();
             }
@@ -385,7 +388,7 @@ namespace Contests.NCAAF.Core
         partial void OnWeekChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -503,6 +506,7 @@ namespace Contests.NCAAF.Core
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -529,7 +533,8 @@ namespace Contests.NCAAF.Core
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -548,7 +553,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnTeamIdChanging(value);
                     ReportPropertyChanging("TeamId");
-                    _TeamId = StructuralObject.SetValidValue(value);
+                    _TeamId = StructuralObject.SetValidValue(value, "TeamId");
                     ReportPropertyChanged("TeamId");
                     OnTeamIdChanged();
                 }
@@ -573,7 +578,7 @@ namespace Contests.NCAAF.Core
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -597,7 +602,7 @@ namespace Contests.NCAAF.Core
             {
                 OnIsSelectableChanging(value);
                 ReportPropertyChanging("IsSelectable");
-                _IsSelectable = StructuralObject.SetValidValue(value);
+                _IsSelectable = StructuralObject.SetValidValue(value, "IsSelectable");
                 ReportPropertyChanged("IsSelectable");
                 OnIsSelectableChanged();
             }
@@ -607,7 +612,7 @@ namespace Contests.NCAAF.Core
         partial void OnIsSelectableChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -655,6 +660,7 @@ namespace Contests.NCAAF.Core
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -681,7 +687,8 @@ namespace Contests.NCAAF.Core
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -700,7 +707,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnTeamIDChanging(value);
                     ReportPropertyChanging("TeamID");
-                    _TeamID = StructuralObject.SetValidValue(value);
+                    _TeamID = StructuralObject.SetValidValue(value, "TeamID");
                     ReportPropertyChanged("TeamID");
                     OnTeamIDChanged();
                 }
@@ -727,7 +734,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnnameChanging(value);
                     ReportPropertyChanging("name");
-                    _name = StructuralObject.SetValidValue(value, false);
+                    _name = StructuralObject.SetValidValue(value, false, "name");
                     ReportPropertyChanged("name");
                     OnnameChanged();
                 }
@@ -752,7 +759,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek1_opponentChanging(value);
                 ReportPropertyChanging("week1_opponent");
-                _week1_opponent = StructuralObject.SetValidValue(value, true);
+                _week1_opponent = StructuralObject.SetValidValue(value, true, "week1_opponent");
                 ReportPropertyChanged("week1_opponent");
                 Onweek1_opponentChanged();
             }
@@ -776,7 +783,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek2_opponentChanging(value);
                 ReportPropertyChanging("week2_opponent");
-                _week2_opponent = StructuralObject.SetValidValue(value, true);
+                _week2_opponent = StructuralObject.SetValidValue(value, true, "week2_opponent");
                 ReportPropertyChanged("week2_opponent");
                 Onweek2_opponentChanged();
             }
@@ -800,7 +807,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek3_opponentChanging(value);
                 ReportPropertyChanging("week3_opponent");
-                _week3_opponent = StructuralObject.SetValidValue(value, true);
+                _week3_opponent = StructuralObject.SetValidValue(value, true, "week3_opponent");
                 ReportPropertyChanged("week3_opponent");
                 Onweek3_opponentChanged();
             }
@@ -824,7 +831,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek4_opponentChanging(value);
                 ReportPropertyChanging("week4_opponent");
-                _week4_opponent = StructuralObject.SetValidValue(value, true);
+                _week4_opponent = StructuralObject.SetValidValue(value, true, "week4_opponent");
                 ReportPropertyChanged("week4_opponent");
                 Onweek4_opponentChanged();
             }
@@ -848,7 +855,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek5_opponentChanging(value);
                 ReportPropertyChanging("week5_opponent");
-                _week5_opponent = StructuralObject.SetValidValue(value, true);
+                _week5_opponent = StructuralObject.SetValidValue(value, true, "week5_opponent");
                 ReportPropertyChanged("week5_opponent");
                 Onweek5_opponentChanged();
             }
@@ -872,7 +879,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek6_opponentChanging(value);
                 ReportPropertyChanging("week6_opponent");
-                _week6_opponent = StructuralObject.SetValidValue(value, true);
+                _week6_opponent = StructuralObject.SetValidValue(value, true, "week6_opponent");
                 ReportPropertyChanged("week6_opponent");
                 Onweek6_opponentChanged();
             }
@@ -896,7 +903,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek7_opponentChanging(value);
                 ReportPropertyChanging("week7_opponent");
-                _week7_opponent = StructuralObject.SetValidValue(value, true);
+                _week7_opponent = StructuralObject.SetValidValue(value, true, "week7_opponent");
                 ReportPropertyChanged("week7_opponent");
                 Onweek7_opponentChanged();
             }
@@ -920,7 +927,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek8_opponentChanging(value);
                 ReportPropertyChanging("week8_opponent");
-                _week8_opponent = StructuralObject.SetValidValue(value, true);
+                _week8_opponent = StructuralObject.SetValidValue(value, true, "week8_opponent");
                 ReportPropertyChanged("week8_opponent");
                 Onweek8_opponentChanged();
             }
@@ -944,7 +951,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek9_opponentChanging(value);
                 ReportPropertyChanging("week9_opponent");
-                _week9_opponent = StructuralObject.SetValidValue(value, true);
+                _week9_opponent = StructuralObject.SetValidValue(value, true, "week9_opponent");
                 ReportPropertyChanged("week9_opponent");
                 Onweek9_opponentChanged();
             }
@@ -968,7 +975,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek10_opponentChanging(value);
                 ReportPropertyChanging("week10_opponent");
-                _week10_opponent = StructuralObject.SetValidValue(value, true);
+                _week10_opponent = StructuralObject.SetValidValue(value, true, "week10_opponent");
                 ReportPropertyChanged("week10_opponent");
                 Onweek10_opponentChanged();
             }
@@ -992,7 +999,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek11_opponentChanging(value);
                 ReportPropertyChanging("week11_opponent");
-                _week11_opponent = StructuralObject.SetValidValue(value, true);
+                _week11_opponent = StructuralObject.SetValidValue(value, true, "week11_opponent");
                 ReportPropertyChanged("week11_opponent");
                 Onweek11_opponentChanged();
             }
@@ -1016,7 +1023,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek12_opponentChanging(value);
                 ReportPropertyChanging("week12_opponent");
-                _week12_opponent = StructuralObject.SetValidValue(value, true);
+                _week12_opponent = StructuralObject.SetValidValue(value, true, "week12_opponent");
                 ReportPropertyChanged("week12_opponent");
                 Onweek12_opponentChanged();
             }
@@ -1040,7 +1047,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek13_opponentChanging(value);
                 ReportPropertyChanging("week13_opponent");
-                _week13_opponent = StructuralObject.SetValidValue(value, true);
+                _week13_opponent = StructuralObject.SetValidValue(value, true, "week13_opponent");
                 ReportPropertyChanged("week13_opponent");
                 Onweek13_opponentChanged();
             }
@@ -1064,7 +1071,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek14_opponentChanging(value);
                 ReportPropertyChanging("week14_opponent");
-                _week14_opponent = StructuralObject.SetValidValue(value, true);
+                _week14_opponent = StructuralObject.SetValidValue(value, true, "week14_opponent");
                 ReportPropertyChanged("week14_opponent");
                 Onweek14_opponentChanged();
             }
@@ -1088,7 +1095,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek15_opponentChanging(value);
                 ReportPropertyChanging("week15_opponent");
-                _week15_opponent = StructuralObject.SetValidValue(value, true);
+                _week15_opponent = StructuralObject.SetValidValue(value, true, "week15_opponent");
                 ReportPropertyChanged("week15_opponent");
                 Onweek15_opponentChanged();
             }
@@ -1098,7 +1105,7 @@ namespace Contests.NCAAF.Core
         partial void Onweek15_opponentChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -1135,7 +1142,8 @@ namespace Contests.NCAAF.Core
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1154,7 +1162,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnUserIDChanging(value);
                     ReportPropertyChanging("UserID");
-                    _UserID = StructuralObject.SetValidValue(value);
+                    _UserID = StructuralObject.SetValidValue(value, "UserID");
                     ReportPropertyChanged("UserID");
                     OnUserIDChanged();
                 }
@@ -1181,7 +1189,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnTeamIDChanging(value);
                     ReportPropertyChanging("TeamID");
-                    _TeamID = StructuralObject.SetValidValue(value);
+                    _TeamID = StructuralObject.SetValidValue(value, "TeamID");
                     ReportPropertyChanged("TeamID");
                     OnTeamIDChanged();
                 }
@@ -1208,7 +1216,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnNameChanging(value);
                     ReportPropertyChanging("Name");
-                    _Name = StructuralObject.SetValidValue(value, false);
+                    _Name = StructuralObject.SetValidValue(value, false, "Name");
                     ReportPropertyChanged("Name");
                     OnNameChanged();
                 }
@@ -1235,7 +1243,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnopponentChanging(value);
                     ReportPropertyChanging("opponent");
-                    _opponent = StructuralObject.SetValidValue(value, false);
+                    _opponent = StructuralObject.SetValidValue(value, false, "opponent");
                     ReportPropertyChanged("opponent");
                     OnopponentChanged();
                 }
@@ -1262,7 +1270,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnDateChanging(value);
                     ReportPropertyChanging("Date");
-                    _Date = StructuralObject.SetValidValue(value);
+                    _Date = StructuralObject.SetValidValue(value, "Date");
                     ReportPropertyChanged("Date");
                     OnDateChanged();
                 }
@@ -1287,7 +1295,7 @@ namespace Contests.NCAAF.Core
             {
                 Onschedule_weekChanging(value);
                 ReportPropertyChanging("schedule_week");
-                _schedule_week = StructuralObject.SetValidValue(value);
+                _schedule_week = StructuralObject.SetValidValue(value, "schedule_week");
                 ReportPropertyChanged("schedule_week");
                 Onschedule_weekChanged();
             }
@@ -1313,7 +1321,7 @@ namespace Contests.NCAAF.Core
                 {
                     Onpick_weekChanging(value);
                     ReportPropertyChanging("pick_week");
-                    _pick_week = StructuralObject.SetValidValue(value);
+                    _pick_week = StructuralObject.SetValidValue(value, "pick_week");
                     ReportPropertyChanged("pick_week");
                     Onpick_weekChanged();
                 }
@@ -1340,7 +1348,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnCurrentWeekChanging(value);
                     ReportPropertyChanging("CurrentWeek");
-                    _CurrentWeek = StructuralObject.SetValidValue(value);
+                    _CurrentWeek = StructuralObject.SetValidValue(value, "CurrentWeek");
                     ReportPropertyChanged("CurrentWeek");
                     OnCurrentWeekChanged();
                 }
@@ -1351,7 +1359,7 @@ namespace Contests.NCAAF.Core
         partial void OnCurrentWeekChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -1382,7 +1390,8 @@ namespace Contests.NCAAF.Core
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1401,7 +1410,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnuseridChanging(value);
                     ReportPropertyChanging("userid");
-                    _userid = StructuralObject.SetValidValue(value);
+                    _userid = StructuralObject.SetValidValue(value, "userid");
                     ReportPropertyChanged("userid");
                     OnuseridChanged();
                 }
@@ -1428,7 +1437,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnteamidChanging(value);
                     ReportPropertyChanging("teamid");
-                    _teamid = StructuralObject.SetValidValue(value);
+                    _teamid = StructuralObject.SetValidValue(value, "teamid");
                     ReportPropertyChanged("teamid");
                     OnteamidChanged();
                 }
@@ -1455,7 +1464,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnnameChanging(value);
                     ReportPropertyChanging("name");
-                    _name = StructuralObject.SetValidValue(value, false);
+                    _name = StructuralObject.SetValidValue(value, false, "name");
                     ReportPropertyChanged("name");
                     OnnameChanged();
                 }
@@ -1482,7 +1491,7 @@ namespace Contests.NCAAF.Core
                 {
                     Onpick_weekChanging(value);
                     ReportPropertyChanging("pick_week");
-                    _pick_week = StructuralObject.SetValidValue(value);
+                    _pick_week = StructuralObject.SetValidValue(value, "pick_week");
                     ReportPropertyChanged("pick_week");
                     Onpick_weekChanged();
                 }
@@ -1507,7 +1516,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek1_opponentChanging(value);
                 ReportPropertyChanging("week1_opponent");
-                _week1_opponent = StructuralObject.SetValidValue(value, true);
+                _week1_opponent = StructuralObject.SetValidValue(value, true, "week1_opponent");
                 ReportPropertyChanged("week1_opponent");
                 Onweek1_opponentChanged();
             }
@@ -1531,7 +1540,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek2_opponentChanging(value);
                 ReportPropertyChanging("week2_opponent");
-                _week2_opponent = StructuralObject.SetValidValue(value, true);
+                _week2_opponent = StructuralObject.SetValidValue(value, true, "week2_opponent");
                 ReportPropertyChanged("week2_opponent");
                 Onweek2_opponentChanged();
             }
@@ -1555,7 +1564,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek3_opponentChanging(value);
                 ReportPropertyChanging("week3_opponent");
-                _week3_opponent = StructuralObject.SetValidValue(value, true);
+                _week3_opponent = StructuralObject.SetValidValue(value, true, "week3_opponent");
                 ReportPropertyChanged("week3_opponent");
                 Onweek3_opponentChanged();
             }
@@ -1579,7 +1588,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek4_opponentChanging(value);
                 ReportPropertyChanging("week4_opponent");
-                _week4_opponent = StructuralObject.SetValidValue(value, true);
+                _week4_opponent = StructuralObject.SetValidValue(value, true, "week4_opponent");
                 ReportPropertyChanged("week4_opponent");
                 Onweek4_opponentChanged();
             }
@@ -1603,7 +1612,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek5_opponentChanging(value);
                 ReportPropertyChanging("week5_opponent");
-                _week5_opponent = StructuralObject.SetValidValue(value, true);
+                _week5_opponent = StructuralObject.SetValidValue(value, true, "week5_opponent");
                 ReportPropertyChanged("week5_opponent");
                 Onweek5_opponentChanged();
             }
@@ -1627,7 +1636,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek6_opponentChanging(value);
                 ReportPropertyChanging("week6_opponent");
-                _week6_opponent = StructuralObject.SetValidValue(value, true);
+                _week6_opponent = StructuralObject.SetValidValue(value, true, "week6_opponent");
                 ReportPropertyChanged("week6_opponent");
                 Onweek6_opponentChanged();
             }
@@ -1651,7 +1660,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek7_opponentChanging(value);
                 ReportPropertyChanging("week7_opponent");
-                _week7_opponent = StructuralObject.SetValidValue(value, true);
+                _week7_opponent = StructuralObject.SetValidValue(value, true, "week7_opponent");
                 ReportPropertyChanged("week7_opponent");
                 Onweek7_opponentChanged();
             }
@@ -1675,7 +1684,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek8_opponentChanging(value);
                 ReportPropertyChanging("week8_opponent");
-                _week8_opponent = StructuralObject.SetValidValue(value, true);
+                _week8_opponent = StructuralObject.SetValidValue(value, true, "week8_opponent");
                 ReportPropertyChanged("week8_opponent");
                 Onweek8_opponentChanged();
             }
@@ -1699,7 +1708,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek9_opponentChanging(value);
                 ReportPropertyChanging("week9_opponent");
-                _week9_opponent = StructuralObject.SetValidValue(value, true);
+                _week9_opponent = StructuralObject.SetValidValue(value, true, "week9_opponent");
                 ReportPropertyChanged("week9_opponent");
                 Onweek9_opponentChanged();
             }
@@ -1723,7 +1732,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek10_opponentChanging(value);
                 ReportPropertyChanging("week10_opponent");
-                _week10_opponent = StructuralObject.SetValidValue(value, true);
+                _week10_opponent = StructuralObject.SetValidValue(value, true, "week10_opponent");
                 ReportPropertyChanged("week10_opponent");
                 Onweek10_opponentChanged();
             }
@@ -1747,7 +1756,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek11_opponentChanging(value);
                 ReportPropertyChanging("week11_opponent");
-                _week11_opponent = StructuralObject.SetValidValue(value, true);
+                _week11_opponent = StructuralObject.SetValidValue(value, true, "week11_opponent");
                 ReportPropertyChanged("week11_opponent");
                 Onweek11_opponentChanged();
             }
@@ -1771,7 +1780,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek12_opponentChanging(value);
                 ReportPropertyChanging("week12_opponent");
-                _week12_opponent = StructuralObject.SetValidValue(value, true);
+                _week12_opponent = StructuralObject.SetValidValue(value, true, "week12_opponent");
                 ReportPropertyChanged("week12_opponent");
                 Onweek12_opponentChanged();
             }
@@ -1795,7 +1804,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek13_opponentChanging(value);
                 ReportPropertyChanging("week13_opponent");
-                _week13_opponent = StructuralObject.SetValidValue(value, true);
+                _week13_opponent = StructuralObject.SetValidValue(value, true, "week13_opponent");
                 ReportPropertyChanged("week13_opponent");
                 Onweek13_opponentChanged();
             }
@@ -1819,7 +1828,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek14_opponentChanging(value);
                 ReportPropertyChanging("week14_opponent");
-                _week14_opponent = StructuralObject.SetValidValue(value, true);
+                _week14_opponent = StructuralObject.SetValidValue(value, true, "week14_opponent");
                 ReportPropertyChanged("week14_opponent");
                 Onweek14_opponentChanged();
             }
@@ -1843,7 +1852,7 @@ namespace Contests.NCAAF.Core
             {
                 Onweek15_opponentChanging(value);
                 ReportPropertyChanging("week15_opponent");
-                _week15_opponent = StructuralObject.SetValidValue(value, true);
+                _week15_opponent = StructuralObject.SetValidValue(value, true, "week15_opponent");
                 ReportPropertyChanged("week15_opponent");
                 Onweek15_opponentChanged();
             }
@@ -1853,7 +1862,7 @@ namespace Contests.NCAAF.Core
         partial void Onweek15_opponentChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -1886,7 +1895,8 @@ namespace Contests.NCAAF.Core
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1905,7 +1915,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnDateChanging(value);
                     ReportPropertyChanging("Date");
-                    _Date = StructuralObject.SetValidValue(value);
+                    _Date = StructuralObject.SetValidValue(value, "Date");
                     ReportPropertyChanged("Date");
                     OnDateChanged();
                 }
@@ -1932,7 +1942,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnHomeTeamIdChanging(value);
                     ReportPropertyChanging("HomeTeamId");
-                    _HomeTeamId = StructuralObject.SetValidValue(value);
+                    _HomeTeamId = StructuralObject.SetValidValue(value, "HomeTeamId");
                     ReportPropertyChanged("HomeTeamId");
                     OnHomeTeamIdChanged();
                 }
@@ -1959,7 +1969,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnHomeNameChanging(value);
                     ReportPropertyChanging("HomeName");
-                    _HomeName = StructuralObject.SetValidValue(value, false);
+                    _HomeName = StructuralObject.SetValidValue(value, false, "HomeName");
                     ReportPropertyChanged("HomeName");
                     OnHomeNameChanged();
                 }
@@ -1986,7 +1996,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnAwayTeamIdChanging(value);
                     ReportPropertyChanging("AwayTeamId");
-                    _AwayTeamId = StructuralObject.SetValidValue(value);
+                    _AwayTeamId = StructuralObject.SetValidValue(value, "AwayTeamId");
                     ReportPropertyChanged("AwayTeamId");
                     OnAwayTeamIdChanged();
                 }
@@ -2013,7 +2023,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnAwayNameChanging(value);
                     ReportPropertyChanging("AwayName");
-                    _AwayName = StructuralObject.SetValidValue(value, false);
+                    _AwayName = StructuralObject.SetValidValue(value, false, "AwayName");
                     ReportPropertyChanged("AwayName");
                     OnAwayNameChanged();
                 }
@@ -2038,7 +2048,7 @@ namespace Contests.NCAAF.Core
             {
                 OnWeekChanging(value);
                 ReportPropertyChanging("Week");
-                _Week = StructuralObject.SetValidValue(value);
+                _Week = StructuralObject.SetValidValue(value, "Week");
                 ReportPropertyChanged("Week");
                 OnWeekChanged();
             }
@@ -2048,7 +2058,7 @@ namespace Contests.NCAAF.Core
         partial void OnWeekChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -2077,7 +2087,8 @@ namespace Contests.NCAAF.Core
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2096,7 +2107,7 @@ namespace Contests.NCAAF.Core
                 {
                     OnNumberChanging(value);
                     ReportPropertyChanging("Number");
-                    _Number = StructuralObject.SetValidValue(value);
+                    _Number = StructuralObject.SetValidValue(value, "Number");
                     ReportPropertyChanged("Number");
                     OnNumberChanged();
                 }
@@ -2121,7 +2132,7 @@ namespace Contests.NCAAF.Core
             {
                 OnBeginDateChanging(value);
                 ReportPropertyChanging("BeginDate");
-                _BeginDate = StructuralObject.SetValidValue(value);
+                _BeginDate = StructuralObject.SetValidValue(value, "BeginDate");
                 ReportPropertyChanged("BeginDate");
                 OnBeginDateChanged();
             }
@@ -2145,7 +2156,7 @@ namespace Contests.NCAAF.Core
             {
                 OnEndDateChanging(value);
                 ReportPropertyChanging("EndDate");
-                _EndDate = StructuralObject.SetValidValue(value);
+                _EndDate = StructuralObject.SetValidValue(value, "EndDate");
                 ReportPropertyChanged("EndDate");
                 OnEndDateChanged();
             }
@@ -2155,7 +2166,7 @@ namespace Contests.NCAAF.Core
         partial void OnEndDateChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -2181,8 +2192,9 @@ namespace Contests.NCAAF.Core
         }
 
         #endregion
+
     }
 
     #endregion
-    
+
 }
