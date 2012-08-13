@@ -58,3 +58,11 @@ C:\git\Bearchop\Bearchop\Contests.Core\bin\Debug\Contests.Core.pdb
 C:\git\Bearchop\Bearchop\Contests.Core\obj\Debug\ResolveAssemblyReference.cache
 C:\git\Bearchop\Bearchop\Contests.Core\obj\Debug\Contests.Core.dll
 C:\git\Bearchop\Bearchop\Contests.Core\obj\Debug\Contests.Core.pdb
+C:\_git\Bearchop\Bearchop\Contests.Core\bin\Debug\Contests.Core.dll.config
+C:\_git\Bearchop\Bearchop\Contests.Core\bin\Debug\Contests.Core.dll
+C:\_git\Bearchop\Bearchop\Contests.Core\bin\Debug\Contests.Core.pdb
+C:\_git\Bearchop\Bearchop\Contests.Core\bin\Debug\EntityFramework.dll
+C:\_git\Bearchop\Bearchop\Contests.Core\bin\Debug\EntityFramework.xml
+C:\_git\Bearchop\Bearchop\Contests.Core\obj\Debug\Contests.Core.csprojResolveAssemblyReference.cache
+C:\_git\Bearchop\Bearchop\Contests.Core\obj\Debug\Contests.Core.dll
+C:\_git\Bearchop\Bearchop\Contests.Core\obj\Debug\Contests.Core.pdb
