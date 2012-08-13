@@ -4,12 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Data.Entity;
 using Contests.LOTW.Core.Model;
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace Contests.LOTW.Core.Repository
 {
     public class LOTWContext : DbContext
     {
+
+        public LOTWContext()
+        {
+            Database.SetInitializer<LOTWContext>(null);
+        }
+
         public DbSet<LOTWUser> Users { get; set; }
         public DbSet<Week> Weeks { get; set; }
         public DbSet<Game> Games { get; set; }
@@ -21,6 +28,8 @@ namespace Contests.LOTW.Core.Repository
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
+
             modelBuilder.Entity<LOTWUser>()
                 .Property(u => u.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);

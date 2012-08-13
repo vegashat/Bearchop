@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Contests.LOTW.Core.Model
 {    
@@ -21,12 +22,16 @@ namespace Contests.LOTW.Core.Model
         public int GameId { get; set; }
         public string Team { get; set; }
         public int TypeValue { get; set; }
+
+        [NotMapped]
         public PickType Type
         {
             get { return (PickType) TypeValue; }
             set { TypeValue = (int)value; }
         }
         public int OverUnderValue { get; set; }
+
+        [NotMapped]
         public OverUnder OverUnder  
         {
             get { return (OverUnder) OverUnderValue; }

@@ -628,30 +628,6 @@ namespace Contests.NCAAF.Core
         private Nullable<global::System.Decimal> _RealValue;
         partial void OnRealValueChanging(Nullable<global::System.Decimal> value);
         partial void OnRealValueChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> IsSelectable
-        {
-            get
-            {
-                return _IsSelectable;
-            }
-            set
-            {
-                OnIsSelectableChanging(value);
-                ReportPropertyChanging("IsSelectable");
-                _IsSelectable = StructuralObject.SetValidValue(value, "IsSelectable");
-                ReportPropertyChanged("IsSelectable");
-                OnIsSelectableChanged();
-            }
-        }
-        private Nullable<global::System.Boolean> _IsSelectable;
-        partial void OnIsSelectableChanging(Nullable<global::System.Boolean> value);
-        partial void OnIsSelectableChanged();
 
         #endregion
 

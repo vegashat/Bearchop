@@ -510,45 +510,45 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
-    <Connection>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
-      </DesignerInfoPropertySet>
-    </Connection>
-    <Options>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
-      </DesignerInfoPropertySet>
-    </Options>
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="True" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams>
-      <Diagram Name="NCAAF">
-        <EntityTypeShape EntityType="NCAAFModel.Schedule" Width="1.5" PointX="2.75" PointY="3.125" Height="2.3648893229166665" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCAAFModel.Team" Width="1.5" PointX="0.5" PointY="0.5" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCAAFModel.Week" Width="1.5" PointX="0.75" PointY="5.25" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCAAFModel.vw_schedule" Width="1.5" PointX="4.625" PointY="0.625" Height="2.1725878906249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCAAFModel.TEAM_SCHEDULE" Width="2.75" PointX="5.5" PointY="4.25" Height="4.2879036458333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCAAFModel.USER_SCHEDULE" Width="2.375" PointX="6.25" PointY="0.625" Height="2.5571907552083326" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCAAFModel.USER_WEEKLY_SCHEDULE" Width="3.5" PointX="9.875" PointY="0.625" Height="4.6725065104166674" IsExpanded="true" />
-        <AssociationConnector Association="NCAAFModel.AwayTeam" ManuallyRouted="false">
-          <ConnectorPoint PointX="2" PointY="1.4901432291666668" />
-          <ConnectorPoint PointX="3.5" PointY="1.4901432291666668" />
-          <ConnectorPoint PointX="3.5" PointY="3.125" />
-        </AssociationConnector>
-        <AssociationConnector Association="NCAAFModel.FK_Schedule_Week" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="5.25" />
-          <ConnectorPoint PointX="1.5" PointY="4.2187515" />
-          <ConnectorPoint PointX="2.75" PointY="4.2187515" />
-        </AssociationConnector>
-        <AssociationConnector Association="NCAAFModel.HomeTeam" ManuallyRouted="false">
-          <ConnectorPoint PointX="2" PointY="2.01646734375" />
-          <ConnectorPoint PointX="3.0937475" PointY="2.01646734375" />
-          <ConnectorPoint PointX="3.0937475" PointY="3.125" />
-        </AssociationConnector>
-      </Diagram>
-    </Diagrams>
-  </Designer>
+    <edmx:Diagrams>
+      <edmx:Diagram Name="NCAAF">
+        <edmx:EntityTypeShape EntityType="NCAAFModel.Schedule" Width="1.5" PointX="2.75" PointY="3.125" Height="2.3648893229166665" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="NCAAFModel.Team" Width="1.5" PointX="0.5" PointY="0.5" Height="1.9802864583333335" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="NCAAFModel.Week" Width="1.5" PointX="0.75" PointY="5.25" Height="1.7879850260416674" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="NCAAFModel.vw_schedule" Width="1.5" PointX="4.625" PointY="0.625" Height="2.1725878906249996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="NCAAFModel.TEAM_SCHEDULE" Width="2.75" PointX="5.5" PointY="4.25" Height="4.2879036458333317" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="NCAAFModel.USER_SCHEDULE" Width="2.375" PointX="6.25" PointY="0.625" Height="2.5571907552083326" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="NCAAFModel.USER_WEEKLY_SCHEDULE" Width="3.5" PointX="9.875" PointY="0.625" Height="4.6725065104166674" IsExpanded="true" />
+        <edmx:AssociationConnector Association="NCAAFModel.AwayTeam" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="2" PointY="1.4901432291666668" />
+          <edmx:ConnectorPoint PointX="3.5" PointY="1.4901432291666668" />
+          <edmx:ConnectorPoint PointX="3.5" PointY="3.125" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="NCAAFModel.FK_Schedule_Week" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="1.5" PointY="5.25" />
+          <edmx:ConnectorPoint PointX="1.5" PointY="4.2187515" />
+          <edmx:ConnectorPoint PointX="2.75" PointY="4.2187515" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="NCAAFModel.HomeTeam" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="2" PointY="2.01646734375" />
+          <edmx:ConnectorPoint PointX="3.0937475" PointY="2.01646734375" />
+          <edmx:ConnectorPoint PointX="3.0937475" PointY="3.125" />
+        </edmx:AssociationConnector>
+      </edmx:Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
 </edmx:Edmx>

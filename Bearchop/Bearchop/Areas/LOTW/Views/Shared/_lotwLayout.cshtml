@@ -2,6 +2,20 @@
     Layout = "~/Views/Shared/_layout.cshtml";
 }
 
-@RenderSection("header", false)
+@section pills
+{
+    <ul class="nav"> 
+        <li class="active">@Html.ActionLink("Standings", "Index","Home")</li> 
+        <li>@Html.ActionLink("Current Picks","List","Pick")</li> 
+        <li>@Html.ActionLink("Current Games","List","Game")</li> 
+                        
+    </ul>
+    @RenderSection("header", false)
 
+}
 @RenderBody()
+
+@section javascript
+{
+    @RenderSection("javascript",false)
+}

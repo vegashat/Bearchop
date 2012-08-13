@@ -2,7 +2,7 @@
     ViewBag.Title = "Login";
 }
 
-@using(Html.BeginForm("login","home", FormMethod.Post, new{@id="loginForm"}))
+@using(Html.BeginForm("login","login", FormMethod.Post, new{@id="loginForm"}))
 {
     <input type="hidden" id="returnUrl" name="returnUrl" value="@Model.ReturnUrl" />
     <div id="usernameContainer">

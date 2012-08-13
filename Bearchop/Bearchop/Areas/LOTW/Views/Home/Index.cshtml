@@ -43,31 +43,35 @@
     @Html.Action("History", "Pick", new { userId = Model.CurrentUser.Id })
 </div>
 
-<script language="javascript" type="text/javascript">
+@section javascript
+{
 
-    $(function () {
+    <script language="javascript" type="text/javascript">
 
-        removeActivePill();
-        $('.standings').addClass('active');
-    });
+        $(function () {
 
-    var historyUrl = "@Url.Action("History", "Pick")";
+            removeActivePill();
+            $('.standings').addClass('active');
+        });
 
-    function loadUserHistory(userId) {
+        var historyUrl = "@Url.Action("History", "Pick")";
 
-        var data = {userId : userId};
+        function loadUserHistory(userId) {
 
-        $.ajax({
-              type: 'GET',
-              url: historyUrl,
-              data: data,
-              dataType: "html",
-              success: function(result)
-              {
-                $("#weeks").empty();
-                $("#weeks").append(result);                
-              }
-            });
-    }
+            var data = {userId : userId};
 
-</script>
+            $.ajax({
+                  type: 'GET',
+                  url: historyUrl,
+                  data: data,
+                  dataType: "html",
+                  success: function(result)
+                  {
+                    $("#weeks").empty();
+                    $("#weeks").append(result);                
+                  }
+                });
+        }
+
+    </script>
+}
