@@ -59,7 +59,7 @@ namespace RandomOrg
             request.Method = "GET";
 
             request.UserAgent = string.IsNullOrWhiteSpace(Email) ? "vegashat@gmail.com" : Email;
-
+  
             var response = request.GetResponse();
             using (var streamReader = new StreamReader(response.GetResponseStream()))
             {

@@ -1,11 +1,11 @@
 ﻿@model Bearchop.Areas.LOTW.Web.ViewModels.PickHistoryViewModel
 
 <div id="pickHistoryContainer" class="tab">
-    <ul>
+    <ul class="nav nav-tabs">
         @foreach (var week in Model.Weeks.Where(w => w.Number <= Model.CurrentWeek.Number))
         {
-            <li id="@week.Number">
-                @Html.ActionLink("Week " + week.Number.ToString(), "UserPicks", "Pick", new { week = week.Number, userId = Model.UserId }, null)
+            <li id="@week.Number" class="">
+                @Html.ActionLink("Week " + week.Number.ToString(), "UserPicks", "Pick", new { week = week.Number, userId = Model.UserId }, new{data_toggle="tab"})
             </li>
         }
     </ul>

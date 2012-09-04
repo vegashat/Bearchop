@@ -8,7 +8,7 @@
 }
 
 
-<div id="rankings" class="span4 well">
+<div id="rankings" class="span2 well">
 @if (Model.Users.Any())
 {   
     <h4>Standings</h4>
@@ -39,7 +39,7 @@
 }
 </div>
 
-<div id="weeks" class="span10">
+<div id="weeks" class="span9">
     @Html.Action("History", "Pick", new { userId = Model.CurrentUser.Id })
 </div>
 

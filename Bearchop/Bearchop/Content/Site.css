@@ -80,3 +80,10 @@ textarea
 }
 
 
+.rule {
+    width: 300px;
+}
+
+#weeks, #pickHistoryContainer {
+    min-height : 500px;
+}

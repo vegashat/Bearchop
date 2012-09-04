@@ -4,21 +4,19 @@
 @{
     ViewBag.Title = "Picks for Week " + Model.PickWeek.Number.ToString();
 }
-
 @Html.Partial("_UserPicks", Model)
-
 @section javascript
 {
-<script language="javascript" type="text/javascript">
+    <script language="javascript" type="text/javascript">
 
-    $(function () {
+        $(function () {
 
-        removeActivePill();
-        $('.picks').addClass('active');
-    });
+            removeActivePill();
+            $('.picks').addClass('active');
+        });
 
-</script>
-    
+    </script>
+
     <script language="javascript" type="text/javascript">
 
         $(function () {
@@ -98,5 +96,5 @@
         }
     </script>
 
-    
+
 }

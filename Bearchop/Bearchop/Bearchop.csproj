@@ -313,7 +313,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>12028</DevelopmentServerPort>
+          <DevelopmentServerPort>2907</DevelopmentServerPort>
           <DevelopmentServerVPath>/bearchop</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
