@@ -34,6 +34,7 @@ C:\git\Bearchop\Bearchop\Bearchop\bin\EntityFramework.xml
 C:\git\Bearchop\Bearchop\Bearchop\obj\Debug\ResolveAssemblyReference.cache
 C:\git\Bearchop\Bearchop\Bearchop\obj\Debug\Bearchop.dll
 C:\git\Bearchop\Bearchop\Bearchop\obj\Debug\Bearchop.pdb
+C:\_git\Bearchop\Bearchop\Bearchop\bin\System.Web.Mvc.dll
 C:\_git\Bearchop\Bearchop\Bearchop\bin\Bearchop.dll
 C:\_git\Bearchop\Bearchop\Bearchop\bin\Bearchop.pdb
 C:\_git\Bearchop\Bearchop\Bearchop\bin\Antlr3.Runtime.dll
@@ -47,7 +48,6 @@ C:\_git\Bearchop\Bearchop\Bearchop\bin\NuGet.Core.dll
 C:\_git\Bearchop\Bearchop\Bearchop\bin\RandomOrg.dll
 C:\_git\Bearchop\Bearchop\Bearchop\bin\RouteDebugger.dll
 C:\_git\Bearchop\Bearchop\Bearchop\bin\System.Web.Helpers.dll
-C:\_git\Bearchop\Bearchop\Bearchop\bin\System.Web.Mvc.dll
 C:\_git\Bearchop\Bearchop\Bearchop\bin\System.Web.Optimization.dll
 C:\_git\Bearchop\Bearchop\Bearchop\bin\System.Web.Providers.dll
 C:\_git\Bearchop\Bearchop\Bearchop\bin\System.Web.WebPages.Administration.dll
