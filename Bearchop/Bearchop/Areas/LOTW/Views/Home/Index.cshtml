@@ -12,7 +12,7 @@
 @if (Model.Users.Any())
 {   
     <h4>Standings</h4>
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Rank</th>
@@ -50,7 +50,6 @@
 
         $(function () {
 
-            removeActivePill();
             $('.standings').addClass('active');
         });
 

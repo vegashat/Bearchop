@@ -4,11 +4,11 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="JeauxDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="JeauxDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="JeauxDBModelStoreContainer">
-          <EntitySet Name="COLFOOT" EntityType="JeauxDBModel.Store.COLFOOT" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="COLFOOT_TEAM" EntityType="JeauxDBModel.Store.COLFOOT_TEAM" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="COLFOOT_WEEK" EntityType="JeauxDBModel.Store.COLFOOT_WEEK" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="COLFOOT" EntityType="JeauxDBModel.Store.COLFOOT" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="COLFOOT_TEAM" EntityType="JeauxDBModel.Store.COLFOOT_TEAM" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="COLFOOT_WEEK" EntityType="JeauxDBModel.Store.COLFOOT_WEEK" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FK_COLFOOT_TEAM" Association="JeauxDBModel.Store.FK_COLFOOT_TEAM">
             <End Role="COLFOOT_TEAM" EntitySet="COLFOOT_TEAM" />
             <End Role="COLFOOT" EntitySet="COLFOOT" />

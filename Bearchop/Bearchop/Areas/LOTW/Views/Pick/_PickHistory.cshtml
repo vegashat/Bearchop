@@ -1,14 +1,26 @@
 ﻿@model Bearchop.Areas.LOTW.Web.ViewModels.PickHistoryViewModel
 
-<div id="pickHistoryContainer" class="tab">
-    <ul class="nav nav-tabs">
+<div id="pickHistoryContainer" class="history-tab">
+    <ul id="pick-tabs" class="nav nav-tabs">
         @foreach (var week in Model.Weeks.Where(w => w.Number <= Model.CurrentWeek.Number))
         {
             <li id="@week.Number" class="">
-                @Html.ActionLink("Week " + week.Number.ToString(), "UserPicks", "Pick", new { week = week.Number, userId = Model.UserId }, new{data_toggle="tab"})
+                @*@Html.ActionLink("Week " + week.Number.ToString(), "UserPicks", "Pick", new { area="LOTW", week = week.Number, userId = Model.UserId }, new{data_toggle="tab"})*@
+
+                <a id="link@(week.Number)" href="#week@(week.Number)" data-toggle="tab">Week @week.Number</a>
+
             </li>
         }
     </ul>
+
+    <div class="tab-content">
+        @foreach (var week in Model.Weeks.Where(w => w.Number <= Model.CurrentWeek.Number))
+        {
+            <div class="tab-pane" id="week@(week.Number)">
+                @Html.Action("userpicks","pick",new {week=week.Number,userId=Model.UserId})
+            </div>
+        }
+    </div>
 </div>
 <div id="scoring">
     <ul style="list-style-type: none">
@@ -32,3 +44,46 @@
             Poins</span></li>
     </ul>
 </div>
+
+<script type="text/javascript">
+
+    var currentTab = @Model.CurrentWeek.Number;
+    var tabs = null;
+
+    $(function () {
+
+        var tabs = $("#pick-tabs").tab();
+		
+        $('#link' + currentTab).tab('show');
+    });
+
+    function resetForm(week)
+    {
+        $('form')[week -1].reset();
+    }
+
+    function postForm(week) {
+
+        enableAll();
+
+        $.ajax({
+            type: 'POST',
+            url: $("#savePickForm" + week).attr("action"),
+            data: $("#savePickForm" + week).serialize(),
+            cache: false,
+            success: function (result) {
+
+                var resp = result;
+                if (resp.Success == true) {
+                    alert("Picks Saved");
+                } else {
+                    alert("Error Saving Picks.  Please Contact Bradley");
+                    $("#hiddenError").append(resp.Error);
+                }
+
+                checkboxEnable(null);
+            }
+        });
+    }
+    
+</script>

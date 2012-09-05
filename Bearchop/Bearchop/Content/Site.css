@@ -80,10 +80,65 @@ textarea
 }
 
 
-.rule {
-    width: 300px;
+.gameList
+{
+	border : solid 1px black !important;
 }
 
-#weeks, #pickHistoryContainer {
-    min-height : 500px;
+.rankings
+{
+	display :inline-block  ;	
+	width : 16%;
+	float : left;
+	padding-left : 10px;
+}
+
+.weeks
+{
+	display :inline-block  ;	
+	width : 83%;
+	float : left;		
+}
+
+ .userRankHead , .userRankHead 
+{
+	border : solid 1px black !important;
+}
+
+.rankings .userRank label, .rankings .userRankHead label
+{
+	display : inline-block;
+	text-align : left;
+}
+
+.rankings .userRank
+{
+    border-bottom : solid 1px gray !important;
+    float : left;
+    width : 100%;
+}
+
+.userRank .rank, .userRankHead .rank
+{
+    width : 20%;
+}
+
+.userRank .player, .userRankHead .player
+{
+    width : 50%;
+}
+
+.userRank .points, .userRankHead .points
+{
+    width : 24%;
+}
+
+.ouPick
+{
+	width : 65px !important;
+}
+
+.teamPick
+{
+    width : 150px !important;
 }

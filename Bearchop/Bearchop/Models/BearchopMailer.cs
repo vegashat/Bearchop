@@ -10,10 +10,10 @@ namespace Bearchop.Models
     {            
         public void Send(string to, string subject, string body)
         {
-            var email = new MailMessage("vegashat@bearchop.com", to);
+            var email = new MailMessage("vegashat@gmail.com", to);
 
             email.Subject = subject;
-            email.CC.Add("vegashat@bearchop.com");
+            email.CC.Add("vegashat@gmail.com");
             email.Body = body;
 
             var client = new SmtpClient();

@@ -1,10 +1,10 @@
 ﻿@model Bearchop.Areas.LOTW.Web.ViewModels.PicksViewModel
 
-@using(Html.BeginForm("save", "pick", FormMethod.Post, new { @id = "savePickForm" } ))
+@using(Html.BeginForm("save", "pick", FormMethod.Post, new { @id = "savePickForm" + Model.PickWeek.Number.ToString() } ))
 {
     @Html.Hidden("week", Model.PickWeek.Number)
 
-        <table>
+        <table class="table table-condensed">
             <thead>
                 <tr>
                     <th style="width:20px;"></th>
@@ -117,13 +117,67 @@
         if (Model.ViewingPicksForCurrentUser && Model.GamesHaveStarted == false)
         { 
             <div>
-                <input type="reset" class="btn default" value="Reset Picks" />
-                <button type="button" class="btn primary" onclick="postForm()">Save</button>   
+                <input type="reset" class="btn btn-default" value="Reset Picks" />
+                <button type="button" class="btn btn-primary" onclick="javascript:postForm(@(Model.PickWeek.Number.ToString()))">Save</button>   
             </div>
         }
         
         <div id='hiddenError' style="display:none">
         
         </div>
-    
+ 
+        <script language="javascript" type="text/javascript">
+
+        $(function () {
+
+            $(".selectedCheckbox").change(function () {
+                checkboxEnable(this);
+            });
+
+            $(".pickList").change(function () {
+
+                var index = $(this).attr('data-rowid');
+
+                if (this.value == 2) {
+                    $("#overUnderPick" + index).removeAttr('disabled');
+                } else {
+                    $("#overUnderPick" + index).attr('disabled', 'disabled');
+                }
+            });
+
+            checkboxEnable(null);
+
+        });
+
+        function checkboxEnable(checkboxClicked) {
+            if ($(".selectedCheckbox:checked").length == 3) {
+
+                $(".selectedCheckbox:not(:checked)").each(function () {
+                    $(this).parent().parent().find('*').attr('disabled', 'disabled')
+                });
+            }
+            else {
+                $(".selectedCheckbox:not(:checked)").each(function () {
+                    $(this).parent().parent().find('*').removeAttr('disabled');
+                    var index = $(this).attr('alt');
+                    $(".pickList[data-rowid=" + index + "]").val(0);
+                });
+            }
+
+            if (checkboxClicked != null) {
+
+                var index = $(checkboxClicked).attr('alt');
+
+                if (checkboxClicked.checked) {
+                    $("[data-rowid=" + index + "][value='0']").attr("checked", "checked");
+                } else {
+                    $(".pickList[data-rowid=" + index + "]").val(0);
+                }
+            }
+        }
+
+        function enableAll() {
+            $(":disabled").removeAttr("disabled");
+        }
+    </script>
 }

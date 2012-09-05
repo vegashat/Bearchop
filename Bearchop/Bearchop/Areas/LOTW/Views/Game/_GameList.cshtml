@@ -1,7 +1,4 @@
-
-﻿@model Bearchop.Areas.LOTW.Web.ViewModels.GamesViewModel
-
-
+@model Bearchop.Areas.LOTW.Web.ViewModels.GamesViewModel
 @{
     bool includesFinalizedGames = Model.Games.Any(game => game.Finalized == true);
 
@@ -11,9 +8,8 @@
         columnCount += 3;
     }
 }
-
     <h3>Games for Week @Model.CurrentWeek.Number</h3>
-    <table class="gameList">
+    <table class="gameList table ">
     <thead>
         <tr>
             <th>Week</th>
@@ -51,7 +47,7 @@
             @if (Model.CurrentUser.IsAdmin)
             { 
                 <td>
-                    <button class="button btn info" onclick="edit(@(game.Id))">Edit</button>
+                    <button class="button btn btn-info" onclick="edit(@(game.Id))">Edit</button>
                 </td>
             }
         </tr>

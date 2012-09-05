@@ -7,7 +7,13 @@
     <link href="@Url.Content("~/Content/ui.jqgrid.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
      <link href="@Url.Content("~/Content/bootstrap-responsive.min.css")" rel="stylesheet" type="text/css" />
+        
+    <script src="~/Scripts/jquery.min.js"    type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap.min.js"    type="text/javascript"></script>
+    <script src="~/Scripts/jquery-ui.custom.min.js"    type="text/javascript"></script>
+    <script src="~/Scripts/grid.locale-en.js"    type="text/javascript"></script>
 
+    <script src="~/Scripts/jquery.jqGrid.min.js"    type="text/javascript"></script>
 </head>
 
 <body>
@@ -33,9 +39,7 @@
     </div>
 
     <div class="container">
-        <div class="content">
-            @RenderBody()
-        </div>        
+        <div class="content">@RenderBody()</div>        
         <footer>
           <p class="pull-right">
             <a href="#">Back to top</a></p>
@@ -43,12 +47,7 @@
         </footer>
     </div>
 </body>
-    <script src="~/Scripts/jquery.min.js"    type="text/javascript"></script>
-    <script src="~/Scripts/bootstrap.min.js"    type="text/javascript"></script>
-    <script src="~/Scripts/jquery-ui.custom.min.js"    type="text/javascript"></script>
-    <script src="~/Scripts/grid.locale-en.js"    type="text/javascript"></script>
 
-    <script src="~/Scripts/jquery.jqGrid.min.js"    type="text/javascript"></script>
     
     @RenderSection("javascript", false)
 </html>

@@ -28,13 +28,12 @@ E:\Bearchop\Bearchop\RandomOrg\bin\Debug\RandomOrg.pdb
 E:\Bearchop\Bearchop\RandomOrg\obj\Debug\ResolveAssemblyReference.cache
 E:\Bearchop\Bearchop\RandomOrg\obj\Debug\RandomOrg.dll
 E:\Bearchop\Bearchop\RandomOrg\obj\Debug\RandomOrg.pdb
-C:\git\Bearchop\Bearchop\RandomOrg\bin\Debug\RandomOrg.dll
-C:\git\Bearchop\Bearchop\RandomOrg\bin\Debug\RandomOrg.pdb
-C:\git\Bearchop\Bearchop\RandomOrg\obj\Debug\ResolveAssemblyReference.cache
-C:\git\Bearchop\Bearchop\RandomOrg\obj\Debug\RandomOrg.dll
-C:\git\Bearchop\Bearchop\RandomOrg\obj\Debug\RandomOrg.pdb
 C:\_git\Bearchop\Bearchop\RandomOrg\bin\Debug\RandomOrg.dll
 C:\_git\Bearchop\Bearchop\RandomOrg\bin\Debug\RandomOrg.pdb
 C:\_git\Bearchop\Bearchop\RandomOrg\obj\Debug\RandomOrg.csprojResolveAssemblyReference.cache
 C:\_git\Bearchop\Bearchop\RandomOrg\obj\Debug\RandomOrg.dll
 C:\_git\Bearchop\Bearchop\RandomOrg\obj\Debug\RandomOrg.pdb
+C:\git\Bearchop\Bearchop\RandomOrg\bin\Debug\RandomOrg.dll
+C:\git\Bearchop\Bearchop\RandomOrg\bin\Debug\RandomOrg.pdb
+C:\git\Bearchop\Bearchop\RandomOrg\obj\Debug\RandomOrg.dll
+C:\git\Bearchop\Bearchop\RandomOrg\obj\Debug\RandomOrg.pdb

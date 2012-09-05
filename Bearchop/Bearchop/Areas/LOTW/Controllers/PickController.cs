@@ -105,7 +105,7 @@ namespace Bearchop.Areas.LOTW.Web.Controllers
                         }
                     }
 
-                    Email(selectedPicks);
+                    //Email(selectedPicks);
                 }
 
                 var result = new { Success = true };
@@ -125,8 +125,8 @@ namespace Bearchop.Areas.LOTW.Web.Controllers
        
         private void Email(IEnumerable<Pick> picks)
         {
-            var message = new MailMessage("vegashat@bearchop.com", BearchopSession.Current.CurrentUser.Email);
-            message.CC.Add("vegashat@bearchop.com");
+            var message = new MailMessage("vegashat@willnette", BearchopSession.Current.CurrentUser.Email);
+            message.CC.Add("vegashat@willnette.com");
 
             StringBuilder sb = new StringBuilder();
 
@@ -152,14 +152,15 @@ namespace Bearchop.Areas.LOTW.Web.Controllers
             sb.AppendLine("</table>");
 
             var client = new SmtpClient();
+            
             client.Send(message);
         }
 
         private void Email(Exception ex)
         {
 
-            var message = new MailMessage("vegashat@bearchop.com", BearchopSession.Current.CurrentUser.Email);
-            message.CC.Add("vegashat@bearchop.com");
+            var message = new MailMessage("vegashat@willnette.com", BearchopSession.Current.CurrentUser.Email);
+            message.CC.Add("vegashat@willnette.com");
 
             message.Body = "Error saving picks \r\n";
             message.Body += ex.ToString();
