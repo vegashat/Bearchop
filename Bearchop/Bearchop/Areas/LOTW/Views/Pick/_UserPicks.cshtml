@@ -66,8 +66,8 @@
                             </select>
                         </td>
                         <td>
-                            <span><input type="checkbox" class="ouCheck" name="[@(rowId)].HasOverUnder" @Html.Raw(pick.HasOverUnder ? "checked='checked'" : string.Empty)) data-rowid="@rowId" />Over/Under</span>
-                            <select id="overUnderPick@(rowId)" class="ouPick" name="[@(rowId)].OverUnder" @Html.Raw(pick.HasOverUnder ? string.Empty : "disabled='disabled'") data-rowid="@rowId">
+                            <span><input type="checkbox" class="ouCheck" name="[@(rowId)].HasOverUnder" @Html.Raw((pick != null && pick.HasOverUnder) ? "checked='checked'" : string.Empty)) data-rowid="@rowId" />Over/Under</span>
+                            <select id="overUnderPick@(rowId)" class="ouPick" name="[@(rowId)].OverUnder" @Html.Raw((pick != null && pick.HasOverUnder) ? string.Empty : "disabled='disabled'") data-rowid="@rowId">
                                 <option value="0" @Html.Raw((pick != null && (int)pick.OverUnder == 0) ? "selected='selected'" : string.Empty)>Over</option>
                                 <option value="1" @Html.Raw((pick != null && (int)pick.OverUnder == 1) ? "selected='selected'" : string.Empty)>Under</option>
                             </select>
