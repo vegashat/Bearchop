@@ -10,8 +10,7 @@ namespace Contests.LOTW.Core.Model
     public enum PickType
     {        
         StraightUp = 0,
-        AgainstTheSpread = 1,
-        ATSOverUnder = 2
+        AgainstTheSpread = 1
     }
 
     public class Pick
@@ -22,6 +21,7 @@ namespace Contests.LOTW.Core.Model
         public int GameId { get; set; }
         public string Team { get; set; }
         public int TypeValue { get; set; }
+        public bool HasOverUnder { get; set; }
 
         [NotMapped]
         public PickType Type

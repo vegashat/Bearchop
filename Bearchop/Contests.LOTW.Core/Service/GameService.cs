@@ -74,37 +74,19 @@ namespace Contests.LOTW.Core.Service
                                 pick.Points = 2;
                             }
                         }
-                        else if (pick.Type == PickType.ATSOverUnder)
+
+                        if (pick.HasOverUnder)
                         {
-                            if (pick.Team == game.WinningTeamATS)
+                            if (pick.OverUnder == game.OverUnderResult && game.OverUnderResult != OverUnder.Push)
                             {
-                                pick.Points = 6;
-
-                                if (pick.OverUnder == game.OverUnderResult)
-                                {
-                                    pick.Points = 8;
-                                }
-
-                                if (game.OverUnderResult == OverUnder.Push)
-                                {
-                                    pick.Points = 7;
-                                }
+                                pick.Points *= 2;
                             }
-                            else if (game.WinningTeamATS == "PUSH")
+                            else
                             {
-                                pick.Points = 2;
-
-                                if (pick.OverUnder == game.OverUnderResult)
-                                {
-                                    pick.Points = 4;
-                                }
-
-                                if (game.OverUnderResult == OverUnder.Push)
-                                {
-                                    pick.Points = 3;
-                                }
+                                pick.Points /= 2;
                             }
                         }
+
                     }
 
                     _context.SaveChanges();

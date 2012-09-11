@@ -66,7 +66,8 @@
                             </select>
                         </td>
                         <td>
-                            <select id="overUnderPick@(rowId)" class="ouPick" name="[@(rowId)].OverUnder" @Html.Raw((pick != null && (int)pick.Type == 2) ? string.Empty : "disabled='disabled'") data-rowid="@rowId">
+                            <span><input type="checkbox" class="ouCheck" name="[@(rowId)].HasOverUnder" @Html.Raw(pick.HasOverUnder ? "checked='checked'" : string.Empty)) data-rowid="@rowId" />Over/Under</span>
+                            <select id="overUnderPick@(rowId)" class="ouPick" name="[@(rowId)].OverUnder" @Html.Raw(pick.HasOverUnder ? string.Empty : "disabled='disabled'") data-rowid="@rowId">
                                 <option value="0" @Html.Raw((pick != null && (int)pick.OverUnder == 0) ? "selected='selected'" : string.Empty)>Over</option>
                                 <option value="1" @Html.Raw((pick != null && (int)pick.OverUnder == 1) ? "selected='selected'" : string.Empty)>Under</option>
                             </select>
@@ -134,11 +135,11 @@
                 checkboxEnable(this);
             });
 
-            $(".pickList").change(function () {
+            $(".ouCheck").change(function () {
 
                 var index = $(this).attr('data-rowid');
 
-                if (this.value == 2) {
+                if (this.checked = true) {
                     $("#overUnderPick" + index).removeAttr('disabled');
                 } else {
                     $("#overUnderPick" + index).attr('disabled', 'disabled');

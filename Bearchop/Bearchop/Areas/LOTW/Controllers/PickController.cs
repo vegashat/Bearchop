@@ -139,15 +139,14 @@ namespace Bearchop.Areas.LOTW.Web.Controllers
                 var game = _gameService.GetGame(pick.GameId);
                 string pickName = pick.Team;
                 string againstName = (pick.Team == game.HomeTeam ? game.AwayTeam : game.HomeTeam);
-                bool pickedOU = pick.Type == PickType.ATSOverUnder;
                 string ouDesc = string.Empty;
 
-                if(pickedOU)
+                if(pick.HasOverUnder)
                 {
                     ouDesc = pick.OverUnder.ToString();
                 }
 
-                sb.AppendLine(string.Format(PICK_FORMAT, pickName, againstName, game.Favorite, game.Spread, pickedOU.ToString(), ouDesc));
+                sb.AppendLine(string.Format(PICK_FORMAT, pickName, againstName, game.Favorite, game.Spread, pick.HasOverUnder.ToString(), ouDesc));
             }
             sb.AppendLine("</table>");
 
