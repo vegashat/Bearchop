@@ -25,14 +25,12 @@
 <div id="scoring">
     <ul style="list-style-type: none">
         <li>Scoring Rules</li>
-        <li><span class="rule">Straight-Up (Favorite)</span><span class="points">3 Points</span></li>
-        <li><span class="rule">Straight-Up (Underdog)</span><span class="points">3 Points +
+        <li><span class="rule span3">Straight-Up (Favorite)</span><span class="points">3 Points</span></li>
+        <li><span class="rule span3">Straight-Up (Underdog)</span><span class="points">3 Points +
             Spread</span></li>
-        <li><span class="rule">Against The Spread</span><span class="points">7 Points</span></li>
-        <li><span class="rule">Against The Spread (Push)</span><span class="points">2 Points</span></li>
-        <li><span class="rule">Against The Spread + Over/Under (Both Right)</span><span class="points">8
-            Points </span></li>
-        <li><span class="rule">Over/Under</span><span class="points">Winning Doubles Points, Losing Halves Points, Push has no effect</span>
+        <li><span class="rule span3">Against The Spread</span><span class="points">7 Points</span></li>
+        <li><span class="rule span3">Against The Spread (Push)</span><span class="points">2 Points</span></li>
+        <li><span class="rule span3">Picking Over/Under</span><span class="points">Winning Doubles Points, Losing Halves Points, Push has no effect</span>
     </ul>
 </div>
 
@@ -46,6 +44,9 @@
         var tabs = $("#pick-tabs").tab();
 		
         $('#link' + currentTab).tab('show');
+
+        
+        checkboxEnable(null);
     });
 
     function resetForm(week)

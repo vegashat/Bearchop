@@ -138,7 +138,7 @@ textarea
 	width : 65px !important;
 }
 
-.teamPick
+.teamPick, .pickList
 {
     width : 150px !important;
 }
