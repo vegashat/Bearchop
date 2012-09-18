@@ -27,6 +27,7 @@ namespace Bearchop
                 new { controller = "menu", action = "index" } // Parameter defaults
             );
 
+
         }
 
         protected void Application_Start()

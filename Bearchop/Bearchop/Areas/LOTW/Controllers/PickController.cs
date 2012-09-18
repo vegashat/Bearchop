@@ -81,7 +81,7 @@ namespace Bearchop.Areas.LOTW.Web.Controllers
         {
             try
             {
-                int userId = BearchopSession.Current.CurrentUser.UserID;
+                 int userId = BearchopSession.Current.CurrentUser.UserID;
 
                 if (week == _weekService.GetWeek().Number)
                 {

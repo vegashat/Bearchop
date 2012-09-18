@@ -83,7 +83,7 @@
             width: 'auto',
             open: function () 
             {
-                $("#hiddenEditFormContainer").load("@Url.Action("add", "game")");
+                $("#hiddenEditFormContainer").load("@Url.Action("add", "game",new { area = "LOTW" })" + "?id=");
             }
         };
         $("#hiddenEditFormContainer").dialog(dialogOpts);    
@@ -108,7 +108,7 @@
             width: 'auto',
             open: function () 
             {
-                $("#hiddenEditFormContainer").load("@Url.Action("add","game")" + "/" + gameId);
+                $("#hiddenEditFormContainer").load("@Url.Action("add","game",new { area = "LOTW" })" + "?id=" + gameId);
             }
         };
         $("#hiddenEditFormContainer").dialog(dialogOpts); 
