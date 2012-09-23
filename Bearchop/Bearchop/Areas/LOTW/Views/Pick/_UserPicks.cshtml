@@ -93,7 +93,12 @@
                             <td>@game.OverUnder</td>
                             <td>@pick.Team</td>
                             <td>@pick.Type.ToString()</td>
-                            <td>@pick.OverUnder.ToString()</td>
+                            
+                            <td>@if(pick.HasOverUnder)
+                                {
+                                    @Html.Raw(pick.OverUnder.ToString())
+                                }
+                            </td>
                             <td>@pick.Points</td>
                         </tr>
                     }

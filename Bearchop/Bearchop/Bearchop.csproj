@@ -62,6 +62,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="Mvc.Mailer">
+      <HintPath>..\packages\MvcMailer.1.1\lib\40\Mvc.Mailer.dll</HintPath>
+    </Reference>
     <Reference Include="NuGet.Core, Version=1.6.30117.9648, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\NuGet.Core.1.6.2\lib\net40\NuGet.Core.dll</HintPath>
@@ -158,6 +161,8 @@
     <Compile Include="Areas\NCAAF\jqGrid\PagingLinqExtensions.cs" />
     <Compile Include="Areas\NCAAF\jqGrid\Rule.cs" />
     <Compile Include="Areas\NCAAF\NCAAFAreaRegistration.cs" />
+    <Compile Include="Mailers\IUserMailer.cs" />
+    <Compile Include="Mailers\UserMailer.cs" />
     <Compile Include="Models\BearchopMailer.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -201,6 +206,7 @@
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="InstallationDummyFile.txt" />
     <Content Include="Packages\Dynamic.dll" />
     <Content Include="Packages\Dynamic.pdb" />
     <Content Include="Scripts\bootstrap.min.js" />
