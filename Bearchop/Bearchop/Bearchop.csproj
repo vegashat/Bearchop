@@ -170,18 +170,6 @@
     <Compile Include="ViewModels\MessageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\JeauxDB.mdf" />
-    <Content Include="App_Data\JeauxDB_log.ldf">
-      <DependentUpon>JeauxDB.mdf</DependentUpon>
-    </Content>
-    <Content Include="App_Data\LOTW.mdf" />
-    <Content Include="App_Data\LOTW_log.ldf">
-      <DependentUpon>LOTW.mdf</DependentUpon>
-    </Content>
-    <Content Include="App_Data\NCAAF.mdf" />
-    <Content Include="App_Data\NCAAF_log.ldf">
-      <DependentUpon>NCAAF.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
@@ -226,6 +214,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Areas\LOTW\Models\" />
     <Folder Include="Areas\NCAAF\Models\" />
     <Folder Include="Areas\NCAAF\ViewModels\" />
@@ -296,6 +285,7 @@
     <Content Include="Areas\NCAAF\Views\Shared\_ncaafLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\dp.pubxml" />
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
   </ItemGroup>
   <PropertyGroup>
