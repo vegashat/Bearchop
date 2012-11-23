@@ -16,13 +16,13 @@
     <div class="tab-content">
         @foreach (var week in Model.Weeks.Where(w => w.Number <= Model.CurrentWeek.Number))
         {
-            <div class="tab-pane" id="week@(week.Number)">
+            <div class="tab-pane week-pane" id="week@(week.Number)">
                 @Html.Action("userpicks","pick",new {week=week.Number,userId=Model.UserId})
             </div>
         }
     </div>
 </div>
-<div id="scoring">
+<div id="scoring" class="hide">
     <ul style="list-style-type: none">
         <li>Scoring Rules</li>
         <li><span class="rule span3">Straight-Up (Favorite)</span><span class="points">3 Points</span></li>

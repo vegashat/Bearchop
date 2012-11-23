@@ -67,26 +67,17 @@
         }
     </div>
     }
-    <div id="hiddenEditFormContainer" style="display:none">
-
+    <div id="hiddenEditFormContainer" class="modal hide fade">
+        
     </div>
     
+    
+
 <script language="javascript" type="text/javascript">
 
     $(function () {
 
-        var dialogOpts = {
-            title: "Add Game",
-            modal: true,
-            autoOpen: false,
-            height: 'auto',
-            width: 'auto',
-            open: function () 
-            {
-                $("#hiddenEditFormContainer").load("@Url.Action("add", "game",new { area = "LOTW" })" + "?id=");
-            }
-        };
-        $("#hiddenEditFormContainer").dialog(dialogOpts);    
+
 
     });
 
@@ -98,26 +89,26 @@
 
     function edit(gameId)
     {
-        $("#hiddenEditFormContainer").empty();
+        var url = "@Url.Action("add", "game",new { area = "LOTW" })" + "?id=" +gameId;
 
-        var dialogOpts = {
-            title: "Add Game",
-            modal: true,
-            autoOpen: false,
-            height: 'auto',
-            width: 'auto',
-            open: function () 
+        $.ajax(
+        {
+            type: 'POST',
+            url: url,
+            success: function(result)
             {
-                $("#hiddenEditFormContainer").load("@Url.Action("add","game",new { area = "LOTW" })" + "?id=" + gameId);
-            }
-        };
-        $("#hiddenEditFormContainer").dialog(dialogOpts); 
-        $("#hiddenEditFormContainer").dialog("open");
+                $("#hiddenEditFormContainer").empty();
+                $("#hiddenEditFormContainer").append(result); 
+                
+                $("#hiddenEditFormContainer").modal();
+            },
+            dataType: "html"
+        });
     }
     
     function cancel()
     {
-        $("#hiddenEditFormContainer").dialog("close");
+        $("#hiddenEditFormContainer").modal("hide");
     }
 
     function save()

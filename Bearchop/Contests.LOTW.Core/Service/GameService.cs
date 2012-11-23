@@ -61,6 +61,7 @@ namespace Contests.LOTW.Core.Service
 
                             if (pick.Team != game.Favorite && pick.Team == game.WinningTeam)
                             {
+                                pick.Points += 2; //5 points for straight up underdog pick
                                 pick.Points += Math.Abs(game.HomeTeamSpread);
                             }
                         }
@@ -83,7 +84,7 @@ namespace Contests.LOTW.Core.Service
                             }
                             else
                             {
-                                pick.Points /= 2;
+                                pick.Points = 0;
                             }
                         }
 

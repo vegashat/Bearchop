@@ -98,3 +98,4 @@ c:\_git\bearchop\bearchop\Bearchop\bin\WebMatrix.WebData.xml
 c:\_git\bearchop\bearchop\Bearchop\obj\Debug\Bearchop.csprojResolveAssemblyReference.cache
 c:\_git\bearchop\bearchop\Bearchop\obj\Debug\Bearchop.dll
 c:\_git\bearchop\bearchop\Bearchop\obj\Debug\Bearchop.pdb
+c:\_git\Bearchop\Bearchop\Bearchop\bin\Mvc.Mailer.dll

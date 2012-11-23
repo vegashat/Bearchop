@@ -58,6 +58,6 @@ c:\_git\bearchop\bearchop\Contests.NCAAF.Core\bin\Debug\Contests.NCAAF.Core.dll
 c:\_git\bearchop\bearchop\Contests.NCAAF.Core\bin\Debug\Contests.NCAAF.Core.pdb
 c:\_git\bearchop\bearchop\Contests.NCAAF.Core\bin\Debug\EntityFramework.dll
 c:\_git\bearchop\bearchop\Contests.NCAAF.Core\bin\Debug\EntityFramework.xml
-c:\_git\bearchop\bearchop\Contests.NCAAF.Core\obj\Debug\Contests.NCAAF.Core.csprojResolveAssemblyReference.cache
 c:\_git\bearchop\bearchop\Contests.NCAAF.Core\obj\Debug\Contests.NCAAF.Core.dll
 c:\_git\bearchop\bearchop\Contests.NCAAF.Core\obj\Debug\Contests.NCAAF.Core.pdb
+C:\_git\Bearchop\Bearchop\Contests.NCAAF.Core\obj\Debug\Contests.NCAAF.Core.csprojResolveAssemblyReference.cache

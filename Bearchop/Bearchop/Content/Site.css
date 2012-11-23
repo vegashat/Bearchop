@@ -142,3 +142,11 @@ textarea
 {
     width : 150px !important;
 }
+
+.week-pane {
+    height : 350px;
+}
+
+.rankings {
+    width : 185px;
+}
