@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{36727F25-76E6-4CB1-BCDB-1760CE4949E1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bearchop.Core</RootNamespace>
+    <AssemblyName>Bearchop.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\AUDIT_LOG.cs" />
+    <Compile Include="Models\BASEBALL.cs" />
+    <Compile Include="Models\BIG12.cs" />
+    <Compile Include="Models\BIG12_PICKS.cs" />
+    <Compile Include="Models\BIG12_SCHEDULE.cs" />
+    <Compile Include="Models\BOWL.cs" />
+    <Compile Include="Models\BOWL_PICKS.cs" />
+    <Compile Include="Models\COLFOOT.cs" />
+    <Compile Include="Models\COLFOOT_RESULTS.cs" />
+    <Compile Include="Models\COLFOOT_TEAM.cs" />
+    <Compile Include="Models\CollegeFootbalTeam.cs" />
+    <Compile Include="Models\COLFOOT_TRADE.cs" />
+    <Compile Include="Models\COLFOOT_WEEK.cs" />
+    <Compile Include="Models\CONTEST.cs" />
+    <Compile Include="Models\EMAIL.cs" />
+    <Compile Include="Models\ERRORLOG.cs" />
+    <Compile Include="Models\GALLERY.cs" />
+    <Compile Include="Models\GOLFER.cs" />
+    <Compile Include="Models\GOLF_LINEUP.cs" />
+    <Compile Include="Models\GOLF_MAJOR.cs" />
+    <Compile Include="Models\GOLF_SCORE.cs" />
+    <Compile Include="Models\HIT.cs" />
+    <Compile Include="Models\JeauxDBContext.cs" />
+    <Compile Include="Models\JEVENT.cs" />
+    <Compile Include="Models\JFRIEND.cs" />
+    <Compile Include="Models\JISSUE.cs" />
+    <Compile Include="Models\JTAG.cs" />
+    <Compile Include="Models\JUSER.cs" />
+    <Compile Include="Models\LOYALTY.cs" />
+    <Compile Include="Models\Mapping\AUDIT_LOGMap.cs" />
+    <Compile Include="Models\Mapping\BASEBALLMap.cs" />
+    <Compile Include="Models\Mapping\BIG12Map.cs" />
+    <Compile Include="Models\Mapping\BIG12_PICKSMap.cs" />
+    <Compile Include="Models\Mapping\BIG12_SCHEDULEMap.cs" />
+    <Compile Include="Models\Mapping\BOWLMap.cs" />
+    <Compile Include="Models\Mapping\BOWL_PICKSMap.cs" />
+    <Compile Include="Models\Mapping\COLFOOTMap.cs" />
+    <Compile Include="Models\Mapping\COLFOOT_RESULTSMap.cs" />
+    <Compile Include="Models\Mapping\COLFOOT_TEAMMap.cs" />
+    <Compile Include="Models\Mapping\COLFOOT_TRADEMap.cs" />
+    <Compile Include="Models\Mapping\COLFOOT_WEEKMap.cs" />
+    <Compile Include="Models\Mapping\CONTESTMap.cs" />
+    <Compile Include="Models\Mapping\EMAILMap.cs" />
+    <Compile Include="Models\Mapping\ERRORLOGMap.cs" />
+    <Compile Include="Models\Mapping\GALLERYMap.cs" />
+    <Compile Include="Models\Mapping\GOLFERMap.cs" />
+    <Compile Include="Models\Mapping\GOLF_LINEUPMap.cs" />
+    <Compile Include="Models\Mapping\GOLF_MAJORMap.cs" />
+    <Compile Include="Models\Mapping\GOLF_SCOREMap.cs" />
+    <Compile Include="Models\Mapping\HITMap.cs" />
+    <Compile Include="Models\Mapping\JEVENTMap.cs" />
+    <Compile Include="Models\Mapping\JFRIENDMap.cs" />
+    <Compile Include="Models\Mapping\JISSUEMap.cs" />
+    <Compile Include="Models\Mapping\JTAGMap.cs" />
+    <Compile Include="Models\Mapping\JUSERMap.cs" />
+    <Compile Include="Models\Mapping\LOYALTYMap.cs" />
+    <Compile Include="Models\Mapping\MSreplication_optionsMap.cs" />
+    <Compile Include="Models\Mapping\NAMap.cs" />
+    <Compile Include="Models\Mapping\NAS_TEAMMap.cs" />
+    <Compile Include="Models\Mapping\NB12_PICKMap.cs" />
+    <Compile Include="Models\Mapping\NB12_PLAYERMap.cs" />
+    <Compile Include="Models\Mapping\NB12_SCHEDULEMap.cs" />
+    <Compile Include="Models\Mapping\NB12_SCORESMap.cs" />
+    <Compile Include="Models\Mapping\NB12_TRADEMap.cs" />
+    <Compile Include="Models\Mapping\NBA_GAMEMap.cs" />
+    <Compile Include="Models\Mapping\NBA_PICKMap.cs" />
+    <Compile Include="Models\Mapping\NCAAFootballScheduleMap.cs" />
+    <Compile Include="Models\Mapping\NCAAFootballTeamMap.cs" />
+    <Compile Include="Models\Mapping\NCAAFootballWeekMap.cs" />
+    <Compile Include="Models\Mapping\NCAA_GAMEMap.cs" />
+    <Compile Include="Models\Mapping\NCAA_PICKMap.cs" />
+    <Compile Include="Models\Mapping\NCAA_PLAYERMap.cs" />
+    <Compile Include="Models\Mapping\NCAA_PODMap.cs" />
+    <Compile Include="Models\Mapping\NCAA_TEAMMap.cs" />
+    <Compile Include="Models\Mapping\NPGAMEMap.cs" />
+    <Compile Include="Models\Mapping\NPPICKMap.cs" />
+    <Compile Include="Models\Mapping\NPROUNDMap.cs" />
+    <Compile Include="Models\Mapping\NPSERyMap.cs" />
+    <Compile Include="Models\Mapping\NPStandingMap.cs" />
+    <Compile Include="Models\Mapping\NPTEAMMap.cs" />
+    <Compile Include="Models\Mapping\REF_CONTESTMap.cs" />
+    <Compile Include="Models\Mapping\RESUMEMap.cs" />
+    <Compile Include="Models\Mapping\REVIEWMap.cs" />
+    <Compile Include="Models\Mapping\spt_fallback_dbMap.cs" />
+    <Compile Include="Models\Mapping\spt_fallback_devMap.cs" />
+    <Compile Include="Models\Mapping\spt_fallback_usgMap.cs" />
+    <Compile Include="Models\Mapping\spt_monitorMap.cs" />
+    <Compile Include="Models\Mapping\spt_valuesMap.cs" />
+    <Compile Include="Models\Mapping\TWOTKMap.cs" />
+    <Compile Include="Models\Mapping\TWOTK_USERSMap.cs" />
+    <Compile Include="Models\Mapping\vw_COLFOOT_STANDINGSMap.cs" />
+    <Compile Include="Models\Mapping\vw_FRIENDSMap.cs" />
+    <Compile Include="Models\Mapping\vw_GOLFERMap.cs" />
+    <Compile Include="Models\Mapping\vw_GOLF_LEADERBOARDMap.cs" />
+    <Compile Include="Models\Mapping\vw_GOLF_LINEUPMap.cs" />
+    <Compile Include="Models\Mapping\vw_GOLF_MAJORMap.cs" />
+    <Compile Include="Models\Mapping\vw_GOLF_STANDINGSMap.cs" />
+    <Compile Include="Models\Mapping\vw_JINDEX2Map.cs" />
+    <Compile Include="Models\Mapping\vw_JINDEXMap.cs" />
+    <Compile Include="Models\Mapping\vw_JPOINTSMap.cs" />
+    <Compile Include="Models\Mapping\vw_NASMap.cs" />
+    <Compile Include="Models\Mapping\vw_NBA_CALENDARMap.cs" />
+    <Compile Include="Models\Mapping\vw_NBA_HOPPERMap.cs" />
+    <Compile Include="Models\Mapping\vw_scheduleMap.cs" />
+    <Compile Include="Models\Mapping\vw_team_away_weekly_scheduleMap.cs" />
+    <Compile Include="Models\Mapping\vw_team_home_weekly_scheduleMap.cs" />
+    <Compile Include="Models\Mapping\vw_team_weekly_scheduleMap.cs" />
+    <Compile Include="Models\Mapping\vw_user_scheduleMap.cs" />
+    <Compile Include="Models\Mapping\vw_user_weekly_scheduleMap.cs" />
+    <Compile Include="Models\masterContext.cs" />
+    <Compile Include="Models\MSreplication_options.cs" />
+    <Compile Include="Models\NA.cs" />
+    <Compile Include="Models\NAS_TEAM.cs" />
+    <Compile Include="Models\NB12_PICK.cs" />
+    <Compile Include="Models\NB12_PLAYER.cs" />
+    <Compile Include="Models\NB12_SCHEDULE.cs" />
+    <Compile Include="Models\NB12_SCORES.cs" />
+    <Compile Include="Models\NB12_TRADE.cs" />
+    <Compile Include="Models\NBA_GAME.cs" />
+    <Compile Include="Models\NBA_PICK.cs" />
+    <Compile Include="Models\NCAAFootballSchedule.cs" />
+    <Compile Include="Models\NCAAFootballTeam.cs" />
+    <Compile Include="Models\NCAAFootballWeek.cs" />
+    <Compile Include="Models\NCAA_GAME.cs" />
+    <Compile Include="Models\NCAA_PICK.cs" />
+    <Compile Include="Models\NCAA_PLAYER.cs" />
+    <Compile Include="Models\NCAA_POD.cs" />
+    <Compile Include="Models\NCAA_TEAM.cs" />
+    <Compile Include="Models\NPGAME.cs" />
+    <Compile Include="Models\NPPICK.cs" />
+    <Compile Include="Models\NPROUND.cs" />
+    <Compile Include="Models\NPSERy.cs" />
+    <Compile Include="Models\NPStanding.cs" />
+    <Compile Include="Models\NPTEAM.cs" />
+    <Compile Include="Models\REF_CONTEST.cs" />
+    <Compile Include="Models\RESUME.cs" />
+    <Compile Include="Models\REVIEW.cs" />
+    <Compile Include="Models\spt_fallback_db.cs" />
+    <Compile Include="Models\spt_fallback_dev.cs" />
+    <Compile Include="Models\spt_fallback_usg.cs" />
+    <Compile Include="Models\spt_monitor.cs" />
+    <Compile Include="Models\spt_values.cs" />
+    <Compile Include="Models\TWOTK.cs" />
+    <Compile Include="Models\TWOTK_USERS.cs" />
+    <Compile Include="Models\UserTeamStatus.cs" />
+    <Compile Include="Models\vw_COLFOOT_STANDINGS.cs" />
+    <Compile Include="Models\vw_FRIENDS.cs" />
+    <Compile Include="Models\vw_GOLFER.cs" />
+    <Compile Include="Models\vw_GOLF_LEADERBOARD.cs" />
+    <Compile Include="Models\vw_GOLF_LINEUP.cs" />
+    <Compile Include="Models\vw_GOLF_MAJOR.cs" />
+    <Compile Include="Models\vw_GOLF_STANDINGS.cs" />
+    <Compile Include="Models\vw_JINDEX.cs" />
+    <Compile Include="Models\vw_JINDEX2.cs" />
+    <Compile Include="Models\vw_JPOINTS.cs" />
+    <Compile Include="Models\vw_NAS.cs" />
+    <Compile Include="Models\vw_NBA_CALENDAR.cs" />
+    <Compile Include="Models\vw_NBA_HOPPER.cs" />
+    <Compile Include="Models\vw_schedule.cs" />
+    <Compile Include="Models\vw_team_away_weekly_schedule.cs" />
+    <Compile Include="Models\vw_team_home_weekly_schedule.cs" />
+    <Compile Include="Models\TeamWeeklySchedule.cs" />
+    <Compile Include="Models\UserSchedule.cs" />
+    <Compile Include="Models\UserWeeklySchedule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ScheduleService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
