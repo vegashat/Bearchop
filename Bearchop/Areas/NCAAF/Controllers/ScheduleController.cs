@@ -19,7 +19,7 @@ namespace Bearchop.Areas.NCAAF.Controllers
         //
         // GET: /NCAAF/Schedule/
 
-        public ActionResult Index()
+        public ActionResult UserSchedule()
         {
             return View();
         }   

@@ -78,7 +78,7 @@ namespace Bearchop.Core.Services
             {
                 if (!team.SharedByWeekTeamIds.Contains(new KeyValuePair<int,int>(weekNumber, byeWeekTeam.TeamId)))
                 {
-                    team.SharedByWeekTeamIds.Add(weekNumber, byeWeekTeam.TeamId);
+                    //team.SharedByWeekTeamIds.Add(weekNumber, byeWeekTeam.TeamId);
                 }
             }
         }

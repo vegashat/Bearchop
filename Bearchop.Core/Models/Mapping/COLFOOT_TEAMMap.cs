@@ -33,7 +33,7 @@ namespace Bearchop.Core.Models.Mapping
             this.Property(t => t.Points).HasColumnName("Points");
             this.Property(t => t.OwnedBy).HasColumnName("OwnedBy");
             this.Property(t => t.RealValue).HasColumnName("RealValue");
-            this.Property(t => t.IsSelectable).HasColumnName("IsSelectable");
+            //this.Property(t => t.IsSelectable).HasColumnName("IsSelectable");
         }
     }
 }

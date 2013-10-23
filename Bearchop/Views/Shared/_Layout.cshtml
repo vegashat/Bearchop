@@ -36,37 +36,56 @@
 </head>
 <body>
     <header>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
-            </div>
-            <div class="float-right">
-                <section id="login">
-                    @Html.Partial("_LoginPartial")
-                </section>
-                <nav>
-                    <ul id="menu">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a href="#" class="brand">
+                        <i class="icon-leaf"></i>
+                        Bearchop
+                    </a>
+                    @Html.ActionLink("Home", "Index", "Home")
+
+                    <ul class="nav ace-nav pull-right">
+                        @*<li class="grey">
+                            <a href="@Url.Action("index","schedule",new{area="ncaaf"})" data-toggle="dropdown" class="dropdown-toggle">
+                                <i class="icon-tasks"></i>
+                            </a>
+                        </li>*@
                     </ul>
-                </nav>
+                </div>
             </div>
         </div>
     </header>
-    <div id="body">
+    <div class="main-container container-fluid" id="body">
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+						<button class="btn btn-small btn-success">
+							<a href="@Url.Action("userSchedule","schedule",new{area="ncaaf"})">
+                                <i class="icon-table"></i>
+                            </a>
+						</button>
+					</div>
+                <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+						<span class="btn btn-success"></span>
+					</div>
+            </div>
+        </div>
+
         @RenderSection("featured", required: false)
         <section class="content-wrapper main-content clear-fix">
             @RenderBody()
         </section>
-    </div>
-    <footer>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+        
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <!--basic scripts-->
 

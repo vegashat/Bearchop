@@ -21,7 +21,7 @@ namespace Bearchop.Core.Models
         public Nullable<short> Points { get; set; }
         public Nullable<short> OwnedBy { get; set; }
         public Nullable<decimal> RealValue { get; set; }
-        public Nullable<bool> IsSelectable { get; set; }
+        //public Nullable<bool> IsSelectable { get; set; }
         //public virtual ICollection<COLFOOT> COLFeet { get; set; }
         //public virtual ICollection<COLFOOT_RESULTS> COLFOOT_RESULTS { get; set; }
     }
