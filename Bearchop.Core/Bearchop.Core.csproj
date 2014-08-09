@@ -87,6 +87,7 @@
     <Compile Include="Models\Mapping\COLFOOT_WEEKMap.cs" />
     <Compile Include="Models\Mapping\CONTESTMap.cs" />
     <Compile Include="Models\Mapping\EMAILMap.cs" />
+    <Compile Include="Models\Mapping\EntityTypeConfiguration.cs" />
     <Compile Include="Models\Mapping\ERRORLOGMap.cs" />
     <Compile Include="Models\Mapping\GALLERYMap.cs" />
     <Compile Include="Models\Mapping\GOLFERMap.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Models\Mapping\spt_valuesMap.cs" />
     <Compile Include="Models\Mapping\TWOTKMap.cs" />
     <Compile Include="Models\Mapping\TWOTK_USERSMap.cs" />
+    <Compile Include="Models\Mapping\UserToNotifyMap.cs" />
     <Compile Include="Models\Mapping\vw_COLFOOT_STANDINGSMap.cs" />
     <Compile Include="Models\Mapping\vw_FRIENDSMap.cs" />
     <Compile Include="Models\Mapping\vw_GOLFERMap.cs" />
@@ -189,6 +191,7 @@
     <Compile Include="Models\TWOTK.cs" />
     <Compile Include="Models\TWOTK_USERS.cs" />
     <Compile Include="Models\UserTeamStatus.cs" />
+    <Compile Include="Models\UserToNotify.cs" />
     <Compile Include="Models\vw_COLFOOT_STANDINGS.cs" />
     <Compile Include="Models\vw_FRIENDS.cs" />
     <Compile Include="Models\vw_GOLFER.cs" />

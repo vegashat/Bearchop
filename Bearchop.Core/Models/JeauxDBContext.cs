@@ -92,6 +92,8 @@ namespace Bearchop.Core.Models
         public DbSet<UserSchedule> UserSchedule { get; set; }
         public DbSet<UserWeeklySchedule> UserWeeklySchedule { get; set; }
 
+        public DbSet<UserToNotify> UserToNotify { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new AUDIT_LOGMap());
@@ -168,6 +170,7 @@ namespace Bearchop.Core.Models
             modelBuilder.Configurations.Add(new TeamWeeklyScheduleMap());
             modelBuilder.Configurations.Add(new vw_user_scheduleMap());
             modelBuilder.Configurations.Add(new vw_user_weekly_scheduleMap());
+            modelBuilder.Configurations.Add(new UserToNotifyMap());
         }
     }
 }

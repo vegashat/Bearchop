@@ -107,6 +107,8 @@ namespace Bearchop.Core.Models.Mapping
             this.Property(t => t.LastUpdated).HasColumnName("LastUpdated");
             this.Property(t => t.FamilyID).HasColumnName("FamilyID");
             this.Property(t => t.Notify).HasColumnName("Notify");
+
+
         }
     }
 }

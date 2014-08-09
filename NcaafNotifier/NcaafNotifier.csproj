@@ -58,6 +58,10 @@
       <Project>{36727f25-76e6-4cb1-bcdb-1760ce4949e1}</Project>
       <Name>Bearchop.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bearchop.Util\Bearchop.Util.csproj">
+      <Project>{44225f46-74f5-4c68-a947-8674b754d652}</Project>
+      <Name>Bearchop.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

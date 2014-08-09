@@ -17,7 +17,7 @@ namespace NcaafNotifier
             var today = DateTime.Now;
             var scheduleService = new ScheduleService();
 
-            var usersToNotify = context.JUSERs.Where(u => u.Notify == true);
+            var usersToNotify = context.UserToNotify;
 
             int week = 1;
             if (args.Length == 1)
@@ -31,7 +31,7 @@ namespace NcaafNotifier
 
             foreach (var user in usersToNotify)
             {
-                var userSchedule = scheduleService.GetUserSchedule(user.UserID, week);
+                var userSchedule = scheduleService.GetUserSchedule(user.UserId, week);
 
                 StringBuilder byeWeekMessage = new StringBuilder();
 
@@ -60,8 +60,11 @@ namespace NcaafNotifier
                     }
                 }
 
+                Bearchop.Util.Mail.SendMail("Test Schedule", byeWeekMessage.ToString(), "vegashat@gmail.com");
+
                 Console.WriteLine(byeWeekMessage.ToString());
                 Console.ReadLine();
+
             }
         }
     }
