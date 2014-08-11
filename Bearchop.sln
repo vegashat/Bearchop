@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NcaafNotifier", "NcaafNotif
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONDownloader", "JSONDownloader\JSONDownloader.csproj", "{00A30401-00DE-4B87-83B0-0F0D65D0D641}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bearchop.LOTW.Core", "Bearchop.LOTW.Core\Bearchop.LOTW.Core.csproj", "{67086CDB-FE8A-47A2-BB15-BD521DACC1ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomOrg", "RandomOrg\RandomOrg.csproj", "{74124581-2AA6-4B29-A960-CF9C613FF86C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{00A30401-00DE-4B87-83B0-0F0D65D0D641}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00A30401-00DE-4B87-83B0-0F0D65D0D641}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00A30401-00DE-4B87-83B0-0F0D65D0D641}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67086CDB-FE8A-47A2-BB15-BD521DACC1ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67086CDB-FE8A-47A2-BB15-BD521DACC1ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67086CDB-FE8A-47A2-BB15-BD521DACC1ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67086CDB-FE8A-47A2-BB15-BD521DACC1ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74124581-2AA6-4B29-A960-CF9C613FF86C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74124581-2AA6-4B29-A960-CF9C613FF86C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74124581-2AA6-4B29-A960-CF9C613FF86C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74124581-2AA6-4B29-A960-CF9C613FF86C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
