@@ -1,0 +1,131 @@
+@model Bearchop.Areas.LOTW.Web.ViewModels.GamesViewModel
+@{
+    bool includesFinalizedGames = Model.Games.Any(game => game.Finalized == true);
+
+    int columnCount = 6;
+    if (includesFinalizedGames)
+    {
+        columnCount += 3;
+    }
+}
+    <h3>Games for Week @Model.CurrentWeek.Number</h3>
+    <table class="gameList table ">
+    <thead>
+        <tr>
+            <th>Week</th>
+            <th>Date</th>
+            <th>Home Team</th>
+            <th>Away Team</th>
+            <th>Spread</th>
+            <th>Over/Under</th>
+            @if (includesFinalizedGames)
+            {
+                <th>Final Score</th> 
+                <th>Home Team</th>
+                <th>Away Team</th>
+            }
+            <th>Action</th>
+        </tr>
+        
+    </thead>
+    <tbody>
+    @foreach (var game in Model.Games)
+    { 
+        <tr>
+            <td>@game.Week.Number</td>
+            <td>@game.Date.ToShortDateString()</td>
+            <td>@game.HomeTeam</td>
+            <td>@game.AwayTeam</td>
+            <td>@game.Spread</td>
+            <td>@game.OverUnder</td>
+            @if(includesFinalizedGames)
+            {
+                <td>@game.FinalScore</td>
+                <td>@game.HomeTeamScore</td>
+                <td>@game.AwayTeamScore</td>
+            }
+            @if (Model.CurrentUser.IsAdmin)
+            { 
+                <td>
+                    <button class="button btn btn-info" onclick="edit(@(game.Id))">Edit</button>
+                </td>
+            }
+        </tr>
+    }
+    </tbody>
+    <tfoot>    
+    </tfoot>
+    </table>
+    @if (Model.CurrentUser.IsAdmin)
+    {
+    <div>    
+        @using (Html.BeginForm("load", "game", FormMethod.Post))
+        {
+            @Html.Hidden("week", Model.CurrentWeek.Number)
+            <input class="button" type="submit" value="Load Games"  />                        
+            <button class="button" onclick="addGame()">Add Game</button>
+        }
+    </div>
+    }
+    <div id="hiddenEditFormContainer" class="modal hide fade">
+        
+    </div>
+    
+    
+
+<script language="javascript" type="text/javascript">
+
+    $(function () {
+
+
+
+    });
+
+    function addGame()
+    {
+        $("#hiddenEditFormContainer").empty();
+        $("#hiddenEditFormContainer").dialog("open");
+    }
+
+    function edit(gameId)
+    {
+        var url = "@Url.Action("add", "game",new { area = "LOTW" })" + "?id=" +gameId;
+
+        $.ajax(
+        {
+            type: 'POST',
+            url: url,
+            success: function(result)
+            {
+                $("#hiddenEditFormContainer").empty();
+                $("#hiddenEditFormContainer").append(result); 
+                
+                $("#hiddenEditFormContainer").modal();
+            },
+            dataType: "html"
+        });
+    }
+    
+    function cancel()
+    {
+        $("#hiddenEditFormContainer").modal("hide");
+    }
+
+    function save()
+    {
+        $.ajax({
+              type: 'POST',
+              url: $("#saveForm").attr("action"),
+              data: $("#saveForm").serialize(),
+              success: function(result)
+              {
+                $("#currentGamesContainer").empty();
+                $("#currentGamesContainer").append(result);                
+              },
+              dataType: "html"
+            });
+
+        $("#hiddenEditFormContainer").dialog("close");
+    }
+        
+</script>

@@ -1,0 +1,43 @@
+﻿@model Bearchop.Areas.LOTW.Web.ViewModels.PicksViewModel
+
+
+@{
+    ViewBag.Title = "Picks for Week " + Model.PickWeek.Number.ToString();
+}
+@Html.Partial("_UserPicks", Model)
+
+@section javascript
+{
+    <script type="text/javascript">
+
+    $(function () {
+
+        checkboxEnable(null);
+    });
+
+            function postForm(week) {
+
+        enableAll();
+
+        $.ajax({
+            type: 'POST',
+            url: $("#savePickForm" + week).attr("action"),
+            data: $("#savePickForm" + week).serialize(),
+            cache: false,
+            success: function (result) {
+
+                var resp = result;
+                if (resp.Success == true) {
+                    alert("Picks Saved");
+                } else {
+                    alert("Error Saving Picks.  Please Contact Bradley");
+                    $("#hiddenError").append(resp.Error);
+                }
+
+                checkboxEnable(null);
+            }
+        });
+    }
+    </script>
+
+}

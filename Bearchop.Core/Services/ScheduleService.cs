@@ -98,21 +98,21 @@ namespace Bearchop.Core.Services
 
         public int AddTeam(string teamName)
         {
-            var existingTeam = _jeauxContext.COLFOOT_TEAM.FirstOrDefault(t => t.Name == teamName);
+            var existingTeam = _jeauxContext.NCAAFootballTeams.FirstOrDefault(t => t.Name == teamName);
 
             if (existingTeam != null)
             {
-                if (_jeauxContext.NCAAFootballTeams.Count(t => t.TeamId == existingTeam.TeamID) == 0)
+                if (_jeauxContext.NCAAFootballTeams.Count(t => t.TeamId == existingTeam.TeamId) == 0)
                 {
 
-                    var team = new NCAAFootballTeam() { TeamId = existingTeam.TeamID, Name = teamName, IsSelectable = true , JeauxTeamId = existingTeam.TeamID};
+                    var team = new NCAAFootballTeam() { TeamId = existingTeam.TeamId, Name = teamName, IsSelectable = true , JeauxTeamId = existingTeam.TeamId};
                     _jeauxContext.NCAAFootballTeams.Add(team);
                     _jeauxContext.SaveChanges();
 
                     return team.TeamId;
                 }
 
-                return existingTeam.TeamID;
+                return existingTeam.TeamId;
             }
             else
             {
@@ -149,13 +149,14 @@ namespace Bearchop.Core.Services
             }
         }
 
-        public void AddSchedule(int homeTeamId, int awayTeamId, DateTime gameDate)
+        public void AddSchedule(int homeTeamId, int awayTeamId, DateTime gameDate, string gameCode)
         {
             NCAAFootballSchedule schedule = new NCAAFootballSchedule();
 
             schedule.HomeTeamId = homeTeamId;
             schedule.AwayTeamId = awayTeamId;
             schedule.Date = gameDate;
+            schedule.GameCode = gameCode;
             var week = _jeauxContext.NCAAFootballWeeks.First(w => w.BeginDate <= gameDate && w.EndDate >= gameDate);
 
             schedule.Week = week.Number;

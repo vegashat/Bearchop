@@ -1,0 +1,81 @@
+﻿@model Bearchop.Areas.LOTW.Web.ViewModels.PickHistoryViewModel
+
+<div id="pickHistoryContainer" class="history-tab">
+    <ul id="pick-tabs" class="nav nav-tabs">
+        @foreach (var week in Model.Weeks.Where(w => w.Number <= Model.CurrentWeek.Number))
+        {
+            <li id="@week.Number" class="">
+                @*@Html.ActionLink("Week " + week.Number.ToString(), "UserPicks", "Pick", new { area="LOTW", week = week.Number, userId = Model.UserId }, new{data_toggle="tab"})*@
+
+                <a id="link@(week.Number)" href="#week@(week.Number)" data-toggle="tab">Week @week.Number</a>
+
+            </li>
+        }
+    </ul>
+
+    <div class="tab-content">
+        @foreach (var week in Model.Weeks.Where(w => w.Number <= Model.CurrentWeek.Number))
+        {
+            <div class="tab-pane week-pane" id="week@(week.Number)">
+                @Html.Action("userpicks","pick",new {week=week.Number,userId=Model.UserId})
+            </div>
+        }
+    </div>
+</div>
+<div id="scoring" class="hide">
+    <ul style="list-style-type: none">
+        <li>Scoring Rules</li>
+        <li><span class="rule span3">Straight-Up (Favorite)</span><span class="points">3 Points</span></li>
+        <li><span class="rule span3">Straight-Up (Underdog)</span><span class="points">3 Points +
+            Spread</span></li>
+        <li><span class="rule span3">Against The Spread</span><span class="points">7 Points</span></li>
+        <li><span class="rule span3">Against The Spread (Push)</span><span class="points">2 Points</span></li>
+        <li><span class="rule span3">Picking Over/Under</span><span class="points">Winning Doubles Points, Losing Halves Points, Push has no effect</span>
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+    var currentTab = @Model.CurrentWeek.Number;
+    var tabs = null;
+
+    $(function () {
+
+        var tabs = $("#pick-tabs").tab();
+		
+        $('#link' + currentTab).tab('show');
+
+        
+        checkboxEnable(null);
+    });
+
+    function resetForm(week)
+    {
+        $('form')[week -1].reset();
+    }
+
+    function postForm(week) {
+
+        enableAll();
+
+        $.ajax({
+            type: 'POST',
+            url: $("#savePickForm" + week).attr("action"),
+            data: $("#savePickForm" + week).serialize(),
+            cache: false,
+            success: function (result) {
+
+                var resp = result;
+                if (resp.Success == true) {
+                    alert("Picks Saved");
+                } else {
+                    alert("Error Saving Picks.  Please Contact Bradley");
+                    $("#hiddenError").append(resp.Error);
+                }
+
+                checkboxEnable(null);
+            }
+        });
+    }
+    
+</script>

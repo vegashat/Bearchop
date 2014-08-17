@@ -1,0 +1,86 @@
+﻿@model Bearchop.LOTW.Core.Model.Game
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Edit Game</h3>
+</div>
+
+<div class="modal-body">
+
+
+    @using (Html.BeginForm("save", "game", FormMethod.Post, new { @id = "saveForm" }))
+    {
+        <fieldset>
+            <legend>Game Information</legend>
+
+            @Html.HiddenFor(g => Model.Id)
+
+            <div id="weekContainer" class="form-inline">
+                <label>Week</label>
+                @Html.TextBoxFor(g => Model.WeekId, new { @id = "gameWeek", @type = "number" })
+            
+                <label>Date</label>
+                @Html.TextBoxFor(g => Model.Date, new { @id = "gameDate", @class = "date" })
+            </div>
+            <div style="width:100%;">
+                <div id="homeTeamContainer" style="width:49%; display:inline-block;">
+                    <label>Home Team</label>
+                    @Html.TextBoxFor(g => Model.HomeTeam, new { @id = "gameHomeTeam" })
+
+                    <label>Home Team Spread</label>
+                    @Html.TextBoxFor(g => Model.HomeTeamSpread, new { @id = "gameHomeTeamSpread", @type = "number" })
+
+                    <label>Home Team Score</label>
+                    @Html.TextBoxFor(g => Model.HomeTeamScore, new { @id = "gameHomeTeamScore", @type = "number", @class = "score" })
+                </div>
+                <div id="awayTeamContainer" style="width:49%;display:inline-block;">
+                    <label>Away Team</label>
+                    @Html.TextBoxFor(g => Model.AwayTeam, new { @id = "gameAwayTeam" })
+
+                    <label>Away Team Spread</label>
+                    @Html.TextBoxFor(g => Model.AwayTeamSpread, new { @id = "gameAwayTeamSpread", @type = "number" })
+
+                    <label>Away Team Score</label>
+                    @Html.TextBoxFor(g => Model.AwayTeamScore, new { @id = "gameAwayTeamScore", @type = "number", @class = "score" })
+
+                </div>
+            </div>
+            <div id="overUnderContainer">
+                <label>Over/Under</label>
+                @Html.TextBoxFor(g => Model.OverUnder, new { @id = "gameOverUnder", @type = "number" })
+            </div>
+            <div id="scoreContainer">
+                <label>Final Score</label>
+                @Html.TextBoxFor(g => Model.FinalScore, new { @id = "gameFinalScore", @type = "number" })
+            </div>
+
+        </fieldset>
+    }
+</div>
+<div class="modal-footer">
+
+    <button type="button" class="btn" data-dismiss="modal" onclick="cancel()">Cancel</button>
+    <button type="button" class="btn btn-primary" onclick="save()">Save</button>
+</div>
+
+
+<script type="text/javascript"> 
+
+    $(function ()
+    {
+        $(".score").on("change", function ()
+        {
+            var total = 0;
+
+            $('.score').each(function ()
+            {
+                
+                total += parseInt($(this).val());
+            });
+
+            $("#gameFinalScore").val(total);
+        });
+    });
+
+</script>

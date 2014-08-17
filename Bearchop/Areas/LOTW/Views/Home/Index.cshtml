@@ -1,0 +1,77 @@
+﻿@model Bearchop.Areas.LOTW.Web.ViewModels.SummaryViewModel
+
+@{
+    ViewBag.Title = "Summary";
+
+    int position = 0;
+    decimal previousPoints = 0;    
+}
+
+
+<div id="rankings" class="well rankings">
+
+@if (Model.Users.Any())
+{   
+    <h4>Standings</h4>
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Player</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users.OrderBy(u => u.Points).Reverse())
+            {
+                if ((user.Points > 0 && user.Points < previousPoints) || previousPoints == 0 || user.Points == 0 && previousPoints > 0)
+                {
+                    position++;
+                    previousPoints = user.Points;
+                }
+                <tr>
+                    <td class="position">@position</td>
+                    <td class="player"><a href="javascript:loadUserHistory(@user.Id)">@user.Name</a></td>
+                    <td class="points">@user.Points</td>
+                </tr>
+            }        
+        </tbody>
+    </table>
+}
+</div>
+
+<div id="weeks" class="span9">
+    @Html.Action("History", "Pick", new { userId = Model.CurrentUser.Id })
+</div>
+
+@section javascript
+{
+
+    <script language="javascript" type="text/javascript">
+
+        $(function () {
+
+            $('.standings').addClass('active');
+        });
+
+        var historyUrl = "@Url.Action("History", "Pick")";
+
+        function loadUserHistory(userId) {
+
+            var data = {userId : userId};
+
+            $.ajax({
+                  type: 'GET',
+                  url: historyUrl,
+                  data: data,
+                  dataType: "html",
+                  success: function(result)
+                  {
+                    $("#weeks").empty();
+                    $("#weeks").append(result);                
+                  }
+                });
+        }
+
+    </script>
+}

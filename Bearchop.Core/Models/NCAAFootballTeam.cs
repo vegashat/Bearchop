@@ -8,6 +8,6 @@ namespace Bearchop.Core.Models
         public short TeamId { get; set; }
         public string Name { get; set; }
         public Nullable<bool> IsSelectable { get; set; }
-        public int JeauxTeamId { get; set; }
+        public short JeauxTeamId { get; set; }
     }
 }

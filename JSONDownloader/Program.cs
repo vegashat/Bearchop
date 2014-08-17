@@ -15,9 +15,9 @@ namespace JSONDownloader
         static void Main(string[] args)
         {
 
-            //var uri = new Uri(@"http://www.sportsinsights.net/dataservice/mobilehandler.ashx?_dc=1407209179218&yesterday=false&sport=NFL&userKey=95698ed1-60eb-4b2c-b2d1-7c2581a1cfde&task=Games.Get&isMyGame=false&eventOption=0&page=1&start=0&limit=25&callback=Ext.data.JsonP.callback11");
+            var uri = new Uri(@"http://www.sportsinsights.net/dataservice/mobilehandler.ashx?_dc=1407209179218&yesterday=false&sport=NFL&userKey=95698ed1-60eb-4b2c-b2d1-7c2581a1cfde&task=Games.Get&isMyGame=false&eventOption=0&page=1&start=0&limit=25&callback=Ext.data.JsonP.callback11");
 
-            //new WebClient().DownloadFile(uri, "lines.json");
+            new WebClient().DownloadFile(uri, "lines.json");
 
             var data = File.ReadAllText("lines.json");
 

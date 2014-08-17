@@ -22,8 +22,8 @@ namespace ScheduleDownload
 
         private static void Download()
         {
-            var startDate = DateTime.Parse("2013-08-15");
-            var endDate = DateTime.Parse("2013-12-10");
+            var startDate = DateTime.Parse("2014-08-15");
+            var endDate = DateTime.Parse("2014-12-15");
             string dateFormat = "{0}_{1}_{2}";
 
             string baseUrl = "http://msn.foxsports.com/nuggetv2/16010_"; //2013_8_31
@@ -49,6 +49,8 @@ namespace ScheduleDownload
             public string AwayTeamCity { get; set; }
             public string HomeTeamName { get; set; }
             public string HomeTeamCity { get; set; }
+
+            public string GameCode { get; set; }
             public DateTime Date { get; set; }
             public string AwayTeam { 
                 get {
@@ -83,7 +85,8 @@ namespace ScheduleDownload
                                AwayTeamCity = s.Element("visiting-team").Element("team-city").Attribute("city").Value,
                                HomeTeamName = s.Element("home-team").Element("team-name").Attribute("name").Value,
                                HomeTeamCity = s.Element("home-team").Element("team-city").Attribute("city").Value,
-                               Date = DateTime.Parse(s.Element("date").Attribute("year") .Value+ "-" + s.Element("date").Attribute("month").Value + "-" + s.Element("date").Attribute("date").Value)
+                               GameCode     = s.Element("gamecode").Attribute("code").Value,
+                               Date         = DateTime.Parse(s.Element("date").Attribute("year") .Value+ "-" + s.Element("date").Attribute("month").Value + "-" + s.Element("date").Attribute("date").Value)
                            };
 
                
@@ -92,7 +95,7 @@ namespace ScheduleDownload
                     var homeTeamId = scheduleService.AddTeam(game.HomeTeamCity);
                     var awayTeamId = scheduleService.AddTeam(game.AwayTeamCity);
 
-                    scheduleService.AddSchedule(homeTeamId, awayTeamId, game.Date);
+                    scheduleService.AddSchedule(homeTeamId, awayTeamId, game.Date, game.GameCode);
                 }
             }
 
