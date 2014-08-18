@@ -10,7 +10,7 @@ using Bearchop.LOTW.Core.Service;
 namespace Bearchop.Areas.LOTW.Web.Controllers
 {
     
-    public class HomeController : Controller
+    public class LOTWController : Controller
     {
         UserService _userService = new UserService();
         WeekService _weekService = new WeekService();
