@@ -94,6 +94,7 @@ namespace Bearchop.Core.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder); 
             modelBuilder.Configurations.Add(new AUDIT_LOGMap());
             modelBuilder.Configurations.Add(new BASEBALLMap());
             modelBuilder.Configurations.Add(new BIG12Map());

@@ -46,6 +46,5 @@ namespace Bearchop.Core.Models
         public Nullable<short> FamilyID { get; set; }
         public virtual ICollection<JFRIEND> JFRIENDs { get; set; }
         public virtual ICollection<RESUME> RESUMEs { get; set; }
-        public bool Notify { get; set; }
     }
 }
