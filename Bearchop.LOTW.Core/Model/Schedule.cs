@@ -11,6 +11,7 @@ namespace Bearchop.LOTW.Core.Model
         public int WeekId { get; set; }
         public int HomeId { get; set; }
         public int AwayId { get; set; }
+        public string GameCode { get; set; }
         public DateTime Date { get; set; }
         public Week Week { get; set; }
         public Team HomeTeam { get; set; }

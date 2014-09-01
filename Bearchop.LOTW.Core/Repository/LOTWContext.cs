@@ -28,8 +28,6 @@ namespace Bearchop.LOTW.Core.Repository
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
-
             modelBuilder.Entity<LOTWUser>()
                 .Property(u => u.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);

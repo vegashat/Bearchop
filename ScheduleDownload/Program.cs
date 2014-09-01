@@ -1,4 +1,6 @@
 ﻿using Bearchop.Core.Services;
+using Bearchop.LOTW.Core.Model;
+using Bearchop.LOTW.Core.Service;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +18,10 @@ namespace ScheduleDownload
         {
 
             //Download();
-            Import();
+            //Import();
+
+            //DownloadNFL();
+            ImportNFL();
             
         }
 
@@ -42,7 +47,30 @@ namespace ScheduleDownload
 
             Console.ReadLine();
         }
-        
+
+        private static void DownloadNFL()
+        {
+            var startDate = DateTime.Parse("2014-08-15");
+            var endDate = DateTime.Parse("2015-1-15");
+            string dateFormat = "{0}_{1}_{2}";
+
+            string baseUrl = "http://msn.foxsports.com/nuggetv2/16006_"; //2013_8_31
+
+            while (startDate < endDate)
+            {
+                var fileName = string.Format(dateFormat, startDate.Year, startDate.Month, startDate.Day);
+                var thisDaysUrl = string.Concat(baseUrl, fileName);
+
+                WebClient client = new WebClient();
+
+                client.DownloadFile(thisDaysUrl, string.Concat(fileName, "_NFL.xml"));
+                Console.WriteLine("downloaded : " + thisDaysUrl);
+                startDate = startDate.AddDays(1);
+            }
+
+            Console.ReadLine();
+        }
+
         internal class GameDate
         {
             public string AwayTeamName { get; set; }
@@ -99,6 +127,53 @@ namespace ScheduleDownload
                 }
             }
 
+            Console.ReadLine();
+        }
+
+        private static void ImportNFL()
+        {
+            SeasonService seasonService = new SeasonService();
+            WeekService weekService = new WeekService();            
+
+            var files = Directory.GetFiles(".", "*_NFL.xml");
+
+            foreach (var file in files)
+            {
+                Console.WriteLine(file);
+
+                var scheduleFile = XDocument.Load(file);
+
+                var games = from s in scheduleFile.Descendants("game-schedule")
+                            select new GameDate()
+                            {
+                                AwayTeamName = s.Element("visiting-team").Element("team-name").Attribute("name").Value,
+                                AwayTeamCity = s.Element("visiting-team").Element("team-city").Attribute("city").Value,
+                                HomeTeamName = s.Element("home-team").Element("team-name").Attribute("name").Value,
+                                HomeTeamCity = s.Element("home-team").Element("team-city").Attribute("city").Value,
+                                GameCode = s.Element("gamecode").Attribute("code").Value,
+                                Date = DateTime.Parse(s.Element("date").Attribute("year").Value + "-" + s.Element("date").Attribute("month").Value + "-" + s.Element("date").Attribute("day").Value + ' ' + s.Element("time").Attribute("hour").Value + ':' + s.Element("time").Attribute("minute").Value + ":00")
+                            };
+
+
+                foreach (var game in games.Where(g => g.AwayTeamCity.Length > 0))
+                {
+                    var homeTeamId = seasonService.GetTeamId(game.HomeTeam);
+                    var awayTeamId = seasonService.GetTeamId(game.AwayTeam);
+
+                    Schedule schedule = new Schedule();
+                    schedule.HomeId = homeTeamId;
+                    schedule.AwayId = awayTeamId;
+
+                    schedule.Date = DateTime.Parse(game.GameCode.Substring(0, 4) + '-' + game.GameCode.Substring(4,2) + '-' + game.GameCode.Substring(6,2) + ' ' + game.Date.Hour + ':' + game.Date.Minute + ':' + game.Date.Second);
+                    schedule.GameCode = game.GameCode;
+
+                    schedule.Week = weekService.GetWeek(schedule.Date);
+
+                    schedule = seasonService.SaveSchedule(schedule);
+                }
+            }
+
+            Console.WriteLine("All Finished, hit any key to exit");
             Console.ReadLine();
         }
     }

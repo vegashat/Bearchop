@@ -36,5 +36,13 @@ namespace Bearchop.LOTW.Core.Service
                 return currentWeek;
             }
         }
+
+        public Week GetWeek(DateTime date) 
+        {
+            using(var context = new LOTWContext())
+            {
+                return context.Weeks.FirstOrDefault(w => w.BeginDate <= date && w.EndDate >= date);
+            }
+        }
     }
 }

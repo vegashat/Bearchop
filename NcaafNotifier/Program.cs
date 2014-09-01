@@ -17,7 +17,7 @@ namespace NcaafNotifier
             var today = DateTime.Now;
             var scheduleService = new ScheduleService();
 
-            var usersToNotify = context.JUSERs.Where(u => u.Notify == true);
+            var usersToNotify = context.JUSERs;
 
             int week = 1;
             if (args.Length == 1)
