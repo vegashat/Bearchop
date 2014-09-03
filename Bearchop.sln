@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bearchop.LOTW.Core", "Bearc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomOrg", "RandomOrg\RandomOrg.csproj", "{74124581-2AA6-4B29-A960-CF9C613FF86C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFLLineUpdater", "NFLLineUpdater\NFLLineUpdater.csproj", "{B34183DB-D462-4C8A-B3B8-BDFEDC51F7D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{74124581-2AA6-4B29-A960-CF9C613FF86C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74124581-2AA6-4B29-A960-CF9C613FF86C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74124581-2AA6-4B29-A960-CF9C613FF86C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B34183DB-D462-4C8A-B3B8-BDFEDC51F7D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B34183DB-D462-4C8A-B3B8-BDFEDC51F7D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B34183DB-D462-4C8A-B3B8-BDFEDC51F7D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B34183DB-D462-4C8A-B3B8-BDFEDC51F7D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
