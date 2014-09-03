@@ -601,8 +601,8 @@
     <Content Include="Areas\LOTW\Views\Game\List.cshtml" />
     <Content Include="Areas\LOTW\Views\Game\_Add.cshtml" />
     <Content Include="Areas\LOTW\Views\Game\_GameList.cshtml" />
-    <Content Include="Areas\LOTW\Views\Home\Index.cshtml" />
-    <Content Include="Areas\LOTW\Views\Home\Login.cshtml" />
+    <Content Include="Areas\LOTW\Views\LOTW\Index.cshtml" />
+    <Content Include="Areas\LOTW\Views\LOTW\Login.cshtml" />
     <Content Include="Areas\LOTW\Views\Message\Index.cshtml" />
     <Content Include="Areas\LOTW\Views\Message\_Message.cshtml" />
     <Content Include="Areas\LOTW\Views\Pick\List.cshtml" />

@@ -20,9 +20,13 @@ namespace ScheduleDownload
             //Download();
             //Import();
 
-            //DownloadNFL();
-            ImportNFL();
-            
+            DownloadNFL();
+            //ImportNFL();
+
+
+            Console.WriteLine("All Finished, hit any key to exit");
+            Console.ReadLine();
+
         }
 
         private static void Download()
@@ -45,7 +49,6 @@ namespace ScheduleDownload
                 startDate = startDate.AddDays(1);
             }
 
-            Console.ReadLine();
         }
 
         private static void DownloadNFL()
@@ -68,7 +71,6 @@ namespace ScheduleDownload
                 startDate = startDate.AddDays(1);
             }
 
-            Console.ReadLine();
         }
 
         internal class GameDate
@@ -127,7 +129,6 @@ namespace ScheduleDownload
                 }
             }
 
-            Console.ReadLine();
         }
 
         private static void ImportNFL()
@@ -173,8 +174,6 @@ namespace ScheduleDownload
                 }
             }
 
-            Console.WriteLine("All Finished, hit any key to exit");
-            Console.ReadLine();
         }
     }
 }
