@@ -19,10 +19,9 @@ namespace Bearchop.LOTW.Core.Models
         public DbSet<Conference> Conferences { get; set; }
         public DbSet<Division> Divisions { get; set; }
         public DbSet<Game> Games { get; set; }
-        public DbSet<LOTWUser> LOTWUsers { get; set; }
+        public DbSet<LOTWUser> Users { get; set; }
         public DbSet<Pick> Picks { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Week> Weeks { get; set; }
         public DbSet<vw_team_schedule> vw_team_schedule { get; set; }
@@ -35,7 +34,6 @@ namespace Bearchop.LOTW.Core.Models
             modelBuilder.Configurations.Add(new LOTWUserMap());
             modelBuilder.Configurations.Add(new PickMap());
             modelBuilder.Configurations.Add(new ScheduleMap());
-            modelBuilder.Configurations.Add(new sysdiagramMap());
             modelBuilder.Configurations.Add(new TeamMap());
             modelBuilder.Configurations.Add(new WeekMap());
             modelBuilder.Configurations.Add(new vw_team_scheduleMap());

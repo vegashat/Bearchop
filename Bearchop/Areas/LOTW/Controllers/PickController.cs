@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Bearchop.ActionFilter;
 using Bearchop.Areas.LOTW.Web.ViewModels;
 using Bearchop.Session;
-using Bearchop.LOTW.Core.Model;
+using Bearchop.LOTW.Core.Models;
 using Bearchop.LOTW.Core.Service;
 using Bearchop.Core;
 using Bearchop.Core.Services;
@@ -46,7 +46,7 @@ namespace Bearchop.Areas.LOTW.Web.Controllers
         
         private PicksViewModel GetPickViewModel(int? week, int? userId)
         {
-            Bearchop.LOTW.Core.Model.Week currentWeek = null;
+            Week currentWeek = null;
             int currentUserId = 0;
 
             currentWeek = _weekService.GetWeek(week);

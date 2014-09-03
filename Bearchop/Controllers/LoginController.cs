@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Bearchop.Session;
-using Bearchop.LOTW.Core.Repository;
+
 using Bearchop.ViewModels;
 using Bearchop.Core.Services;
 

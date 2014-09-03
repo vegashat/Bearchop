@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Bearchop.LOTW.Core.Repository;
-using Bearchop.LOTW.Core.Model;
+
+using Bearchop.LOTW.Core.Models;
 using Bearchop.LOTW.Core.Service;
 using Bearchop.Core.Models;
 using Bearchop.Core.Services;

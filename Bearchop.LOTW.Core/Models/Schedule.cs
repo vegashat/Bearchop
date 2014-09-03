@@ -10,9 +10,11 @@ namespace Bearchop.LOTW.Core.Models
         public int HomeId { get; set; }
         public int AwayId { get; set; }
         public System.DateTime Date { get; set; }
-        public string GameCode { get; set; }
-        public virtual Team Team { get; set; }
-        public virtual Team Team1 { get; set; }
+        public decimal HomeTeamSpread { get; set; }
+        public decimal OverUnder { get; set; }        
+        public string GameCode { get; set; }        
+        public virtual Team AwayTeam { get; set; }
+        public virtual Team HomeTeam { get; set; }
         public virtual Week Week { get; set; }
     }
 }

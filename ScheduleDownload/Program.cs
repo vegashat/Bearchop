@@ -1,5 +1,5 @@
 ﻿using Bearchop.Core.Services;
-using Bearchop.LOTW.Core.Model;
+using Bearchop.LOTW.Core.Models;
 using Bearchop.LOTW.Core.Service;
 using System;
 using System.Collections.Generic;
@@ -134,6 +134,7 @@ namespace ScheduleDownload
         private static void ImportNFL()
         {
             SeasonService seasonService = new SeasonService();
+            TeamService teamService = new TeamService();
             WeekService weekService = new WeekService();            
 
             var files = Directory.GetFiles(".", "*_NFL.xml");
@@ -158,8 +159,8 @@ namespace ScheduleDownload
 
                 foreach (var game in games.Where(g => g.AwayTeamCity.Length > 0))
                 {
-                    var homeTeamId = seasonService.GetTeamId(game.HomeTeam);
-                    var awayTeamId = seasonService.GetTeamId(game.AwayTeam);
+                    var homeTeamId = teamService.GetTeamId(game.HomeTeam);
+                    var awayTeamId = teamService.GetTeamId(game.AwayTeam);
 
                     Schedule schedule = new Schedule();
                     schedule.HomeId = homeTeamId;

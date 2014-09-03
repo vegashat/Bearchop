@@ -1,5 +1,5 @@
-﻿using Bearchop.LOTW.Core.Model;
-using Bearchop.LOTW.Core.Repository;
+﻿using Bearchop.LOTW.Core.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,31 +11,32 @@ namespace Bearchop.LOTW.Core.Service
     public class SeasonService
     {
 
-        public int GetTeamId(string teamName)
+        LOTWContext _context = null;
+
+        public SeasonService()
         {
-            using(var context = new LOTW.Core.Repository.LOTWContext())
-            {
-                return context.Teams.FirstOrDefault(t => t.Name == teamName).Id;
-            }
+            _context = new LOTWContext();
         }
 
         public Schedule SaveSchedule(Schedule schedule)
         {
-            using(var context = new LOTWContext())
+            if(schedule.Id == 0)
             {
-                if(schedule.Id == 0)
-                {
-                    context.Schedules.Add(schedule);
-                }
-                else
-                {
-                    context.Entry(schedule).State = System.Data.Entity.EntityState.Modified;
-                }
-
-                context.SaveChanges();
-
-                return schedule;
+                _context.Schedules.Add(schedule);
             }
+            else
+            {
+                _context.Entry(schedule).State = System.Data.Entity.EntityState.Modified;
+            }
+
+            _context.SaveChanges();
+
+            return schedule;
+        }
+
+        public Schedule GetSchedule(int weekNumber, int homeTeamId, int awayTeamId)
+        {
+            return _context.Schedules.FirstOrDefault(s => s.Week.Number == weekNumber && s.HomeId == homeTeamId && s.AwayId == awayTeamId);
         }
     }
 }

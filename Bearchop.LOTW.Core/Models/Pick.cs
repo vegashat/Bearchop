@@ -1,8 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Bearchop.LOTW.Core.Models
 {
+    public enum PickType
+    {
+        StraightUp = 0,
+        AgainstTheSpread = 1
+    }
+
     public partial class Pick
     {
         public int Id { get; set; }
@@ -17,5 +24,19 @@ namespace Bearchop.LOTW.Core.Models
         public virtual Game Game { get; set; }
         public virtual LOTWUser LOTWUser { get; set; }
         public virtual Week Week { get; set; }
+
+        [NotMapped]
+        public PickType Type
+        {
+            get { return (PickType)TypeValue; }
+            set { TypeValue = (int)value; }
+        }
+
+        [NotMapped]
+        public OverUnderEnum OverUnder
+        {
+            get { return (OverUnderEnum)OverUnderValue; }
+            set { OverUnderValue = (int)value; }
+        }
     }
 }

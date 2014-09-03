@@ -6,10 +6,11 @@ using System.Web.Mvc;
 using Bearchop.ViewModels;
 using Bearchop.Models;
 using Bearchop.LOTW.Core.Service;
-using Bearchop.LOTW.Core.Repository;
+
 using System.Text;
 using Bearchop.Core.Models;
 using Bearchop.Core.Services;
+using Bearchop.LOTW.Core.Models;
 
 namespace Bearchop.Areas.LOTW.Controllers
 {
@@ -55,7 +56,7 @@ namespace Bearchop.Areas.LOTW.Controllers
             return PartialView("_Message", model);
         }
 
-        private static void GetGamesTable(IQueryable<Bearchop.LOTW.Core.Model.Game> games, StringBuilder sb)
+        private static void GetGamesTable(IQueryable<Game> games, StringBuilder sb)
         {
             sb.AppendLine("<table><tr><th>Home Team</th><th>Away Team</th><th>Spread</th><th>Over/Under</th></tr>");
 

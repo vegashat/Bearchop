@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Bearchop.LOTW.Core.Service;
-using Bearchop.LOTW.Core.Model;
+using Bearchop.LOTW.Core.Models;
 using Bearchop.ActionFilter;
 using Bearchop.Areas.LOTW.Web.ViewModels;
 

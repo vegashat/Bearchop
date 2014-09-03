@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Bearchop.LOTW.Core.Model;
+using Bearchop.LOTW.Core.Models;
 using Bearchop.Session;
 
 namespace Bearchop.Areas.LOTW.Web.ViewModels

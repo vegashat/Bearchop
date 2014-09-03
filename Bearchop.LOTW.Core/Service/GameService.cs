@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bearchop.LOTW.Core.Model;
-using Bearchop.LOTW.Core.Repository;
+using Bearchop.LOTW.Core.Models;
+
 
 namespace Bearchop.LOTW.Core.Service
 {
@@ -78,7 +78,7 @@ namespace Bearchop.LOTW.Core.Service
 
                         if (pick.HasOverUnder)
                         {
-                            if (pick.OverUnder == game.OverUnderResult && game.OverUnderResult != OverUnder.Push)
+                            if (pick.OverUnder == game.OverUnderResult && game.OverUnderResult != OverUnderEnum.Push)
                             {
                                 pick.Points *= 2;
                             }
@@ -162,6 +162,9 @@ namespace Bearchop.LOTW.Core.Service
             game.WeekId = weekInfo.Id;
             game.HomeTeam = selectedGame.HomeTeam.Name;
             game.AwayTeam = selectedGame.AwayTeam.Name;
+            game.HomeTeamSpread = selectedGame.HomeTeamSpread;
+            game.AwayTeamSpread = selectedGame.HomeTeamSpread * -1;
+            game.OverUnder = selectedGame.OverUnder;
             return game;
         }
 
