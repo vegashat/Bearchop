@@ -49,6 +49,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Conference.cs" />
+    <Compile Include="Models\Division.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\LOTWContext.cs" />
+    <Compile Include="Models\LOTWUser.cs" />
+    <Compile Include="Models\Mapping\ConferenceMap.cs" />
+    <Compile Include="Models\Mapping\DivisionMap.cs" />
+    <Compile Include="Models\Mapping\GameMap.cs" />
+    <Compile Include="Models\Mapping\LOTWUserMap.cs" />
+    <Compile Include="Models\Mapping\PickMap.cs" />
+    <Compile Include="Models\Mapping\ScheduleMap.cs" />
+    <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Mapping\TeamMap.cs" />
+    <Compile Include="Models\Mapping\vw_team_scheduleMap.cs" />
+    <Compile Include="Models\Mapping\WeekMap.cs" />
+    <Compile Include="Models\Pick.cs" />
+    <Compile Include="Models\Schedule.cs" />
+    <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\vw_team_schedule.cs" />
+    <Compile Include="Models\Week.cs" />
     <Compile Include="Model\Conference.cs" />
     <Compile Include="Model\Division.cs" />
     <Compile Include="Model\Game.cs" />

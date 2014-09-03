@@ -53,6 +53,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bearchop.LOTW.Core\Bearchop.LOTW.Core.csproj">
+      <Project>{67086cdb-fe8a-47a2-bb15-bd521dacc1ed}</Project>
+      <Name>Bearchop.LOTW.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
