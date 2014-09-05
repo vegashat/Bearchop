@@ -14,35 +14,52 @@ namespace NFLLineUpdater
     {
         static void Main(string[] args)
         {
+            DownloadLatestLine();
+            //CreateGameList();
+        }
+
+        private static void CreateGameList()
+        {
+            GameService gameService = new GameService();
+
+            var week = new WeekService().GetWeek();
+
+            if (gameService.GetGames(week.Number).Count() == 0)
+            {
+                gameService.LoadGames(week.Number);
+            }
+        }
+
+        private static void DownloadLatestLine()
+        {
             var uri = new Uri(@"https://www.kimonolabs.com/api/cvpz3e9q?apikey=LSzFj75rKymrmzBYruhZ4z2xU8HOh9nQ");
 
             string fileName = string.Format("nfllines_{0}.json", DateTime.Today.ToString("MMddyyyy"));
 
-            //new WebClient().DownloadFile(uri, fileName);
+            new WebClient().DownloadFile(uri, fileName);
 
-        
             var data = File.ReadAllText(fileName);
             var currentLines = (Spread)(JsonConvert.DeserializeObject(data, typeof(Spread)));
-            
+
             //Get the Week
             int weekNumber = int.Parse(currentLines.Results.Week.FirstOrDefault().Value.Split(' ')[1]);
-            
+
             TeamService teamService = new TeamService();
             SeasonService seasonService = new SeasonService();
 
-            foreach(var game in currentLines.Results.Games)
+            foreach (var game in currentLines.Results.Games)
             {
                 //Find the teams
                 var homeTeam = teamService.GetTeam(game.HomeTeam);
                 var awayTeam = teamService.GetTeam(game.AwayTeam);
-                
+
                 //Find schedule
                 var schedule = seasonService.GetSchedule(weekNumber, homeTeam.Id, awayTeam.Id);
 
                 schedule.HomeTeamSpread = decimal.Parse(game.HomeTeamSpread);
                 schedule.OverUnder = decimal.Parse(game.OverUnder);
 
-                seasonService.SaveSchedule(schedule);              
+                seasonService.SaveSchedule(schedule);
 
             }
         }
