@@ -12,10 +12,13 @@ namespace NFLLineUpdater
 {
     public class Program
     {
+
+        const string NFL_GAME_RESULT = @"http://feeds.foxsports.com/nuggetv2/30_{0}";
         static void Main(string[] args)
         {
-            DownloadLatestLine();
+            //DownloadLatestLine();
             //CreateGameList();
+            UpdateGames();
         }
 
         private static void CreateGameList()
@@ -29,6 +32,32 @@ namespace NFLLineUpdater
                 gameService.LoadGames(week.Number);
             }
         }
+
+
+        private static void UpdateGames()
+        {
+            WeekService weekService = new WeekService();
+            SeasonService seasonService = new SeasonService();
+            GameService gameService = new GameService();
+
+            var weekNumber = weekService.GetWeek().Number;
+
+            var currentGames = seasonService.GetSchedules(weekNumber);
+
+            foreach(var game in currentGames.Where(g => g.ScoreFinalized == false))
+            {
+
+                var uri = new Uri(string.Format(NFL_GAME_RESULT,game.GameCode));
+
+                string fileName = string.Format("{0}.xml", game.GameCode);
+
+                new WebClient().DownloadFile(uri, fileName);
+
+                var data = File.ReadAllText(fileName);
+            }
+
+        }
+
 
         private static void DownloadLatestLine()
         {

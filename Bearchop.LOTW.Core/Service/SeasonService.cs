@@ -38,5 +38,10 @@ namespace Bearchop.LOTW.Core.Service
         {
             return _context.Schedules.FirstOrDefault(s => s.Week.Number == weekNumber && s.HomeId == homeTeamId && s.AwayId == awayTeamId);
         }
+
+        public IEnumerable<Schedule> GetSchedules(int weekNumber)
+        {
+            return _context.Schedules.Where(s => s.Week.Number == weekNumber);
+        }
     }
 }
