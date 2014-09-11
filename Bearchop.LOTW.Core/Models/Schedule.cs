@@ -11,7 +11,9 @@ namespace Bearchop.LOTW.Core.Models
         public int AwayId { get; set; }
         public System.DateTime Date { get; set; }
         public decimal HomeTeamSpread { get; set; }
-        public decimal OverUnder { get; set; }        
+        public decimal OverUnder { get; set; }
+        public int HomeTeamScore { get; set; }
+        public int AwayTeamScore { get; set; }        
         public string GameCode { get; set; }
         public bool ScoreFinalized { get; set; }
         public virtual Team AwayTeam { get; set; }

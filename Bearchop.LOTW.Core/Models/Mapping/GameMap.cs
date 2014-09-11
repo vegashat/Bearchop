@@ -24,6 +24,7 @@ namespace Bearchop.LOTW.Core.Models.Mapping
             this.Property(t => t.FinalScore).HasColumnName("FinalScore");
             this.Property(t => t.HomeTeamScore).HasColumnName("HomeTeamScore");
             this.Property(t => t.AwayTeamScore).HasColumnName("AwayTeamScore");
+            this.Property(t => t.GameCode).HasColumnName("GameCode");
 
             // Relationships
             this.HasRequired(t => t.Week)

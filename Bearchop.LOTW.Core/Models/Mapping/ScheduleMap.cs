@@ -25,6 +25,8 @@ namespace Bearchop.LOTW.Core.Models.Mapping
             this.Property(t => t.GameCode).HasColumnName("GameCode");
             this.Property(t => t.HomeTeamSpread).HasColumnName("HomeTeamSpread");
             this.Property(t => t.OverUnder).HasColumnName("OverUnder");
+            this.Property(t => t.HomeTeamScore).HasColumnName("HomeTeamScore");
+            this.Property(t => t.AwayTeamScore).HasColumnName("AwayTeamScore");
             this.Property(t => t.ScoreFinalized).HasColumnName("ScoreFinalized");
 
             // Relationships
@@ -34,7 +36,7 @@ namespace Bearchop.LOTW.Core.Models.Mapping
 
             this.HasRequired(t => t.HomeTeam)
                 .WithMany(t => t.Schedules1)
-                .HasForeignKey(d => d.HomeId);
+                .HasForeignKey(d => d.HomeId); 
 
             this.HasRequired(t => t.Week)
                 .WithMany(t => t.Schedules)

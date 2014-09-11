@@ -32,6 +32,7 @@ namespace Bearchop.LOTW.Core.Models
         public decimal FinalScore { get; set; }
         public decimal HomeTeamScore { get; set; }
         public decimal AwayTeamScore { get; set; }
+        public string GameCode { get; set; }
         public virtual Week Week { get; set; }
         public virtual ICollection<Pick> Picks { get; set; }
 

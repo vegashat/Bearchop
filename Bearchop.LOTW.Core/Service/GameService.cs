@@ -48,50 +48,47 @@ namespace Bearchop.LOTW.Core.Service
         {
             if (game.Id > 0)
             {
-                //Update all of the scores
-                if (game.Finalized)
+                var picks = _context.Picks.Where(pick => pick.GameId == game.Id);
+
+                foreach (var pick in picks)
                 {
-                    var picks = _context.Picks.Where(pick => pick.GameId == game.Id);
-
-                    foreach (var pick in picks)
+                    if (pick.Type == PickType.StraightUp)
                     {
-                        if (pick.Type == PickType.StraightUp)
+                        pick.Points = (pick.Team == game.WinningTeam) ? 3 : 0;
+
+                        if (pick.Team != game.Favorite && pick.Team == game.WinningTeam)
                         {
-                            pick.Points = (pick.Team == game.WinningTeam) ? 3 : 0;
-
-                            if (pick.Team != game.Favorite && pick.Team == game.WinningTeam)
-                            {
-                                pick.Points += 2; //5 points for straight up underdog pick
-                                pick.Points += Math.Abs(game.HomeTeamSpread);
-                            }
+                            //pick.Points += 2; //5 points for straight up underdog pick
+                            pick.Points += Math.Abs(game.HomeTeamSpread);
                         }
-                        else if (pick.Type == PickType.AgainstTheSpread)
+                    }
+                    else if (pick.Type == PickType.AgainstTheSpread)
+                    {
+                        pick.Points = (pick.Team == game.WinningTeamATS) ? 7 : 0;
+                        //How to handle push?
+
+                        if (game.WinningTeamATS == "PUSH")
                         {
-                            pick.Points = (pick.Team == game.WinningTeamATS) ? 7 : 0;
-                            //How to handle push?
-
-                            if (game.WinningTeamATS == "PUSH")
-                            {
-                                pick.Points = 2;
-                            }
+                            pick.Points = 2;
                         }
-
-                        if (pick.HasOverUnder)
-                        {
-                            if (pick.OverUnder == game.OverUnderResult && game.OverUnderResult != OverUnderEnum.Push)
-                            {
-                                pick.Points *= 2;
-                            }
-                            else
-                            {
-                                pick.Points = 0;
-                            }
-                        }
-
                     }
 
-                    _context.SaveChanges();
+                    if (pick.HasOverUnder)
+                    {
+                        if (pick.OverUnder == game.OverUnderResult && game.OverUnderResult != OverUnderEnum.Push)
+                        {
+                            pick.Points *= 2;
+                        }
+                        else
+                        {
+                            pick.Points = pick.Points /2;
+                        }
+                    }
+
                 }
+
+                _context.SaveChanges();
+
 
                 _context.Games.Attach(game);
                 _context.Entry(game).State = System.Data.Entity.EntityState.Modified;
@@ -109,6 +106,11 @@ namespace Bearchop.LOTW.Core.Service
             return _context.Games.FirstOrDefault(game => game.Id == id);
         }
 
+        public Game GetGame(string gameCode)
+        {
+            return _context.Games.FirstOrDefault(game => game.GameCode == gameCode);
+        }
+
         public bool LoadGames(int week)
         {
             using (var context = new LOTWContext())
@@ -122,9 +124,9 @@ namespace Bearchop.LOTW.Core.Service
                 var random = new RandomOrg.Random("vegashat@gmail.com", 60);
 
                 List<int> selections = random.GetNumbers(0, count - 1, 5);
-                
+
                 var weekInfo = context.Weeks.FirstOrDefault(w => w.Number == week);
-                                
+
                 foreach (int selection in selections)
                 {
                     bool gameSaved = false;
@@ -149,7 +151,7 @@ namespace Bearchop.LOTW.Core.Service
 
         private static Game BuildGame(List<Schedule> possibleGames, Week weekInfo, int selection)
         {
-            if(selection >= 16)
+            if (selection >= 16)
             {
                 selection = 0;
             }
@@ -165,6 +167,8 @@ namespace Bearchop.LOTW.Core.Service
             game.HomeTeamSpread = selectedGame.HomeTeamSpread;
             game.AwayTeamSpread = selectedGame.HomeTeamSpread * -1;
             game.OverUnder = selectedGame.OverUnder;
+            game.GameCode = selectedGame.GameCode;
+
             return game;
         }
 
