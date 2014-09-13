@@ -1,5 +1,7 @@
 ﻿@model Bearchop.Areas.LOTW.Web.ViewModels.SummaryViewModel
-
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
 @{
     ViewBag.Title = "Summary";
 
@@ -7,7 +9,7 @@
     decimal previousPoints = 0;    
 }
 
-
+@section sidebar {
 <div id="rankings" class="well rankings">
 
 @if (Model.Users.Any())
@@ -39,12 +41,13 @@
     </table>
 }
 </div>
+    }
 
 <div id="weeks" class="span9">
     @Html.Action("History", "Pick", new { userId = Model.CurrentUser.Id })
 </div>
 
-@section javascript
+@section scripts
 {
 
     <script language="javascript" type="text/javascript">

@@ -2,6 +2,7 @@
     Layout = "~/Views/Shared/_layout.cshtml";
 }
 
+
 @section pills
 {
     <ul class="nav"> 
@@ -13,10 +14,11 @@
     @RenderSection("header", false)
 
 }
+
+
 @RenderBody()
 
-@section javascript
+@section scripts
 {
-    @RenderSection("javascript",false)
-
+    @RenderSection("scripts", required: false)
 }

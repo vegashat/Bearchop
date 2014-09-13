@@ -611,6 +611,7 @@
     <Content Include="Areas\LOTW\Views\Shared\Error.cshtml" />
     <Content Include="Areas\LOTW\Views\Shared\_lotwLayout.cshtml" />
     <Content Include="Areas\LOTW\Views\Week\List.cshtml" />
+    <Content Include="Areas\LOTW\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Images\ncaaf.jpg" />
     <Content Include="Images\nfl.jpg" />

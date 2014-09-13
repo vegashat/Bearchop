@@ -10,9 +10,7 @@ namespace Bearchop.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
-            return View();
+            return RedirectToAction("index", "lotw", new { area = "lotw" });
         }
 
         public ActionResult About()
