@@ -116,7 +116,7 @@ namespace Bearchop.LOTW.Core.Service
             using (var context = new LOTWContext())
             {
                 var possibleGames = (from t in context.Schedules.Include("HomeTeam").Include("AwayTeam")
-                                     where t.Week.Number == week
+                                     where t.Week.Number == week && t.HomeTeamSpread != 0
                                      select t).ToList();
 
                 var count = possibleGames.Count();

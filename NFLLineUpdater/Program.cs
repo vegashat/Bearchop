@@ -25,6 +25,7 @@ namespace NFLLineUpdater
                 {
                     case "UPDATELINES":
                         DownloadLatestLine();
+                        CreateGameList();
                         break;
                     case "UPDATESCORES":
                         UpdateScores();
@@ -145,8 +146,14 @@ namespace NFLLineUpdater
                 //Find schedule
                 var schedule = seasonService.GetSchedule(weekNumber, homeTeam.Id, awayTeam.Id);
 
-                schedule.HomeTeamSpread = decimal.Parse(game.HomeTeamSpread.ToUpper() == "EVEN" ? "0" : game.HomeTeamSpread);
-                schedule.OverUnder = decimal.Parse(game.OverUnder);
+                decimal spread = 0;
+                decimal overUnder = 0;
+
+                decimal.TryParse(game.HomeTeamSpread.ToUpper() == "EVEN" ? "0" : game.HomeTeamSpread, out spread);
+                decimal.TryParse(game.OverUnder, out overUnder);
+                
+                schedule.HomeTeamSpread = spread;
+                schedule.OverUnder = overUnder;
 
                 seasonService.SaveSchedule(schedule);
 
