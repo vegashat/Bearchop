@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bearchop", "Bearchop\Bearchop.csproj", "{4C67B53F-6F5E-4A03-942F-C7717BDC8094}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomOrg", "RandomOrg\RandomOrg.csproj", "{74124581-2AA6-4B29-A960-CF9C613FF86C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFLLineUpdater", "NFLLineUpdater\NFLLineUpdater.csproj", "{B34183DB-D462-4C8A-B3B8-BDFEDC51F7D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCAAFUpdater", "NCAAFUpdater\NCAAFUpdater.csproj", "{ECFA7579-598D-400A-91DB-F566DFF937E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{B34183DB-D462-4C8A-B3B8-BDFEDC51F7D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B34183DB-D462-4C8A-B3B8-BDFEDC51F7D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B34183DB-D462-4C8A-B3B8-BDFEDC51F7D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECFA7579-598D-400A-91DB-F566DFF937E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECFA7579-598D-400A-91DB-F566DFF937E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECFA7579-598D-400A-91DB-F566DFF937E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECFA7579-598D-400A-91DB-F566DFF937E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

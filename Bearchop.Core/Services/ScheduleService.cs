@@ -165,5 +165,31 @@ namespace Bearchop.Core.Services
             _jeauxContext.SaveChanges();
         }
 
+        public IEnumerable<NCAAFootballSchedule> GetSchedules(bool onlySelectable, bool unfinalizedOnly = true, int week = 0)
+        {
+            if(week == 0)
+            {
+                var today = DateTime.Today;
+                week = _jeauxContext.NCAAFootballWeeks.FirstOrDefault(w => w.BeginDate <= today && w.EndDate >= today).Number;
+            }
+
+            if(onlySelectable)
+            {
+                var selectableTeams = (from j in _jeauxContext.NCAAFootballTeams.Where(t=>t.IsSelectable == true)
+                                      select (int)j.TeamId).ToList();
+                return _jeauxContext.NCAAFootballSchedules.Where(s => s.Week.Value == week && ((unfinalizedOnly == true && s.IsFinal == false) || unfinalizedOnly == false) && (selectableTeams.Contains(s.HomeTeamId) || selectableTeams.Contains(s.AwayTeamId))).ToList();
+            }
+            else
+            {
+                return _jeauxContext.NCAAFootballSchedules.Where(s => s.Week.Value == week && ((unfinalizedOnly == true && s.IsFinal == false) || unfinalizedOnly == false)).ToList();
+            }
+        }
+
+        public void  FinalizeGame(string gameCode)
+        {
+            var schedule = _jeauxContext.NCAAFootballSchedules.First(s => s.GameCode == gameCode);
+            schedule.IsFinal = true;
+            _jeauxContext.SaveChanges();
+        }
     }
 }

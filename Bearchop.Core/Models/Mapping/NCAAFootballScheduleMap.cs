@@ -24,6 +24,7 @@ namespace Bearchop.Core.Models.Mapping
             this.Property(t => t.Date).HasColumnName("Date");
             this.Property(t => t.Week).HasColumnName("Week");
             this.Property(t => t.GameCode).HasColumnName("GameCode");
+            this.Property(t => t.IsFinal).HasColumnName("IsFinal");
         }
     }
 }

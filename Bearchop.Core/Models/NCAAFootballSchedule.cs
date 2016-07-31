@@ -11,5 +11,6 @@ namespace Bearchop.Core.Models
         public string GameCode { get; set; }
         public System.DateTime Date { get; set; }
         public Nullable<int> Week { get; set; }
+        public bool IsFinal { get; set; }
     }
 }
