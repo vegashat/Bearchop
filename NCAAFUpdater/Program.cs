@@ -1,9 +1,13 @@
 ﻿using Bearchop.Core.Models;
 using Bearchop.Core.Services;
+using FoxSports.Api.Core;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
@@ -89,6 +93,7 @@ namespace NCAAFUpdater
         {
             ScheduleService scheduleService = new ScheduleService();
             NCAAFWeekService weekService = new NCAAFWeekService();
+            TeamService teamService = new TeamService();
 
             List<int> teamsNotUpdated = new List<int>();
 
@@ -101,14 +106,14 @@ namespace NCAAFUpdater
             foreach (var schedule in schedules)
             {
                 //Only process today's games....should probably do this in sql
-                if(schedule.Date > DateTime.Today)
+                if(schedule.Date > DateTime.Today || (schedule.IsFinal && schedule.Date < DateTime.Today))
                 {
                     continue;
                 }
 
-                var gameResults = DownloadGameResults(schedule.GameCode);
+                var gameResult = DownloadGameResult(schedule.GameCode).Result;
 
-                if(gameResults.Length < 100)
+                if(gameResult == null)
                 {
                     Console.WriteLine("Error - {0}", schedule.GameCode);
 
@@ -118,36 +123,31 @@ namespace NCAAFUpdater
                     continue;
                 }
 
-                var xml = XDocument.Parse(gameResults);
-
-                var status = (from s in xml.Descendants("gametrax")
-                              select s.Element("game").Element("gamestate").Attribute("status").Value).First();
-
-                //No processing if the game hasn't started
-                if(status == "Pre-Game")
+                if (gameResult.GameState.Status == "Pre-Game")
                 {
                     continue;
                 }
 
                 GameResult result = new GameResult() { GameCode = schedule.GameCode, Week = week.Number };
 
-                TeamResult visitingTeam = (from g in xml.Descendants("gametrax")
-                                           select new TeamResult()
+                TeamResult visitingTeam = new TeamResult()
                                            {
-                                               PassingYards = Int16.Parse(g.Element("game").Element("team-stats").Element("visiting-team-stats").Element("passing").Attribute("net-yards").Value),
-                                               RushingYards = Int16.Parse(g.Element("game").Element("team-stats").Element("visiting-team-stats").Element("rushing").Attribute("yards").Value),
-                                               Fumbles = Int16.Parse(g.Element("game").Element("team-stats").Element("visiting-team-stats").Element("fumbles").Attribute("lost").Value),
-                                               Interceptions = Int16.Parse(g.Element("game").Element("team-stats").Element("visiting-team-stats").Element("passing").Attribute("interceptions").Value)
-                                           }).First();
+                                               PassingYards = (short)gameResult.TeamStats.Away.Passing.NetYards,
+                                               RushingYards = (short)gameResult.TeamStats.Away.Rushing.Yards,
+                                               Fumbles = (short)gameResult.TeamStats.Away.Rushing.Fumbles,
+                                               Interceptions = (short)gameResult.TeamStats.Away.Passing.Interceptions
+                                           };
 
-                TeamResult homeTeam = (from g in xml.Descendants("game")
-                                       select new TeamResult()
-                                       {
-                                           PassingYards = Int16.Parse(g.Element("team-stats").Element("home-team-stats").Element("passing").Attribute("net-yards").Value),
-                                           RushingYards = Int16.Parse(g.Element("team-stats").Element("home-team-stats").Element("rushing").Attribute("yards").Value),
-                                           Fumbles = Int16.Parse(g.Element("team-stats").Element("home-team-stats").Element("fumbles").Attribute("lost").Value),
-                                           Interceptions = Int16.Parse(g.Element("team-stats").Element("home-team-stats").Element("passing").Attribute("interceptions").Value)
-                                       }).First();
+                TeamResult homeTeam = new TeamResult()
+                {
+                    PassingYards = (short)gameResult.TeamStats.Home.Passing.NetYards,
+                    RushingYards = (short)gameResult.TeamStats.Home.Rushing.Yards,
+                    Fumbles = (short)gameResult.TeamStats.Home.Rushing.Fumbles,
+                    Interceptions = (short)gameResult.TeamStats.Home.Passing.Interceptions
+                };
+
+                var ncaafVisitingTeam = teamService.GetNCAAFootballTeam(schedule.AwayTeamId);
+                var ncaafHomeTeam = teamService.GetNCAAFootballTeam(schedule.HomeTeamId);
 
                 visitingTeam.TurnoversForced = homeTeam.Turnovers;
                 homeTeam.TurnoversForced = visitingTeam.Turnovers;
@@ -158,17 +158,13 @@ namespace NCAAFUpdater
                 homeTeam.RushingYardsAllowed = visitingTeam.RushingYards;
                 homeTeam.PassingYardsAllowed = visitingTeam.PassingYards;
 
-                visitingTeam.PointsScored = (from s in xml.Descendants("game")
-                                             select Int16.Parse(s.Element("visiting-team").Element("linescore").Attribute("score").Value)).First();
+                visitingTeam.PointsScored = (short)gameResult.GameState.AwayScore;
 
-                visitingTeam.Team = (from s in xml.Descendants("game")
-                                     select s.Element("visiting-team").Element("team-city").Attribute("city").Value + " " + s.Element("visiting-team").Element("team-name").Attribute("name").Value).First();
+                visitingTeam.Team = ncaafVisitingTeam.Name;
 
-                homeTeam.PointsScored = (from s in xml.Descendants("game")
-                                         select Int16.Parse(s.Element("home-team").Element("linescore").Attribute("score").Value)).First();
+                homeTeam.PointsScored = (short)gameResult.GameState.HomeScore;
 
-                homeTeam.Team = (from s in xml.Descendants("game")
-                                 select s.Element("home-team").Element("team-city").Attribute("city").Value + " " + s.Element("home-team").Element("team-name").Attribute("name").Value).First();
+                homeTeam.Team = ncaafHomeTeam.Name;
 
                 homeTeam.PointsAllowed = visitingTeam.PointsScored;
                 visitingTeam.PointsAllowed = homeTeam.PointsScored;
@@ -177,13 +173,12 @@ namespace NCAAFUpdater
                 visitingTeam.WonGame = !homeTeam.WonGame;
 
                 result.HomeTeam = homeTeam;
-                result.HomeTeam.TeamId = (short)schedule.HomeTeamId;
+                result.HomeTeam.TeamId = (short)ncaafHomeTeam.JeauxTeamId;
 
                 result.VisitingTeam = visitingTeam;
-                result.VisitingTeam.TeamId = (short)schedule.AwayTeamId;
+                result.VisitingTeam.TeamId = (short)ncaafVisitingTeam.JeauxTeamId;
 
-                result.IsFinal = (from s in xml.Descendants("gametrax")
-                                  select s.Element("game").Element("gamestate").Attribute("status").Value).First() == "FINAL";
+                result.IsFinal = gameResult.GameState.IsOfficial;
 
                 results.Add(result);
 
@@ -234,18 +229,6 @@ namespace NCAAFUpdater
 
             foreach (var result in results)
             {
-                //var homeResult = scoringService.GetJeauxResults(result.HomeTeam.TeamId, result.Week);
-                //var visitingResult = scoringService.GetJeauxResults(result.VisitingTeam.TeamId, result.Week);
-
-                //if(homeResult == null)
-                //{
-                //    homeResult = new Bearchop.Core.Models.COLFOOT_RESULTS();
-                //}
-                //if(visitingResult == null)
-                //{
-                //    visitingResult = new Bearchop.Core.Models.COLFOOT_RESULTS();
-                //}
-
                 var homeTeam = result.HomeTeam;
                 var visitingTeam = result.VisitingTeam;
 
@@ -312,6 +295,26 @@ namespace NCAAFUpdater
             return System.Text.Encoding.Default.GetString(gameResult);
         }
 
+        private static async Task<FoxGameResult> DownloadGameResult(string gameCode)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                FoxGameResult foxGameResult = null;
+
+                client.BaseAddress = new Uri("http://api.foxsports.com");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var apiUri = string.Format($"/sportsdata/v1/live/cfb/games/{gameCode}.js?apikey=a9OrJWqhOXBP1wjZkhLEcRf8bm25CU4a&version=425");
+                HttpResponseMessage response = await client.GetAsync(apiUri);
+                if (response.IsSuccessStatusCode)
+                {
+                    foxGameResult = JsonConvert.DeserializeObject<FoxGameResult>(await response.Content.ReadAsStringAsync());
+                }
+
+                return foxGameResult;
+            }
+        }
         private static void NotifyOfBadDownload(List<int> teamsNotUpdated)
         {
             TeamService teamService = new TeamService();

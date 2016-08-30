@@ -190,6 +190,7 @@
     <Compile Include="Models\spt_fallback_usg.cs" />
     <Compile Include="Models\spt_monitor.cs" />
     <Compile Include="Models\spt_values.cs" />
+    <Compile Include="Models\TeamSchedule.cs" />
     <Compile Include="Models\TWOTK.cs" />
     <Compile Include="Models\TWOTK_USERS.cs" />
     <Compile Include="Models\UserTeamStatus.cs" />

@@ -165,6 +165,14 @@ namespace Bearchop.Core.Services
             _jeauxContext.SaveChanges();
         }
 
+        public void UpdateCode(string oldGameCode, string newGameCode)
+        {
+            var schedule = _jeauxContext.NCAAFootballSchedules.First(s => s.GameCode == oldGameCode);
+            schedule.GameCode = newGameCode;
+
+            _jeauxContext.SaveChanges();
+        }
+
         public IEnumerable<NCAAFootballSchedule> GetSchedules(bool onlySelectable, bool unfinalizedOnly = true, int week = 0)
         {
             if(week == 0)

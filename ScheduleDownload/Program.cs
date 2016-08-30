@@ -1,6 +1,4 @@
 ﻿using Bearchop.Core.Services;
-using Bearchop.LOTW.Core.Models;
-using Bearchop.LOTW.Core.Service;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -134,50 +132,50 @@ namespace ScheduleDownload
 
         }
 
-        private static void ImportNFL()
-        {
-            SeasonService seasonService = new SeasonService();
-            TeamService teamService = new TeamService();
-            WeekService weekService = new WeekService();
+        //private static void ImportNFL()
+        //{
+        //    SeasonService seasonService = new SeasonService();
+        //    TeamService teamService = new TeamService();
+        //    WeekService weekService = new WeekService();
 
-            var files = Directory.GetFiles(".", "*_NFL.xml");
+        //    var files = Directory.GetFiles(".", "*_NFL.xml");
 
-            foreach (var file in files)
-            {
-                Console.WriteLine(file);
+        //    foreach (var file in files)
+        //    {
+        //        Console.WriteLine(file);
 
-                var scheduleFile = XDocument.Load(file);
+        //        var scheduleFile = XDocument.Load(file);
 
-                var games = from s in scheduleFile.Descendants("game-schedule")
-                            select new GameDate()
-                            {
-                                AwayTeamName = s.Element("visiting-team").Element("team-name").Attribute("name").Value,
-                                AwayTeamCity = s.Element("visiting-team").Element("team-city").Attribute("city").Value,
-                                HomeTeamName = s.Element("home-team").Element("team-name").Attribute("name").Value,
-                                HomeTeamCity = s.Element("home-team").Element("team-city").Attribute("city").Value,
-                                GameCode = s.Element("gamecode").Attribute("code").Value,
-                                Date = DateTime.Parse(s.Element("date").Attribute("year").Value + "-" + s.Element("date").Attribute("month").Value + "-" + s.Element("date").Attribute("day").Value + ' ' + s.Element("time").Attribute("hour").Value + ':' + s.Element("time").Attribute("minute").Value + ":00")
-                            };
+        //        var games = from s in scheduleFile.Descendants("game-schedule")
+        //                    select new GameDate()
+        //                    {
+        //                        AwayTeamName = s.Element("visiting-team").Element("team-name").Attribute("name").Value,
+        //                        AwayTeamCity = s.Element("visiting-team").Element("team-city").Attribute("city").Value,
+        //                        HomeTeamName = s.Element("home-team").Element("team-name").Attribute("name").Value,
+        //                        HomeTeamCity = s.Element("home-team").Element("team-city").Attribute("city").Value,
+        //                        GameCode = s.Element("gamecode").Attribute("code").Value,
+        //                        Date = DateTime.Parse(s.Element("date").Attribute("year").Value + "-" + s.Element("date").Attribute("month").Value + "-" + s.Element("date").Attribute("day").Value + ' ' + s.Element("time").Attribute("hour").Value + ':' + s.Element("time").Attribute("minute").Value + ":00")
+        //                    };
 
 
-                foreach (var game in games.Where(g => g.AwayTeamCity.Length > 0))
-                {
-                    var homeTeamId = teamService.GetTeamId(game.HomeTeam);
-                    var awayTeamId = teamService.GetTeamId(game.AwayTeam);
+        //        foreach (var game in games.Where(g => g.AwayTeamCity.Length > 0))
+        //        {
+        //            var homeTeamId = teamService.GetTeamId(game.HomeTeam);
+        //            var awayTeamId = teamService.GetTeamId(game.AwayTeam);
 
-                    Schedule schedule = new Schedule();
-                    schedule.HomeId = homeTeamId;
-                    schedule.AwayId = awayTeamId;
+        //            Schedule schedule = new Schedule();
+        //            schedule.HomeId = homeTeamId;
+        //            schedule.AwayId = awayTeamId;
 
-                    schedule.Date = DateTime.Parse(game.GameCode.Substring(0, 4) + '-' + game.GameCode.Substring(4, 2) + '-' + game.GameCode.Substring(6, 2) + ' ' + game.Date.Hour + ':' + game.Date.Minute + ':' + game.Date.Second);
-                    schedule.GameCode = game.GameCode;
+        //            schedule.Date = DateTime.Parse(game.GameCode.Substring(0, 4) + '-' + game.GameCode.Substring(4, 2) + '-' + game.GameCode.Substring(6, 2) + ' ' + game.Date.Hour + ':' + game.Date.Minute + ':' + game.Date.Second);
+        //            schedule.GameCode = game.GameCode;
 
-                    schedule.Week = weekService.GetWeek(schedule.Date);
+        //            schedule.Week = weekService.GetWeek(schedule.Date);
 
-                    schedule = seasonService.SaveSchedule(schedule);
-                }
-            }
+        //            schedule = seasonService.SaveSchedule(schedule);
+        //        }
+        //    }
 
-        }
+        ////}
     }
 }

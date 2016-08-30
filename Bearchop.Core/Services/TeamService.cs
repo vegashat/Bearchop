@@ -20,5 +20,10 @@ namespace Bearchop.Core.Services
         {
             return _jeauxContext.COLFOOT_TEAM.FirstOrDefault(t => t.TeamID == teamId);
         }
+
+        public NCAAFootballTeam GetNCAAFootballTeam(int teamId)
+        {
+            return _jeauxContext.NCAAFootballTeams.FirstOrDefault(t => t.TeamId == teamId);
+        }
     }
 }
