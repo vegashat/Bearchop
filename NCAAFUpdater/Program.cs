@@ -4,6 +4,7 @@ using FoxSports.Api.Core;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -123,7 +124,7 @@ namespace NCAAFUpdater
                     continue;
                 }
 
-                if (gameResult.GameState.Status == "Pre-Game")
+                if (gameResult.GameState.Status == "Pregame" || gameResult.GameState.Status == "Postponed" || gameResult.GameState.Status == "Cancelled")
                 {
                     continue;
                 }
@@ -134,7 +135,7 @@ namespace NCAAFUpdater
                                            {
                                                PassingYards = (short)gameResult.TeamStats.Away.Passing.NetYards,
                                                RushingYards = (short)gameResult.TeamStats.Away.Rushing.Yards,
-                                               Fumbles = (short)gameResult.TeamStats.Away.Rushing.Fumbles,
+                                               Fumbles = (short)gameResult.TeamStats.Away.Rushing.FumblesLost,
                                                Interceptions = (short)gameResult.TeamStats.Away.Passing.Interceptions
                                            };
 
@@ -142,7 +143,7 @@ namespace NCAAFUpdater
                 {
                     PassingYards = (short)gameResult.TeamStats.Home.Passing.NetYards,
                     RushingYards = (short)gameResult.TeamStats.Home.Rushing.Yards,
-                    Fumbles = (short)gameResult.TeamStats.Home.Rushing.Fumbles,
+                    Fumbles = (short)gameResult.TeamStats.Home.Rushing.FumblesLost,
                     Interceptions = (short)gameResult.TeamStats.Home.Passing.Interceptions
                 };
 
@@ -196,9 +197,9 @@ namespace NCAAFUpdater
 
             return results;
 
-            //string fileName = string.Format("week{0}_results.csv",week.Number);
+            //string fileName = string.Format("week{0}_results.csv", week.Number);
 
-            //if (File.Exists(fileName)
+            //if (File.Exists(fileName))
             //{
             //    File.Delete(fileName);
             //}
@@ -305,11 +306,22 @@ namespace NCAAFUpdater
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var apiUri = string.Format($"/sportsdata/v1/live/cfb/games/{gameCode}.js?apikey=a9OrJWqhOXBP1wjZkhLEcRf8bm25CU4a&version=425");
-                HttpResponseMessage response = await client.GetAsync(apiUri);
+                //Get Version
+                var versionUri = $"/sportsdata/v1/live/cfb/version/{gameCode}.js?apikey=a9OrJWqhOXBP1wjZkhLEcRf8bm25CU4a&callback=version_{gameCode}";
+                HttpResponseMessage response = await client.GetAsync(versionUri);
                 if (response.IsSuccessStatusCode)
                 {
-                    foxGameResult = JsonConvert.DeserializeObject<FoxGameResult>(await response.Content.ReadAsStringAsync());
+                    var versionResult = (await response.Content.ReadAsStringAsync());
+                    var version = ((Newtonsoft.Json.Linq.JContainer)(JsonConvert.DeserializeObject(versionResult.Substring(versionResult.IndexOf('{'), versionResult.IndexOf('}') - versionResult.IndexOf('{') + 1))))["Number"];
+
+
+
+                    var apiUri = string.Format($"/sportsdata/v1/live/cfb/games/{gameCode}.js?apikey=a9OrJWqhOXBP1wjZkhLEcRf8bm25CU4a&version={((Newtonsoft.Json.Linq.JValue)version).Value}");
+                    response = await client.GetAsync(apiUri);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        foxGameResult = JsonConvert.DeserializeObject<FoxGameResult>(await response.Content.ReadAsStringAsync());
+                    }
                 }
 
                 return foxGameResult;

@@ -151,18 +151,22 @@ namespace Bearchop.Core.Services
 
         public void AddSchedule(int homeTeamId, int awayTeamId, DateTime gameDate, string gameCode)
         {
-            NCAAFootballSchedule schedule = new NCAAFootballSchedule();
+            if (!_jeauxContext.NCAAFootballSchedules.Any(s => s.GameCode == gameCode))
+            {
+                NCAAFootballSchedule schedule = new NCAAFootballSchedule();
 
-            schedule.HomeTeamId = homeTeamId;
-            schedule.AwayTeamId = awayTeamId;
-            schedule.Date = gameDate;
-            schedule.GameCode = gameCode;
-            var week = _jeauxContext.NCAAFootballWeeks.First(w => w.BeginDate <= gameDate && w.EndDate >= gameDate);
+                schedule.HomeTeamId = homeTeamId;
+                schedule.AwayTeamId = awayTeamId;
+                schedule.Date = gameDate;
+                schedule.GameCode = gameCode;
+                var week = _jeauxContext.NCAAFootballWeeks.First(w => w.BeginDate <= gameDate && w.EndDate >= gameDate);
 
-            schedule.Week = week.Number;
+                schedule.Week = week.Number;
 
-            _jeauxContext.NCAAFootballSchedules.Add(schedule);
-            _jeauxContext.SaveChanges();
+                _jeauxContext.NCAAFootballSchedules.Add(schedule);
+                _jeauxContext.SaveChanges();
+                Console.WriteLine(gameCode);
+            }
         }
 
         public void UpdateCode(string oldGameCode, string newGameCode)

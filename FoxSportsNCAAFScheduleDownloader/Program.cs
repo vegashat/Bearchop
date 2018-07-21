@@ -17,13 +17,13 @@ namespace FoxSportsNCAAFScheduleDownloader
     
     class Program
     {
-        const string FOX_SCHEDULE_API = @"/sportsdata/v1/football/cfb/events.json?seasontype=reg&timestamp=true&enable=odds&week={0}&group=2&season=2016&apikey=a9OrJWqhOXBP1wjZkhLEcRf8bm25CU4a&skip={1}";
+        const string FOX_SCHEDULE_API = @"/sportsdata/v1/football/cfb/events.json?seasontype=reg&timestamp=true&enable=odds&week={0}&group=2&season=2017&apikey=a9OrJWqhOXBP1wjZkhLEcRf8bm25CU4a&skip={1}";
         const string FOX_RESULT_API = "http://api.foxsports.com/v1/content/json?tag=sports:football/leagues/cfb&gameId={0}";
         static void Main(string[] args)
         {
             //DownloadSchedules();
-            //ProcessSchedules();
-            ProcessGameId();
+            ProcessSchedules();
+            //ProcessGameId();
             ReadLine();
             
         }
